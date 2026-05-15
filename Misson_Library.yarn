@@ -13,11 +13,11 @@ position: -24,-174
 
 至大者: 任务偷书贼，选择你的初始节点
 -> 图书管理员
-    <<jump NPC_LibManager_init>>
+    <<jump NPC_LibManager_encounter>>
 -> 黄书贩子
     <<jump NPC_PornSeller_encounter>>
 -> 吟游诗人
     <<jump NPC_BardPatrik_encounter>>
 -> 直接看慌张的偷书贼
-    <<jump NPC_TensiveThief_init>>
+    <<jump NPC_TensiveThief_encouter>>
 ===

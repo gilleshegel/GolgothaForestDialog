@@ -1,5 +1,4 @@
 title: NPC_Youngman_encounter
-position: -262,68
 when: once
 ---
 一个年轻人躲在这块大石头后边，他紧张地看着关卡的守卫，咬着嘴唇。
@@ -11,7 +10,6 @@ when: once
 ===
 
 title: NPC_Youngman_encounter
-position: -262,68
 when: always
 ---
 这个年轻人依旧躲在大石头后边，他紧张地看着关卡的守卫，咬着嘴唇。

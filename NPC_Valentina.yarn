@@ -1,9 +1,20 @@
 title: NPC_Valentina_init
 ---
-<<declare $encounter_valentina = true>>
+1
 ===
 
 title: NPC_Valentina_encounter
+when: once
 ---
-沉默的牧师
+<<if $kind == false>>
+？: “这就是你的处世之道？兵痞的粗鲁气质真是令人作呕。”
+<<else>>
+？: “真是懦弱，看来你在战争中什么都没学到。”
+<<endif>>
+
+-> 寻声望去
+说话的是酒馆里的另一个客人，气质与其他人截然不同。
+一个冷漠的黑暗精灵，面色憔悴，穿着老旧的重甲，握着酒杯正襟危坐，
+她望着你，大抵完整观看了这场闹剧。
+检定: \[感知检定：成功\] 此人不像是一个
 ===

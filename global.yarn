@@ -22,5 +22,5 @@ title: Start
 -> 吟游诗人
     <<jump NPC_BardPatrik_encounter>>
 -> 酒馆斗殴
-    <<jump NPC_Rogue_init>>
+    <<jump NPC_Rogue_encounter>>
 ===
