@@ -1,0 +1,197 @@
+title: NPC_PornSeller_init
+---
+<<declare $first_met_pornseller = true>> // 初次见面
+
+<<if $first_met_pornseller == false>>
+    <<jump NPC_PornSeller_loop>>
+<<else>>
+    <<jump NPC_PornSeller_firstmet>>
+<<endif>>
+===
+
+title: NPC_PornSeller_firstmet
+---
+<<set $first_met_pornseller = false>>
+你看到一个形迹可疑的龙裔，它穿着黑袍，蜷缩在酒吧一隅，用袍子遮着半身与其他客人窃窃私语。
+
+它们交换了什么东西，一张书页？一份海报？
+
+龙裔注意到你，它即刻露出了职业性的假笑。
+
+黄书贩子: 愿至大者与您同在，冒险者老爷。您有没有兴趣看点攒劲的东西啊？
+
+-> “什么攒劲的东西？”
+    <<jump NPC_PornSeller_1>>
+===
+
+title: NPC_PornSeller_1
+position: 6,220
+---
+黄书贩子: *猥琐地笑*您问我什么攒劲的东西么？看来老爷您是第一次光顾这类生意。
+
+他在袍子内一阵蠕动。
+
+黄书贩子: 您知道，自生命诞生伊始，就有一种原初的欲望与其纠缠。这股欲望，毋宁说冲动，是那么的自然而然，而满足这种欲望对于任何生命来说都是合情合理。
+
+黄书贩子: *清嗓子*对人来说，弥补这永远不可能填满的深渊的方式是纷繁复杂的，但我认为，总有那么几种方法脱颖而出、更加高雅且回味无穷...这就是我的工作了，为我的顾客带来这份至福的体验。您想要先一窥究竟吗？
+
+-> “那还用说？来一份*最好的*给我看看！”
+    <<jump NPC_PornSeller_5>>
+-> “什么高雅的东西这么神秘啊？”
+    <<jump NPC_PorSeller_2>>
+-> “你特么不就一卖黄书的吗”
+    <<jump NPC_PornSeller_3>>
+===
+
+title: NPC_PorSeller_2
+position: 305,409
+---
+黄书贩子又是一阵猥琐地笑。
+
+黄书贩子: 我是爱与美的信使，激情的吹哨人，捕捞泡沫的海女——我能为您提供最美、最有激情的插画，保证里面的人物身材*劲爆*！
+
+-> “那不就是卖黄书吗，我还以为啥呢！”
+    <<jump NPC_PornSeller_3>>
+-> “这么厉害？我高低得看看”
+    <<jump NPC_PornSeller_5>>
+===
+
+title: NPC_PornSeller_3
+position: -333,672
+---
+黄书贩子: *咂嘴*我卖的可不是一般的黄书，冒险者老爷！您在皮萨罗城巷子里看到的都是粗俗的黄书，但我能跟您保证，我卖的都是高级货，高山流水！
+
+-> “黄书能有什么高山流水，我才不信呢。”
+    <<jump NPC_PornSeller_4>>
+-> “如此艺术我不得不看！”
+    <<jump NPC_PornSeller_5>>
+===
+
+title: NPC_PornSeller_4
+position: -253,162
+---
+
+黄书贩子: 您可别不信！我请您免费看一份，您自己定夺。
+    <<jump NPC_PornSeller_5>>
+===
+
+title: NPC_PornSeller_5
+position: 302,834
+---
+小贩在袍内翻找一般，伸出脏兮兮的手，递给你一张小心折叠的纸
+
+黄书贩子: *搓手*您瞧瞧，这可是真正的艺术呀！我们专门请了一位落魄的宫廷画师为我们供稿呢。
+
+黄书贩子: 只要5g，这份杰作就属于您啦！
+
+你悄悄展开纸张，里面是一幅古典主义的人类女性裸体绘画，身材的确*劲爆*，但你总感觉有些可疑...
+
+-> \[智力检定\]：这份绘画有点可疑...
+    <<jump NPC_PornSeller_check>>
+-> “我考虑一下，之后再来。”
+-> “不错，这一份我要了！” <<if $gold >= 5>>
+    <<jump NPC_PornSeller_sold>>
+===
+
+title: NPC_PornSeller_sold
+position: 311,1200
+---
+黄书贩子: 成交！冒险者老爷，您这次真是赚大发了！
+<<set $gold = $gold -  5>>
+===
+
+title: NPC_PornSeller_check
+position: -553,979
+---
+<<set $roll = dice(20) >>
+<<if $roll == 20>> <<jump NPC_PornSeller_sus>>
+<<elseif $roll == 1>> <<jump NPC_PornSeller_notsus>>
+<<elseif $roll + ($intelligence - 10)/2 >= 10>>
+    <<jump NPC_PornSeller_sus>>
+<<else>>
+    <<jump NPC_PornSeller_notsus>>
+<<endif>>
+===
+
+title: NPC_PornSeller_sus
+position: -119,1326
+---
+检定: \[智力检定：成功\] 你想起这幅作品的出处，它来自著名的古典复兴主义艺术家，米开朗琪罗II，描绘了数千年前的爱神维纳斯。
+
+看来这个小贩的货源并不光明正大。
+
+-> “这画我甚至见过，根本不是什么新作品。为了避免脏了我的武器，我希望你自己坦白交代。”
+    <<jump NPC_PornSeller_horror>>
+===
+
+title: NPC_PornSeller_notsus
+position: -551,1308
+---
+检定: \[检定失败\] 你完全没看出这幅作品有什么离奇之处，也许你的意见是“我更想看埃律克西人版本的有没有？”，又或者是“我一向光明磊落，不看这些腌臜货!”，但无论如何你的确怀有疑心。
+
+看来你得去别处找找证据...
+===
+
+title: NPC_PornSeller_loop
+---
+那个卖黄书的龙裔依旧在酒吧一隅，瞧见你向自己走来，它便满脸堆笑。
+
+黄书贩子: 愿至大者与您同在，冒险者老爷。您想要来点*艺术品*吗？
+
+-> “你的同伙已经把你供出来了，老实交代《遗忘神谱》在哪，我考虑不举报你。”<<if $pornseller_intel == true>>
+    <<jump NPC_PornSeller_horror>>
+-> （离开）
+===
+
+title: NPC_PornSeller_horror
+---
+你的话还没说完，光是讲完前半句，黄书贩子就立刻举起双手投降了。他高举双手，冷汗直流，死盯着你，不敢开口，生怕什么举动触怒你会带来危险。
+
+黄书贩子: 哎哟喂...（咳嗽）您这，这就不太好了对吧...？老爷，咱们怎么说也是体面人吧
+
+检定: \[感知检定：成功\] 这谄媚话情不真、意不切，远不如前面推销时那些吹嘘。
+
+<<set $pornseller_catch = true>>
+
+-> “你从实招来，我酌情不举报你”
+    <<jump NPC_PornSeller_relief>>
+===
+
+title: NPC_PornSeller_relief
+---
+他松了口气，打起精神。
+<<jump NPC_PornSeller_truth>>
+===
+
+title: NPC_PornSeller_truth
+---
+黄书贩子: 您知道...我也只是为了糊口而已*尴尬地笑*我呢（他看着你，希望开个玩笑能让你放过他），当然，我偷走了一本大部头，应该就是您说的那个啥...神谱？
+
+他从袍子内掏出一本精装的大部头递给你
+
+<<if dice(20) > 15 >>检定: \[感知检定：成功\]这本书的装帧非常精良。
+<<endif>>
+
+-> “你知不知道你的同伙的情报？”
+    <<jump NPC_PornSeller_intel1>>
+===
+
+title: NPC_PornSeller_intel1
+---
+黄书贩子: （急忙开口）额，是的！冒险者老爷！我有一个同伙，和我一样穿着袍子，他现在应该去广场了...
+-> “那个人我已经知道了，告诉我别的”<<if $tensivethief_catch == true>>
+    <<jump NPC_PornSeller_intel2>>
+-> “很好。”<<if $tensivethief_intel == false>>
+    <<jump NPC_PornSeller_end1>>
+===
+
+title: NPC_PornSeller_intel2
+---
+黄书贩子: 那（被口水呛到）您可能得去城池边陲找找，我还有一个同伙，但是我不知道他是谁。
+===
+
+title: NPC_PornSeller_end1
+---
+<<set $tensivethief_intel = true>>
+黄书贩子点点头，生怕耽误你。
+===

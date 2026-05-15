@@ -1,0 +1,227 @@
+title: NPC_BardPatrik_init
+---
+<<jump NPC_BardPatrik_firstmet>>
+===
+
+
+title: NPC_BardPatrik_firstmet
+---
+广场中央站着一个人类吟游诗人，拿着鲁特琴边弹边唱，但是听众寥寥。
+
+他脚底放着一顶帽子，里面好像躺了几个铜板。
+
+-> \[魅力检定\] 这唱的是什么？
+
+<<set $roll = dice(20) >>
+<<if $roll == 20>> <<jump NPC_BardPatrik_charyes>>
+<<elseif $roll == 1>> <<jump NPC_BardPatrik_charno>>
+<<elseif $roll + ($charisma - 10)/2 >= 6>>
+    <<jump NPC_BardPatrik_charyes>>
+<<else>>
+    <<jump NPC_BardPatrik_charno>>
+<<endif>>
+===
+
+title: NPC_BardPatrik_charyes
+---
+检定: \[魅力检定：成功\] 这个吟游诗人唱的是一组六行诗，且根据前面的唱词你已经猜出来，这唱的是侠盗马丁费耶洛。
+<<jump NPC_BardPatrik_sextilla>>
+===
+
+
+title: NPC_BardPatrik_charno
+---
+检定: \[魅力检定：失败\] 这听起来一点都不像十四行诗————你听说过的最厉害的体裁。真糟糕！
+<<jump NPC_BardPatrik_sextilla>>
+===
+
+
+title: NPC_BardPatrik_sextilla
+---
+吟游诗人帕特里克: 荒野上他驭马飞驰/飞箭的雨他堪堪躲避/只见侠盗抖动蓑衣/追踪者眼见他将发狠/赶紧勒马躲避飞刃/可刀扇灵动正中肉体。
+
+吟游诗人帕特里克: 绝技正是他一人独有/自由不羁锄强扶弱/天涯海角无不经过/人如清泉他则为蛊/加官进爵不屑一顾/我们的马丁费耶洛！
+
+检定: \[智力检定：成功\] 果然是侠盗马丁费耶洛，两百年前在阿莱夫行侠仗义的好汉。这里唱的是马丁费耶洛救下美女海伦后被海伦未婚夫携土匪追杀的故事。但是这个吟游诗人的水平太差了。
+
+一曲唱毕，鲁特琴也弹奏至高潮，他戛然而止，向不存在的一群群观众致谢并请求打赏。
+
+一个抱着一桶脏衣服的妇女丢了个铜板。
+
+吟游诗人帕特里克: 哎呀...怎么这样...
+
+->（丢出一枚金币，高兴地拍掌）唱的好啊！我最喜欢吟游诗人了！<<if $gold > 0>>
+    <<jump NPC_BardPatrik_danke4money>>
+->（高兴地拍掌）唱的好啊！我最喜欢吟游诗人了！
+    <<jump NPC_BardPatrik_danke>>
+->（像反派一样拍掌）唱的好啊！我最*喜欢*吟游诗人了！
+    <<jump NPC_BardPatrik_cringe>>
+===
+
+
+title: NPC_BardPatrik_danke4money
+---
+<<set $gold = $gold - 1>>
+吟游诗人喜出望外，他向你连鞠三躬，头如捣蒜，然后赶紧从帽子里拿出那枚金币，先是用衣服擦了擦硬币，再是用牙咬了咬，便收进衣服口袋。
+    <<jump NPC_BardPatrik_danke>>
+===
+
+
+title: NPC_BardPatrik_danke
+---
+吟游诗人帕特里克: 感谢！感谢！有人欣赏我的艺术便是好事！
+    <<jump NPC_BardPatrik_query1>>
+===
+
+
+title: NPC_BardPatrik_cringe
+---
+吟游诗人看向你，露出一个尴尬而不失礼节的微笑，显然他其实不是很理解你到底是真的在夸自己还是在嘲讽自己。
+    <<jump NPC_BardPatrik_query1>>
+===
+
+
+title: NPC_BardPatrik_query1
+---
+吟游诗人帕特里克: 请问您是？
+
+-> “我是被受膏者派遣到此处解决各各他林危机的冒险者。”
+    <<jump NPC_BardPatrik_query2>>
+-> “我是保礼派的，你最好也是，不然我会杀了你”
+    <<jump NPC_BardPatrik_query3>>
+-> \[体质检定\] “我就是马丁费耶洛。”
+    <<jump NPC_BardPatrik_iamFierro1>>
+===
+
+
+title: NPC_BardPatrik_query2
+---
+吟游诗人帕特里克: 竟然是冒险者？失敬失敬！我师傅之前跟我说过，在沉默战争还没全面爆发的时候，阿莱夫遍地都是冒险者！但是现在几乎已经绝迹了。
+
+你为这句话感到不舒服。
+
+吟游诗人帕特里克: 请问尊姓大名？
+-> “斯汀内姆”
+===
+
+
+title: NPC_BardPatrik_query3
+---
+吟游诗人帕特里克: 哎噫？！！！大人，我是无信仰者啊，您可别误会，而且我和听义派没有任何关系！
+
+他尝试找个话题缓和气氛。
+
+吟游诗人帕特里克: 您尊姓大名？
+-> “斯汀内姆”
+===
+
+
+title: NPC_BardPatrik_iamFierro1
+---
+<<set $roll = dice(20) >>
+<<if $roll == 20>> <<jump NPC_BardPatrik_iamFierroyes>>
+<<elseif $roll == 1>> <<jump NPC_BardPatrik_iamFierrono>>
+<<elseif $roll + ($constitution - 10)/2 >= 12>>
+    <<jump NPC_BardPatrik_iamFierroyes>>
+<<else>>
+    <<jump NPC_BardPatrik_iamFierrono>>
+<<endif>>
+
+===
+
+
+title: NPC_BardPatrik_iamFierroyes
+---
+检定: \[体质检定：成功\] 你体面且严肃地说自己是马丁费耶洛，尽管马丁费耶洛是两百多年前的一个人类。
+
+吟游诗人: （尴尬地笑）啊哈哈，大人，您可真幽默啊，啊哈哈。请问您尊姓大名？
+
+===
+
+
+title: NPC_BardPatrik_iamFierrono
+---
+检定: \[体质检定：失败\] 你拼了老命才把这句话说了出来，因为马丁费耶洛是两百多年前的一个人类。
+
+吟游诗人: （尴尬地笑）啊哈哈，大人，您可真幽默啊，啊哈哈。请问您尊姓大名？
+===
+
+
+title: NPC_BardPatrik_query4
+---
+1
+===
+
+
+title: NPC_BardPatrik_loop
+---
+吟游诗人帕特里克: （清嗓子）尊敬的冒险者斯汀内姆！请问您想来一首《马丁费耶罗颂》吗，我保证这一次我唱的比上一次好！并且这次只收您1g！
+-> “我在寻找一个偷书贼，它大概穿着黑色的袍子，你有没有见过？”<<if $tensivethief_intel == true>>
+    <<jump NPC_BardPatrik_tensivetalk1>>
+-> “我在找偷书贼，你有没有看到过可疑的人经过这里？”<<if $library_mission == true>>
+    <<jump NPC_BardPatrik_tensivetalk1>>
+-> （离开）
+===
+
+title: NPC_BardPatrik_tensivetalk1
+---
+吟游诗人见你开口，登时来了精神，他已经握好鲁特琴。
+
+吟游诗人帕特里克: 当然，斯汀内姆大人！您知道，我最近一直在广场卖唱（他小声说：甚至我不得不睡在广场这儿），眼观八方，这皮萨罗城的人呐，我可是看了个遍！更何况我记忆力那叫一个好，师傅都夸我厉害呢！您知道《马丁费耶罗归来》吗，我可是倒背如流，这是绝大多数吟游诗人都不做不到的。要不我免费给您唱一段？只要您觉得好就行，以后看在我本领的份上再让我表演，我那时候才收您的钱。这样您就知道，我帕特里克可不是什么混吃等死没有能力的家伙，我是看硬本事的！
+-> “打住打住，我问你正事呢！你到底有没有看到一个可疑的人？”
+    <<jump NPC_BardPatrik_tensivetalk2>>
+- > “说得好啊，所以你到底有没有看到一个可疑的人？”
+    <<jump NPC_BardPatrik_tensivetalk2>>
+===
+
+title: NPC_BardPatrik_tensivetalk2
+---
+吟游诗人帕特里克: 那当然，我已经把诗句写好了，只要您出我1g，我就把那人的行踪唱给你听。
+-> “我找罪犯都得花钱？”
+    <<jump NPC_BardPatrik_tensivetalk3>>
+-> “喏”（丢出一枚金币）<<if $gold > 0>>
+    <<jump NPC_BardPatrik_tensivetalk4>>
+-> /[魅力检定/] “帕特里克，这就是你一展风采的时候！钱什么的我能亏欠你吗？以后我肯定来找你听戏！”
+    <<jump NPC_BardPatrik_tensivetalk5>>
+===
+
+title: NPC_BardPatrik_tensivetalk3
+---
+吟游诗人帕特里克: 唉，您知道的，我这日子是真的不好过啊！求求您就赏我这一枚金币吧！我好久没吃一顿饱饭了。
+-> “真拿你没办法...”（丢出一枚金币）<<if $gold > 0>>
+    <<jump NPC_BardPatrik_tensivetalk4>>
+-> “我考虑考虑”
+===
+
+
+title: NPC_BardPatrik_tensivetalk4
+---
+帕特里克喜笑颜开地接住了你丢的一枚金币，先是用衣服擦了擦硬币，再是用牙咬了咬，便收进衣服口袋。
+
+吟游诗人帕特里克: 感谢您的恩赐！我这就开始！
+    <<jump NPC_BardPatrik_tensivetalk98>>
+===
+
+
+title: NPC_BardPatrik_tensivetalk5
+---
+吟游诗人被你一通花言巧语搞得晕乎乎的，但他还是握住鲁特琴。
+
+吟游诗人帕特里克: 那我要开始咯，请您听好了！
+    <<jump NPC_BardPatrik_tensivetalk98>>
+===
+
+title: NPC_BardPatrik_tensivetalk98
+---
+<<jump NPC_BardPatrik_tensivetalk99>>
+===
+
+
+title: NPC_BardPatrik_tensivetalk99
+---
+帕特里克终于忍不住了，他以极高的bpm弹奏鲁特琴并竭尽全力大吼。
+
+吟游诗人帕特里克: 那个人就在您的身后啊斯汀内姆大人！！！！
+-> “什么？？？”（转身）
+    <<jump NPC_TensiveThief_init>>
+===

@@ -1,0 +1,17 @@
+{
+    "projectFileVersion": 4,
+    "sourceFiles": [
+        "**/*.yarn"
+    ],
+    "excludeFiles": [],
+    "baseLanguage": "en",
+    "projectName": "GolgathaForest",
+    "authorName": [
+        "BlindLemming"
+    ],
+    "editorOptions": {
+        "yarnScriptEditor": {
+            "presenter": "try"
+        }
+    }
+}

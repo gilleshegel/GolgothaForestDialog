@@ -1,0 +1,234 @@
+title: NPC_LibManager_init
+---
+图书馆管理员
+<<declare $ask_prohibit = false>>
+<<declare $first_met_libmanager = true>>
+<<jump NPC_LibManager_firstmet>>
+===
+
+title: NPC_LibManager_firstmet
+---
+图书管理员: （叹气）您好，欢迎来到皮萨罗城图书馆，请问有什么能帮到您？
+-> “你为什么要叹气？你是不是也是个冒险者？”
+    <<jump NPC_LibManager_RUAdventurer>>
+-> “有没有推荐借阅的书本？”
+    <<jump NPC_LibManager_recommend0>>
+===
+
+
+title: NPC_LibManager_loop
+---
+图书管理员闷闷不乐地自言自语，抱怨着日常。
+
+<<if $library_mission == true>>
+图书管理员: 请问您有没有找齐三本书？
+<<endif>>
+
+-> “有没有推荐借阅的书本？”
+    <<jump NPC_LibManager_recommend0>>
+-> （离开） <<if $first_met_libmanager == true>>
+    <<if $library_mission == false>> <<jump NPC_LibManager_mission>>
+    <<endif>>
+===
+
+
+title: NPC_LibManager_RUAdventurer
+---
+图书管理员: 先生，我只是一个普通的打工的（叹气）
+<<jump NPC_LibManager_loop>>
+===
+
+
+title: NPC_LibManager_recommend0
+---
+图书管理员: 当然，请问您对什么类型的书感兴趣？
+-> “冒险类的小说有没有？”
+    <<jump NPC_LibManager_recommend_adven>>
+-> “有没有爱情小说？”
+    <<jump NPC_LibManager_recommend_romance>>
+-> “帮我看看有没有地方报纸的年度合订本”
+    <<jump NPC_LibManager_recommend_newspaper>>
+-> “有没有厨艺指南？”
+    <<jump NPC_LibManager_recommend_cook>>
+-> “我想看非常硬核的魔法专著！”
+    <<jump NPC_LibManager_recommend_magic>>
+-> “历史，最好是神谱考究。我听说皮萨罗城这一块附近有丰富的旧神信仰文化。”
+    <<jump NPC_LibManager_recommend_history>>
+-> \[魅力检定\] “管理员小姐，您知道我最感兴趣的是什么吗？禁书。而我相信您图书馆不仅有，还愿意给我这样的冒险者阅读”<<if $ask_prohibit == false>>
+    <<jump NPC_LibManager_recommend_prohibit>>
+-> “感谢你，我之后再来借书。”
+    <<jump NPC_LibManager_loop>>
+===
+
+
+title: NPC_LibManager_recommend_adven
+---
+图书管理员: 那我向您推荐最近借阅量最高的《奥雷良诺》系列。这个系列讲述了家喻户晓的传奇英雄奥雷良诺的冒险故事，当然经过现代化改编。上个月我们进了一批货，目前最新的故事来到了奥雷良诺在尖啸大洋的故事。
+
+<<set $roll = dice(20)>>
+<<if $roll + ($intelligence - 10)/2 > 8>>
+检定: \[智力检定：成功\] 尖啸大洋是距离阿莱夫相当之远的一处大洋。奥雷良诺被当作奴隶被卖到远方时必然经过那里。
+<<endif>>
+
+-> “我还想看看其它类型的”
+    <<jump NPC_LibManager_recommend0>>
+-> “好极了，我要借这个”
+    <<jump NPC_LibManager_sorry>>
+===
+
+
+title: NPC_LibManager_recommend_romance
+---
+图书管理员: 那我向您推荐《哈机密修道院》，这是一本讲述了帅哥吟游诗人与丑八怪修女的爱恨与命运的小说。这本小说尤其探讨了命运这个主题。
+
+-> “我还想看看其它类型的”
+    <<jump NPC_LibManager_recommend0>>
+-> “好极了，我要借这个”
+    <<jump NPC_LibManager_sorry>>
+===
+
+
+title: NPC_LibManager_recommend_newspaper
+---
+图书管理员: 您可以阅读《皮萨罗城周报合订本》或《塞西亚斯城周报合订本》，这是我们这两座城市的最有名的报纸。
+
+-> “我还想看看其它类型的”
+    <<jump NPC_LibManager_recommend0>>
+-> “好极了，我要借这个”
+    <<jump NPC_LibManager_sorry>>
+===
+
+
+title: NPC_LibManager_recommend_cook
+---
+图书管理员: 最近南方的那些半身人里出了个有名的大厨，叫雅各三世，他有一本小册子《雅各的干粮指南》，讲的是怎么制作他们家乡的干粮。
+
+-> “我还想看看其它类型的”
+    <<jump NPC_LibManager_recommend0>>
+-> “好极了，我要借这个”
+    <<jump NPC_LibManager_sorry>>
+===
+
+
+title: NPC_LibManager_recommend_magic
+---
+图书管理员: 魔法书
+
+-> “我还想看看其它类型的”
+    <<jump NPC_LibManager_recommend0>>
+-> “好极了，我要借这个”
+    <<jump NPC_LibManager_sorry>>
+===
+
+
+title: NPC_LibManager_recommend_history
+---
+图书管理员: 历史书。
+
+-> “我还想看看其它类型的”
+    <<jump NPC_LibManager_recommend0>>
+-> “好极了，我要借这个”
+    <<jump NPC_LibManager_sorry>>
+===
+
+
+title: NPC_LibManager_recommend_prohibit
+---
+<<set $ask_prohibit = true>>
+<<set $roll = dice(20) >>
+<<if $roll == 20>> <<jump NPC_LibManager_recommend_prohibit_yes>>
+<<elseif $roll == 1>> <<jump NPC_LibManager_recommend_prohibit_no>>
+<<elseif $roll + ($charisma - 10)/2 >= 1>>
+    <<jump NPC_LibManager_recommend_prohibit>>
+<<else>>
+    <<jump NPC_LibManager_recommend_prohibit_no>>
+<<endif>>
+===
+
+
+title: NPC_LibManager_recommend_prohibit_yes
+---
+检定: \[魅力检定：成功\] 显然，图书管理员被你说服了。
+
+图书管理员: 额...
+
+她压低了声音。
+
+图书管理员: （小声）图书馆有一些书本是仅供研究的，比如听义派的一本伦理学著作《道德的彼岸》。
+
+你瞬间感到两眼一黑，天旋地转，不得不倚着前台。难道你已经敏感到光是听到“听义派”这个词就已经感到恐惧了吗？
+
+-> 为什么会这样...
+
+一切都怪你，为什么要参加沉默战争？你到底得有多蠢才会意识不到，保礼派和听义派的争斗宛若巨型马车，只会在狂飙时将你这种无名鼠辈碾个粉碎，扬长而去？
+
+-> 我必须清醒...
+
+你不可能逃避现实，不是吗？你此刻可以强装镇定，可是你以后该怎么办？
+
+-> “我还想看看其它类型的”
+    <<jump NPC_LibManager_recommend0>>
+-> “好极了，我要借这个”
+    <<jump NPC_LibManager_sorry>>
+===
+
+title: NPC_LibManager_recommend_prohibit_no
+---
+检定: \[魅力检定：失败\] 显然，图书管理员没有被说服。
+
+图书管理员: 不好意思，先生，禁书仅供研究。
+
+-> “我还想看看其它类型的”
+    <<jump NPC_LibManager_recommend0>>
+===
+
+title: NPC_LibManager_sorry
+---
+图书管理员: （叹气）不好意思，先生，如果您想借书，您得先去皮萨罗城政府办借书卡，但是现在政府接济塞西亚斯城难民忙得不可开交，您一时半会是办不成的。
+<<jump NPC_LibManager_loop>>
+===
+
+
+title: NPC_LibManager_mission
+---
+图书管理员: 稍等，您是冒险者，对吗？
+-> “是啊，怎么了？”
+图书管理员: 我们图书馆最近失窃了几本书，有人趁着难民进入城里捣乱。如果您有空，能麻烦您在城里找找吗？如果能把小偷抓住就更好了
+-> “你怎么不去找”
+    <<jump NPC_LibManager_idontcare>>
+-> “都丢了哪些书？”
+    <<jump NPC_LibManager_missingbooks>>
+===
+
+title: NPC_LibManager_idontcare
+---
+图书管理员: （叹气）先生，我拿什么钱办什么事，这不是我的业务。
+-> “都丢了哪些书？”
+    <<jump NPC_LibManager_missingbooks>>
+===
+
+title: NPC_LibManager_missingbooks
+---
+图书管理员: 有三本，我逐一告诉您。
+
+图书管理员: 第一本叫《奥雷良诺：大战利维坦，由著名魔法师梅林123为您呈现，在尖啸大洋击败可怕的塞壬和海德拉，并直面最可怕的海怪》。
+
+图书管理员: 第二本是《遗忘神谱考》。
+
+图书管理员: 第三本是《深度炼金III》。希望您能找到。
+
+你把这三本书记录在随身的日志里。
+
+<<set $library_mission = true>>
+===
+
+
+title: NPC_LibManager_missioncomplete
+---
+检定: \[魅力检定：失败\] 显然，图书管理员没有被说服。
+
+图书管理员: 不好意思，先生，禁书仅供研究。
+
+-> “我还想看看其它类型的”
+    <<jump NPC_LibManager_recommend0>>
+===

@@ -1,0 +1,23 @@
+title: global_init
+---
+<<declare $roll = 1>> //roll点寄存
+<<declare $gold = 10>> //金币
+<<declare $strength = 10>>
+<<declare $dexterity = 10>>
+<<declare $constitution = 10>>
+<<declare $intelligence  = 10>>
+<<declare $wisdom = 10>>
+<<declare $charisma = 10>>
+<<declare $class = "wizard">>
+===
+
+title: Start
+---
+至大者: 选择你的初始节点
+-> 任务偷书贼
+    <<jump Mission_Library_init>>
+-> 吟游诗人
+    <<jump NPC_BardPatrik_firstmet>>
+-> 酒馆斗殴
+    <<jump NPC_Rogue_init>>
+===
