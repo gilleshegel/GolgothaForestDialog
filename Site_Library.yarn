@@ -1,0 +1,7 @@
+title: Site_Library_discover
+---
+你进入皮萨罗城的官方图书馆。
+-> 和管理员对话 
+    <<jump NPC_LibManager_encounter>>
+-> 随便找本书看
+===

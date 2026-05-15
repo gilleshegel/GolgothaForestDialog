@@ -17,10 +17,10 @@ title: global_init
 title: Start
 ---
 至大者: 选择你的初始节点
--> 任务偷书贼
+-> 任务：偷书贼
     <<jump Mission_Library_init>>
 -> 吟游诗人
     <<jump NPC_BardPatrik_encounter>>
--> 酒馆斗殴
-    <<jump NPC_Rogue_encounter>>
+-> 地点：酒馆
+    <<jump Site_Tavern_discover>>
 ===

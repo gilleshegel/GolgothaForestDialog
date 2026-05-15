@@ -12,8 +12,8 @@ position: -24,-174
 <<declare $findbook = 3>> //找到书本
 
 至大者: 任务偷书贼，选择你的初始节点
--> 图书管理员
-    <<jump NPC_LibManager_encounter>>
+-> 进入图书馆
+    <<jump Site_Library_discover>>
 -> 黄书贩子
     <<jump NPC_PornSeller_encounter>>
 -> 吟游诗人
