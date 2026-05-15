@@ -4,6 +4,8 @@ title: Site_Frontier_discover
 圣教派遣的守卫看守着唯一的通路，一座横阔河流的桥。他们严加查看，避免可疑的行人进出。
 -> 看看石头边上的那个青年
     <<jump NPC_Youngman_encounter>>
+-> 看看桥头那两个争吵的小孩
+    <<jump NPC_Children_encounter>>
 -> 看看城墙边缘
     <<jump NPC_Refugee_encounter>>
 ===
