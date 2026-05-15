@@ -16,11 +16,17 @@ title: global_init
 
 title: Start
 ---
-至大者: 选择你的初始节点
+皮萨罗城: 123
 -> 任务：偷书贼
     <<jump Mission_Library_init>>
--> 吟游诗人
-    <<jump NPC_BardPatrik_encounter>>
+-> 地点：广场
+    <<jump Site_Sqaure_discover>>
 -> 地点：酒馆
     <<jump Site_Tavern_discover>>
+-> 地点：边陲
+    <<jump Site_Frontier_discover>>
+-> 地点：图书馆
+    <<jump Site_Library_discover>>
+-> 地点：大道
+    <<jump Site_Avenue_discover>>
 ===

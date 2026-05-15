@@ -1,0 +1,6 @@
+title: Site_Avenue_discover
+---
+大道文本123
+-> 那个穿斗篷的是商人吗？
+    <<jump NPC_Merchant_encounter>>
+===

@@ -11,7 +11,7 @@ position: -24,-174
 <<declare $pornseller_stay = true>> //黄书贩子留在酒馆
 <<declare $findbook = 3>> //找到书本
 
-至大者: 任务偷书贼，选择你的初始节点
+偷书贼: 任务偷书贼，选择你的初始节点
 -> 进入图书馆
     <<jump Site_Library_discover>>
 -> 黄书贩子
@@ -19,5 +19,5 @@ position: -24,-174
 -> 吟游诗人
     <<jump NPC_BardPatrik_encounter>>
 -> 直接看慌张的偷书贼
-    <<jump NPC_TensiveThief_encouter>>
+    <<jump NPC_TensiveThief_encounter>>
 ===

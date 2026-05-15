@@ -1,0 +1,8 @@
+title: Site_Sqaure_discover
+---
+皮萨罗城中心的广场，烟火味最重的地方。你能看到地方居民和难民的人头攒动，各小摊贩卖力地吆喝。瘟疫很严重，森林正在扩张，但生活还得继续。
+-> 看看广场喷泉边上的吟游诗人。
+    <<jump NPC_BardPatrik_encounter>>
+-> 看看巷口的那个僧侣
+    <<jump NPC_Monk_encounter>>
+===
