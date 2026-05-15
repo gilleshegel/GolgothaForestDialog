@@ -1,19 +1,23 @@
 title: Mission_Library_init
 position: -24,-174
 ---
-// A linear story progresses from one scene to the next.
-// Great for cutscenes, tutorials, or scripted sequences.
-<<declare $library_mission = false>> // 偷书贼任务
+
+<<declare $library_mission = true>> // 偷书贼任务
+<<declare $library_mission_complete = false>> // 偷书贼任务
 <<declare $pornseller_intel = false>> // 对黄书贩子的情报
 <<declare $tensivethief_intel = false>> //对慌张偷书贼的情报
-<<declare $tensivethief_catch = false>> //抓住慌张偷书贼
-<<declare $pornseller_catch = false>> //抓住慌张偷书贼
+<<declare $tensivethief_finish = false>> //抓住慌张偷书贼
+<<declare $pornseller_finish = false>> //抓住黄书贩子
+<<declare $pornseller_stay = true>> //黄书贩子留在酒馆
+<<declare $findbook = 3>> //找到书本
 
 至大者: 任务偷书贼，选择你的初始节点
 -> 图书管理员
     <<jump NPC_LibManager_init>>
 -> 黄书贩子
-    <<jump NPC_PornSeller_init>>
+    <<jump NPC_PornSeller_encounter>>
 -> 吟游诗人
-    <<jump NPC_BardPatrik_loop>>
+    <<jump NPC_BardPatrik_encounter>>
+-> 直接看慌张的偷书贼
+    <<jump NPC_TensiveThief_init>>
 ===

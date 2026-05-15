@@ -1,9 +1,9 @@
 title: NPC_Valentina_init
 ---
-<<declare $first_met_valentina = true>>
+<<declare $encounter_valentina = true>>
 ===
 
-title: NPC_Valentina_firstmet
+title: NPC_Valentina_encounter
 ---
 沉默的牧师
 ===

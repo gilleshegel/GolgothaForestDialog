@@ -1,9 +1,9 @@
 title: NPC_Rogue_init
 ---
-<<jump NPC_Rogue_firstmet>>
+<<jump NPC_Rogue_encounter>>
 ===
 
-title: NPC_Rogue_firstmet
+title: NPC_Rogue_encounter
 ---
 左边的流氓: 哎哟，又来了一个废物，圣教这么缺人手吗？我看他连菜刀都握不住吧！
 

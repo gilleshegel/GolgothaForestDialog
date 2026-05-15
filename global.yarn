@@ -1,6 +1,9 @@
 title: global_init
 ---
-<<declare $roll = 1>> //roll点寄存
+<<declare $player_name = "斯汀内姆">>
+
+<<declare $roll = 1>> // 骰子
+<<declare $modifier = 1>> //属性调整值
 <<declare $gold = 10>> //金币
 <<declare $strength = 10>>
 <<declare $dexterity = 10>>
@@ -17,7 +20,7 @@ title: Start
 -> 任务偷书贼
     <<jump Mission_Library_init>>
 -> 吟游诗人
-    <<jump NPC_BardPatrik_firstmet>>
+    <<jump NPC_BardPatrik_encounter>>
 -> 酒馆斗殴
     <<jump NPC_Rogue_init>>
 ===

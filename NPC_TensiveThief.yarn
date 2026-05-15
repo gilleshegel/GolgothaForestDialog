@@ -1,101 +1,74 @@
 title: NPC_TensiveThief_init
 ---
 你转身，看到一个和描述分毫不差的人类，裹在袍子里，夹着一本大部头。
-
 他看着你，你看着他。他额头渗出细密的一层薄汗，嘴角微展，咬着牙不敢出声。
-
 慌张的偷书贼: ......我只是路人...哈哈...
-
 他打量了一下你的装备，然后掏出一把匕首冲来！
-
-<<jump NPC_TesnsiveThief_fight>>
+<<jump NPC_TensiveThief_fight>>
 ===
 
 
-title: NPC_TesnsiveThief_fight
+title: NPC_TensiveThief_fight
 ---
-<<jump NPC_TesnsiveThief_victory>>
+<<jump NPC_TensiveThief_victory>>
 ===
 
-title: NPC_TesnsiveThief_victory
+title: NPC_TensiveThief_victory
 ---
 偷书贼不自量力，倒在你的脚下。
-
 慌张的偷书贼: 哎噫......
-
 -> “交出你偷的东西。”
-    <<jump NPC_TesnsiveThief_book>>
-===
-
-
-title: NPC_TesnsiveThief_book
----
 偷书贼乖乖地拿出一本书，标题赫然写着《奥雷良诺：大战利维坦，由著名魔法师梅林123为您呈现，在尖啸大洋击败可怕的塞壬和海德拉，并直面最可怕的海怪》。
-
 检定: \[体质检定：成功\] 这本书的确是失窃书本之一。
-
+<<set $findbook = $findbook + 1>>
 -> “你知不知道你的同伙的情报？”
-    <<jump NPC_TensiveThief_intel1>>
-===
-
-
-title: NPC_TensiveThief_intel1
----
 慌张的偷书贼: 额...我，我不告诉你！我是不会出卖同伴的!
 -> \[魅力检定\] “你为什么不说呢？难道我是一个很可怕的人吗？你放心，我不会虐待你的同伴的。”
-    <<jump NPC_TensiveThief_charm>>
+    <<set $roll = dice(20)>>
+    <<set $modifier = ($charisma - 10) / 2>>
+    <<if $roll == 20 || ($roll != 1 && $roll + $modifier >= 10)>>
+        检定: \[魅力检定：成功\] 
+        慌张的偷书贼: 他应该在酒馆卖书，生意好像不错...
+        -> “那个人我已经知道了，告诉我别的”<<if $pornseller_finish== true>>
+            <<jump NPC_TensiveThief_intel2>>
+        -> “很好。”
+            <<jump NPC_TensiveThief_solution>>
+        慌张的偷书贼泄了气，他顺从着你去了政府，不再言语。
+    <<else>>
+        检定: \[魅力检定：失败\] 偷书贼不为所动，甚至莫名其妙反而有了底气。
+        慌张的偷书贼: 我才不！我也是有骨气的，别小瞧我了！
+        -> “耍我啊混账？！给我老实交代啊？！你这种人在战俘营估计五秒都活不了啊混账！”
+            <<jump NPC_TensiveThief_zakennakora>>
+    <<endif>>
 -> “耍我啊混账？！给我老实交代啊？！你这种人在战俘营估计五秒都活不了啊混账！”
-    <<jump NPC_TensiveThief_scared>>
-===
-
-title: NPC_TensiveThief_charm
----
-<<set $roll = dice(20) >>
-<<if $roll == 20>> <<jump NPC_TensiveThief_charmyes>>
-<<elseif $roll == 1>> <<jump NPC_TensiveThief_charmno>>
-<<elseif $roll + ($charisma - 10)/2 >= 12>>
-    <<jump NPC_TensiveThief_charmyes>>
-<<else>>
-    <<jump NPC_TensiveThief_charmno>>
-<<endif>>
+    <<jump NPC_TensiveThief_zakennakora>>
 ===
 
 
-title: NPC_TensiveThief_charmyes
+title: NPC_TensiveThief_zakennakora
 ---
-检定: \[魅力检定：成功\] 
-
-慌张的偷书贼: 他应该在酒馆卖书，生意好像不错...
-
--> “那个人我已经知道了，告诉我别的”<<if $pornseller_catch== true>>
+慌张的偷书贼: “哎噫噫噫噫噫噫噫噫噫噫！！！！！！！别！别！饶了我吧大人，哦不，老爷！您去酒馆，酒馆里有我的同伙，生意很好的！”
+-> “那个人我已经知道了，告诉我别的”<<if $pornseller_finish== true>>
     <<jump NPC_TensiveThief_intel2>>
+-> “很好。”
+    <<jump NPC_TensiveThief_solution>>
 ===
-
-title: NPC_TensiveThief_charmno
----
-检定: \[魅力检定：失败\] 偷书贼不为所动，甚至莫名其妙反而有了底气。
-
-慌张的偷书贼: 我才不！我也是有骨气的，别小瞧我了！
-
--> “耍我啊混账？！给我老实交代啊？！你这种人在战俘营估计五秒都活不了啊混账！”
-    <<jump NPC_TensiveThief_scared>>
-===
-
-
-title: NPC_TensiveThief_scared
----
-慌张的偷书贼: 哎噫噫噫噫噫噫噫噫噫噫！！！！！！！别！别！饶了我吧大人，哦不，老爷！您去酒馆，酒馆里有我的同伙，生意很好的！
-
--> “那个人我已经知道了，告诉我别的”<<if $pornseller_catch== true>>
-    <<jump NPC_TensiveThief_intel2>>
-===
-
 
 title: NPC_TensiveThief_intel2
 ---
 慌张的偷书贼: 那...那你只能去找那个和我们搭伙的小伙子了，他在做什么我们其实都没搞懂。
-
 偷书贼咽了口口水。
-
 慌张的偷书贼: 应该在城池边缘吧。
+-> “很好。”
+    <<jump NPC_TensiveThief_solution>>
+===
+
+title: NPC_TensiveThief_solution
+---
+<<set $tensivethief_finish = true>>
+偷书贼看着你，不敢动弹。
+-> “给我滚得越远越好。”
+    他连滚带爬，消失在人群之中。
+-> “现在让我把你带去政府那里。”
+    他眼神黯淡地跟着你，路上一言不发。
 ===
