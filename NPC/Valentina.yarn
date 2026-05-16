@@ -1,9 +1,10 @@
-title: NPC_Valentina_init
+title: encounter
+when: ch("Valentina")
 ---
 1
 ===
 
-title: NPC_Valentina_encounter
+title: NPC_Valentina
 when: once
 ---
 <<if $kind == false>>
@@ -69,7 +70,7 @@ title: NPC_Valentina_questions
 <<jump NPC_Valentina_questions>>
 ===
 
-title: NPC_Valentina_encounter
+title: NPC_Valentina
 when: always
 ---
 颓废牧师瓦伦缇娜: 又是你。愿至大者与你同在。

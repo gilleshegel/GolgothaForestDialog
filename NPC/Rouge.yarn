@@ -1,9 +1,10 @@
-title: NPC_Rogue_init
+title: encounter
+when: ch("Rogue")
 ---
 <<declare $kind = true>>
 ===
 
-title: NPC_Rogue_encounter
+title: NPC_Rogue
 ---
 左边的流氓: 哎哟，又来了一个废物，圣教这么缺人手吗？我看他连菜刀都握不住吧！
 酒吧里隐隐有人嬉笑。
@@ -27,5 +28,5 @@ title: NPC_Rogue_victory
 你感到一股更为剧烈的冲动...
 -> 拼尽全力抵抗它
 //TODO：sancheck，附带简单的说明。在此暂时不写分支
-<<jump NPC_Valentina_encounter>>
+<<jump NPC_Valentina>>
 ===

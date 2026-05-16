@@ -1,4 +1,4 @@
-title: NPC_Youngman_encounter
+title: NPC_Youngman
 when: once
 ---
 一个年轻人躲在这块大石头后边，他紧张地看着关卡的守卫，咬着嘴唇。
@@ -9,7 +9,7 @@ when: once
 年轻人: （打量着你，花了半晌）您吓我一跳...冒险者，对吗？
 ===
 
-title: NPC_Youngman_encounter
+title: NPC_Youngman
 when: always
 ---
 这个年轻人依旧躲在大石头后边，他紧张地看着关卡的守卫，咬着嘴唇。

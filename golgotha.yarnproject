@@ -1,0 +1,16 @@
+{
+    "projectFileVersion": 4,
+    "sourceFiles": [
+        "**/*.yarn"
+    ],
+    "excludeFiles": [],
+    "localisation": {},
+    "baseLanguage": "zh_CN",
+    "compilerOptions": {
+        "diagnosticsSeverity": {}
+    },
+    "definitions": [
+        "golgotha.ysls.json"
+    ],
+    "projectName": "Golgotha"
+}

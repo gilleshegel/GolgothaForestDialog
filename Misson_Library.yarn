@@ -15,9 +15,9 @@ position: -24,-174
 -> 进入图书馆
     <<jump Site_Library_discover>>
 -> 黄书贩子
-    <<jump NPC_PornSeller_encounter>>
+    <<jump NPC_PornSeller>>
 -> 吟游诗人
-    <<jump NPC_BardPatrik_encounter>>
+    <<jump NPC_BardPatrik>>
 -> 直接看慌张的偷书贼
-    <<jump NPC_TensiveThief_encounter>>
+    <<jump NPC_TensiveThief>>
 ===
