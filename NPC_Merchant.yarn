@@ -1,4 +1,5 @@
 title: NPC_Merchant_encounter
+when: once
 ---
 
 一个穿着宽大斗篷的男人凑到你跟前，冷不丁地用一种异常昂扬的语调向你开口。
@@ -7,6 +8,15 @@ title: NPC_Merchant_encounter
 
 他说完*相当实惠*之后咯咯笑起来，好像说了个极具讽刺意味的笑话。
 
+<<set $roll = dice(20)>>
+<<set $modifier = ($wisdom - 10) / 2>>
+<<if $roll == 20 || ($roll != 1 && $roll + $modifier >= 10)>>
+//暗骰
+    检定: \[感知检定：成功\]你突然觉得不应该在这里买东西，但这是你进城后见到唯一一个卖杂货的小贩。圣教限制似乎对皮萨罗城的商贸有所*限制*。
+<<else>>
+    检定: \[感知检定：失败\]可不是吗！*相当实惠*！你看到他神神秘秘，衣冠不整，大腹便便的样子就知道，这人一定很有*门路*。
+<<endif>>
+
 -> “不了，我不需要”
     <<jump NPC_Merchant_bye>>
 -> “有什么好货都拿出来我给把把眼”
@@ -14,6 +24,20 @@ title: NPC_Merchant_encounter
     他展开斗篷，向你展示*各种好货*以及他肥胖的肚腩。
     <<jump Shop_Open>>
     //打开商店
+===
+
+title: NPC_Merchant_encounter
+when: always
+---
+
+商人: 哟，{$player_name}老爷！您又来光顾了！需要点什么？
+
+-> “不了，我不需要”
+    <<jump NPC_Merchant_bye>>
+-> “把你的好货亮出来看看”
+    商人: 好嘞，您请看！
+    他展开斗篷，向你展示*各种好货*以及他肥胖的肚腩。
+    <<jump Shop_Open>>
 ===
 
 title: NPC_Merchant_bye

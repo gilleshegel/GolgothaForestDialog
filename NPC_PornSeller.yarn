@@ -111,6 +111,7 @@ title: NPC_PornSeller_truth
 ===
 
 title: NPC_PornSeller_solution
+
 ---
 <<set $tensivethief_intel = true>>
 <<set $pornseller_finish = true>>

@@ -1,5 +1,5 @@
 title: Mission_Library_init
-position: -24,-174
+
 ---
 
 <<declare $library_mission = true>> // 偷书贼任务
