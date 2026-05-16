@@ -1,11 +1,12 @@
-title: Site_Frontier_discover
+title: discover
+when: at("Frontier")
 ---
 你来到皮萨罗城边陲，隔着一条河便是邻城塞西亚斯城————曾经叫塞西亚斯城，如今已经被称为各各他林。
 圣教派遣的守卫看守着唯一的通路，一座横阔河流的桥。他们严加查看，避免可疑的行人进出。
 -> 看看石头边上的那个青年
-    <<jump NPC_Youngman_encounter>>
+    <<jump NPC_Youngman>>
 -> 看看桥头那两个争吵的小孩
-    <<jump NPC_Children_encounter>>
+    <<jump NPC_Children>>
 -> 看看城墙边缘
-    <<jump NPC_Refugee_encounter>>
+    <<jump NPC_Refugee>>
 ===

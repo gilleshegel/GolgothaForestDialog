@@ -1,9 +1,10 @@
-title: NPC_PornSeller_init
+title: encounter
+when: ch("PornSeller")
 ---
 1
 ===
 
-title: NPC_PornSeller_encounter
+title: NPC_PornSeller
 when: once
 ---
 你看到一个形迹可疑的龙裔，它穿着黑袍，蜷缩在酒吧一隅，用袍子遮着半身与其他客人窃窃私语。
@@ -30,7 +31,7 @@ when: once
 ===
 
 
-title: NPC_PornSeller_encounter
+title: NPC_PornSeller
 when: always
 ---
 那个卖黄书的龙裔依旧在酒吧一隅，瞧见你向自己走来，它便满脸堆笑。
@@ -40,7 +41,7 @@ when: always
 -> （离开）
 ===
 
-title: NPC_PornSeller_encounter
+title: NPC_PornSeller
 when: $pornseller_finish && $pornseller_stay
 ---
 那个卖黄书的龙裔依旧在酒吧一隅，瞧见你向自己走来，它便赶紧和邻座的继续聊天，不敢搭理你。

@@ -1,9 +1,10 @@
-title: NPC_LibManager_init
+title: encounter
+when: ch("LibManager")
 ---
 <<declare $ask_prohibit = false>>
 ===
 
-title: NPC_LibManager_encounter
+title: NPC_LibManager
 when: once
 ---
 图书管理员: （叹气）您好，欢迎来到皮萨罗城图书馆，请问有什么能帮到您？
@@ -14,7 +15,7 @@ when: once
 ===
 
 
-title: NPC_LibManager_encounter
+title: NPC_LibManager
 when: always
 ---
 图书管理员闷闷不乐地自言自语，抱怨着日常。
@@ -35,7 +36,7 @@ when: always
 title: NPC_LibManager_RUAdventurer
 ---
 图书管理员: 先生，我只是一个普通的打工的（叹气）
-<<jump NPC_LibManager_encounter>>
+<<jump NPC_LibManager>>
 ===
 
 
@@ -64,7 +65,7 @@ title: NPC_LibManager_recommend
 -> \[魅力检定\] “管理员小姐，您知道我最感兴趣的是什么吗？禁书。而我相信您图书馆不仅有，还愿意给我这样的冒险者阅读”<<if $ask_prohibit == false>>
     <<jump NPC_LibManager_recommend_prohibit>>
 -> “感谢你，我之后再来借书。”
-    <<jump NPC_LibManager_encounter>>
+    <<jump NPC_LibManager>>
 ===
 
 title: NPC_LibManager_recommendchange
@@ -103,7 +104,7 @@ title: NPC_LibManager_recommend_prohibit
 title: NPC_LibManager_sorry
 ---
 图书管理员: （叹气）不好意思，先生，如果您想借书，您得先去皮萨罗城政府办借书卡，但是现在政府接济塞西亚斯城难民忙得不可开交，您一时半会是办不成的。
-<<jump NPC_LibManager_encounter>>
+<<jump NPC_LibManager>>
 ===
 
 

@@ -1,7 +1,8 @@
-title: Site_Library_discover
+title: discover
+when: at("Library")
 ---
 你进入皮萨罗城的官方图书馆。
 -> 和管理员对话 
-    <<jump NPC_LibManager_encounter>>
+    <<jump NPC_LibManager>>
 -> 随便找本书看
 ===

@@ -1,4 +1,5 @@
-title: Site_Tavern_discover
+title: discover
+when: at("Tavern")
 when: once
 ---
 你推开酒馆的门，酒骚扑鼻而来。
@@ -12,5 +13,5 @@ when: once
 酒鬼1: 啊嗝，哈哈哈~
 酒鬼2: 你有这种高速运转的哥雷姆进入皮萨罗城...
 两个流氓结伴，拎着酒瓶东倒西歪，和你撞了个满怀。还不等你发作抑或道歉，他们反而先开口了。
-<<jump NPC_Rogue_encounter>>
+<<jump NPC_Rogue>>
 ===

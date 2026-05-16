@@ -1,10 +1,11 @@
-title: NPC_BardPatrik_init
+title: encounter
+when: ch("BardPatrik")
 ---
-<<jump NPC_BardPatrik_encounter>>
+<<jump NPC_BardPatrik>>
 ===
 
 
-title: NPC_BardPatrik_encounter
+title: NPC_BardPatrik
 when: once
 ---
 广场中央站着一个人类吟游诗人，拿着鲁特琴边弹边唱，但是听众寥寥。
@@ -69,7 +70,7 @@ when: once
 ===
 
 
-title: NPC_BardPatrik_encounter
+title: NPC_BardPatrik
 when: always
 ---
 吟游诗人帕特里克: （清嗓子）尊敬的冒险者{$player_name}！请问您想来一首《马丁费耶罗颂》吗，我保证这一次我唱的比上一次好！并且这次只收您1g！

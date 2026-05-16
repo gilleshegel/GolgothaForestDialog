@@ -9,14 +9,12 @@
 - `Site_*`：某地点
 
 ## 节点命名标准
-- `init`：用于定义临时变量的节点
-- `encounter`：遭遇该物品/NPC
-- `discover`：进入某地点
+- `encounter`：遭遇物品/NPC
+- `discover`：进入地点
 
-## 扩展函数
-- `flag(标志名)`: 获取标志,默认为false
-- `set_flag(标志名,true/false)`: 修改标志
-- `ch(角色名)`: 获取当前情景是否有指定角色
+## 函数扩展
+- `ch(角色名)`: 指定角色是否在场
+- `at(地点名)`: 当前是否位于指定地点
 
 ## 检定扩展
 - 暗骰
@@ -25,3 +23,44 @@
 - 表骰
 `<<uicheck 检定名 检定角色 难度>>`
 结果储存在变量`$dice_result`中, 若成功则为true, 否则为false.
+
+## 其它扩展
+- 未初始化变量的值是false.
+
+```yarn spinner
+title: encounter
+---
+旁白
+you: 测试暗骰
+<<if check("dex","you",1,20,10)>>
+    检定成功
+<<else>>
+    检定失败
+<<endif>>
+allytest: 我也检定一下
+<<if check("dex","allytest",1,20,10)>>
+    检定成功
+<<else>>
+    检定失败
+<<endif>>
+you: 表骰
+<<uicheck dex you 10>>
+<<uicheck dex allytest 10>>
+<<jump node2>>
+===
+
+title: node2
+---
+-> 水母1:让水母1说话...
+    水母1:水母1说话
+    -> 再问一遍?
+        <<jump node2>>
+    -> 不了
+-> 水母2:让水母2说话
+    水母2: 水母2说话
+-> you:我再说话
+    you: 我再说话
+-> allytest:队友说话
+    allytest: 队友说话
+===
+```
