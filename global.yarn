@@ -20,16 +20,14 @@ title: Start
 ---
 皮萨罗城: 123
 -> 任务：偷书贼
-    <<set $site = moveto("Library","123")>>
+    <<moveto Library 123>>
     <<jump Mission_Library_init>>
 -> 地点：广场
-    <<jump Site_Sqaure_discover>>
+    <<moveto Square 123>>
 -> 地点：酒馆
-    <<jump Site_Tavern_discover>>
 -> 地点：边陲
-    <<jump Site_Frontier_discover>>
 -> 地点：图书馆
-    <<jump Site_Library_discover>>
 -> 地点：大道
-    <<jump Site_Avenue_discover>>
+
+<<jump discover>>
 ===

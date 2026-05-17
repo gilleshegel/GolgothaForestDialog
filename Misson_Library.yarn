@@ -14,7 +14,7 @@ title: Mission_Library_init
 
 偷书贼: 任务偷书贼，选择你的初始节点
 -> 进入图书馆
-    <<jump Site_Library_discover>>
+    <<jump discover>>
 -> 黄书贩子
     <<jump NPC_PornSeller>>
 -> 吟游诗人
