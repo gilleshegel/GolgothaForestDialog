@@ -1,0 +1,93 @@
+{
+    "version": 4,
+    "commands":
+    [
+        {
+            "yarnName": "uicheck",
+            "documentation": "表骰.",
+            "parameters":
+            [
+                {
+                    "type": "String",
+                    "documentation": "检定名.",
+                    "name": "检定名"
+                },
+                {
+                    "type": "String",
+                    "documentation": "检定角色.",
+                    "name": "检定角色"
+                },
+                {
+                    "type": "Number",
+                    "documentation": "难度.",
+                    "name": "难度"
+                }
+            ]
+        }
+    ],
+    "functions":
+    [
+        {
+            "yarnName": "check",
+            "type": "function",
+            "documentation": "暗骰.",
+            "return": {"type":"Bool"},
+            "parameters": 
+            [
+                {
+                    "type": "String",
+                    "documentation": "检定名.",
+                    "name": "检定名"
+                },
+                {
+                    "type": "String",
+                    "documentation": "检定角色.",
+                    "name": "检定角色"
+                },
+                {
+                    "type": "Number",
+                    "documentation": "骰子面数.",
+                    "name": "骰子面数"
+                },
+                {
+                    "type": "Number",
+                    "documentation": "掷骰次数.",
+                    "name": "掷骰次数"
+                },
+                {
+                    "type": "Number",
+                    "documentation": "难度.",
+                    "name": "难度"
+                }
+            ]
+        },
+        {
+            "name": "ch",
+            "type": "function",
+            "documentation": "判断指定角色是否在场.",
+            "return": {"type":"Bool"},
+            "parameters": 
+            [
+                {
+                    "type": "String",
+                    "documentation": "角色名.",
+                    "name": "角色名"
+                }
+            ]
+        },
+        {
+            "name": "at",
+            "type": "function",
+            "documentation": "当前是否位于指定地点.",
+            "return": {"type":"String"},
+            "parameters": 
+            [
+                {
+                    "type": "String",
+                    "documentation": "地点名.",
+                    "name": "地点名"
+                }
+            ]
+        }
+    ]
+}
