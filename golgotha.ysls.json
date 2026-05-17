@@ -62,7 +62,7 @@
             ]
         },
         {
-            "name": "ch",
+            "yarnName": "ch",
             "type": "function",
             "documentation": "判断指定角色是否在场.",
             "return": {"type":"Bool"},
@@ -76,7 +76,7 @@
             ]
         },
         {
-            "name": "at",
+            "yarnName": "at",
             "type": "function",
             "documentation": "当前是否位于指定地点.",
             "return": {"type":"String"},
@@ -86,6 +86,25 @@
                     "type": "String",
                     "documentation": "地点名.",
                     "name": "地点名"
+                }
+            ]
+        },
+        {
+            "yarnName": "moveto",
+            "type": "function",
+            "documentation": "移动到指定位置.",
+            "return": {"type":"String"},
+            "parameters": 
+            [
+                {
+                    "type": "String",
+                    "documentation": "区域名.",
+                    "name": "区域名"
+                },
+                {
+                    "type": "String",
+                    "documentation": "位置标记名.",
+                    "name": "位置标记名"
                 }
             ]
         }
