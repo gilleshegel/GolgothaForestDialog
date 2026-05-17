@@ -12,7 +12,7 @@ when: once
 
 他脚底放着一顶帽子，里面好像躺了几个铜板。
 
--> \[魅力检定\] 这唱的是什么？
+-> \[魅力检定\] 这唱的是什么？//表骰
     <<set $roll = dice(20)>>
     <<set $modifier = ($charisma - 10) / 2>>
     <<if $roll == 20 || ($roll != 1 && $roll + $modifier >= 6)>>
@@ -46,7 +46,7 @@ when: once
     吟游诗人帕特里克: 哎噫？！！！大人，我是无信仰者啊，您可别误会，而且我和听义派没有任何关系！
     他尝试找个话题缓和气氛。
     吟游诗人帕特里克: 您尊姓大名？
--> \[体质检定\] “我就是马丁费耶洛。”
+-> \[体质检定\] “我就是马丁费耶洛。”//表骰
     <<set $roll = dice(20)>>
     <<set $modifier = ($constitution - 10) / 2>>
     <<if $roll == 20 || ($roll != 1 && $roll + $modifier >= 12)>>
@@ -96,7 +96,7 @@ title: NPC_BardPatrik_tensivetalk
     -> “我考虑考虑”
 -> “喏”（丢出一枚金币）<<if $gold > 0>>
     <<jump NPC_BardPatrik_tensivetalk4>>
--> \[魅力检定\] “帕特里克，这就是你一展风采的时候！钱什么的我能亏欠你吗？以后我肯定来找你听戏！”
+-> \[魅力检定\] “帕特里克，这就是你一展风采的时候！钱什么的我能亏欠你吗？以后我肯定来找你听戏！”//表骰
     <<set $roll = dice(20)>>
     <<set $modifier = ($charisma - 10) / 2>>
     <<if $roll == 20 || ($roll != 1 && $roll + $modifier >= 10)>>

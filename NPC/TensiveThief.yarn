@@ -23,7 +23,7 @@ title: NPC_TensiveThief_victory
 <<set $findbook = $findbook + 1>>
 -> “你知不知道你的同伙的情报？”
 慌张的偷书贼: 额...我，我不告诉你！我是不会出卖同伴的!
--> \[魅力检定\] “你为什么不说呢？难道我是一个很可怕的人吗？你放心，我不会虐待你的同伴的。”
+-> \[魅力检定\] “你为什么不说呢？难道我是一个很可怕的人吗？你放心，我不会虐待你的同伴的。”//表骰
     <<set $roll = dice(20)>>
     <<set $modifier = ($charisma - 10) / 2>>
     <<if $roll == 20 || ($roll != 1 && $roll + $modifier >= 10)>>
