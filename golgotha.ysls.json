@@ -3,6 +3,10 @@
     "commands":
     [
         {
+            "yarnName": "combat",
+            "documentation": "进入战斗."
+        },
+        {
             "yarnName": "uicheck",
             "documentation": "表骰.",
             "parameters":
@@ -21,6 +25,23 @@
                     "type": "Number",
                     "documentation": "难度.",
                     "name": "难度"
+                }
+            ]
+        },
+        {
+            "yarnName": "moveto",
+            "documentation": "移动到指定位置.",
+            "parameters": 
+            [
+                {
+                    "type": "String",
+                    "documentation": "区域名.",
+                    "name": "区域名"
+                },
+                {
+                    "type": "String",
+                    "documentation": "位置标记名.",
+                    "name": "位置标记名"
                 }
             ]
         }
@@ -79,32 +100,13 @@
             "yarnName": "at",
             "type": "function",
             "documentation": "当前是否位于指定地点.",
-            "return": {"type":"String"},
+            "return": {"type":"Bool"},
             "parameters": 
             [
                 {
                     "type": "String",
                     "documentation": "地点名.",
                     "name": "地点名"
-                }
-            ]
-        },
-        {
-            "yarnName": "moveto",
-            "type": "function",
-            "documentation": "移动到指定位置.",
-            "return": {"type":"String"},
-            "parameters": 
-            [
-                {
-                    "type": "String",
-                    "documentation": "区域名.",
-                    "name": "区域名"
-                },
-                {
-                    "type": "String",
-                    "documentation": "位置标记名.",
-                    "name": "位置标记名"
                 }
             ]
         }
