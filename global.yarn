@@ -1,7 +1,6 @@
 title: global_init
 ---
 <<declare $player_name = "斯汀内姆">>
-
 <<declare $roll = 1>> // 骰子
 <<declare $modifier = 1>> //属性调整值
 <<declare $gold = 10>> //金币
@@ -12,12 +11,16 @@ title: global_init
 <<declare $wisdom = 10>>
 <<declare $charisma = 10>>
 <<declare $class = "wizard">>
+<<declare $site = "Pizzaro">>
+
+<<declare $dice_result = true>>
 ===
 
 title: Start
 ---
 皮萨罗城: 123
 -> 任务：偷书贼
+    <<set $site = moveto("Library","123")>>
     <<jump Mission_Library_init>>
 -> 地点：广场
     <<jump Site_Sqaure_discover>>

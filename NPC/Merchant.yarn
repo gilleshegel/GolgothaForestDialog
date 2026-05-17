@@ -27,7 +27,7 @@ title: NPC_Merchant_encounter
 when: always
 ---
 
-商人: 哟，{$player_name}老爷！您又来光顾了！需要点什么？
+商人: 老爷，您又来光顾了！需要点什么？
 
 -> “不了，我不需要”
     <<jump NPC_Merchant_bye>>
