@@ -10,6 +10,7 @@ title: Mission_Library_init
 <<declare $pornseller_finish = false>> //抓住黄书贩子
 <<declare $pornseller_stay = true>> //黄书贩子留在酒馆
 <<declare $findbook = 3>> //找到书本
+<<declare $charpentier_mission = false>>//夏庞蒂埃大步走任务
 
 偷书贼: 任务偷书贼，选择你的初始节点
 -> 进入图书馆
