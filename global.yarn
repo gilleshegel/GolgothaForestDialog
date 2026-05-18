@@ -12,6 +12,7 @@ title: global_init
 <<declare $charisma = 10>>
 <<declare $class = "wizard">>
 <<declare $site = "Pizzaro">>
+<<>>
 
 <<declare $dice_result = true>>
 ===

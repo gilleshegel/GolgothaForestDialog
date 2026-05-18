@@ -44,6 +44,14 @@
                     "name": "位置标记名"
                 }
             ]
+        },
+        {
+            "yarnName": "faceit",
+            "documentation": "调整玩家朝向说话的人."
+        },
+        {
+            "yarnName": "checkpoint",
+            "documentation": "存档."
         }
     ],
     "functions":
