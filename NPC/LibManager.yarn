@@ -82,7 +82,7 @@ title: NPC_LibManager_recommend_prohibit
 <<set $ask_prohibit = true>>
 <<uicheck char you 12>>
 <<if $dice_result>>
-    检定: \[魅力检定：成功\] 显然，图书管理员被你说服了。
+    魅力: \[等级12：成功\] *美妙*，长官！就是得有这张巧嘴，你才有可能获得更多情报。我本人希望这本禁书危险到标新立异。
     图书管理员: 额...
     她压低了声音。
     图书管理员: （小声）图书馆有一些书本是仅供研究的，比如听义派的一本伦理学著作《道德的彼岸》。
@@ -93,7 +93,7 @@ title: NPC_LibManager_recommend_prohibit
     你不可能逃避现实，不是吗？你此刻可以强装镇定，可是你以后该怎么办？
     <<jump NPC_LibManager_recommendchange>>
 <<else>>
-    检定: \[魅力检定：失败\] 显然，图书管理员没有被说服。
+    魅力: \[等级12：失败\] 显然，图书管理员没有被说服。长官，咱还得练练。
     图书管理员: 不好意思，先生，禁书仅供研究。
         -> “我还想看看其它类型的”
         <<jump NPC_LibManager_recommend>>
@@ -124,6 +124,7 @@ title: NPC_LibManager_mission
 图书管理员: 第三本是《深度炼金III》。希望您能找到。
 
 你把这三本书记录在随身的日志里。
+力量: 我相信这三本书都会在皮萨罗城内，扬帆起航吧，{$player_name}！
 
 <<set $library_mission = true>>
 ===
@@ -136,5 +137,6 @@ title: NPC_LibManager_missonsolve
 图书管理员递给你一瓶治疗药水。
 //TODO: 获得物品：治疗药水
 图书管理员: 感谢您，先生，这是我们图书馆的所有物，虽然不多，但希望您能接受。
+力量: 多么善良的一个人！
 <<set $library_mission_complete = true>>
 ===
