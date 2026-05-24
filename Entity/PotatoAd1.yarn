@@ -1,4 +1,5 @@
-title: Entity_AdPotato1
+title: encounter
+when: ch("AdPotato1")
 ---
 土豆广告: 这份广告介绍了惊人的土豆！
 
@@ -18,7 +19,10 @@ title: Entity_AdPotato1
 地址：深埋着块茎的地方
 
 魅力: 写的很糟糕，毫无出彩之处，长官。我觉得我都能写的更好。
+===
 
+title: Entity_AdPotato1
+---
 -> 仔细看看
     <<if ch("Panurge")>>
     巴汝奇: 切，土豆吗...（随地吐痰）行会的那帮傻子到现在还在用这个暗号啊，真过时。
@@ -34,5 +38,7 @@ title: Entity_AdPotato1
     魅力: 您瞧着没？这首广告词写的有多糟糕！如果您遇到了写这广告的人，*务必*狠狠嘲讽它。
     虽然不知道为什么要嘲讽，但你隐约感觉魅力撞到了要点...
     <<endif>>
+    <<jump Entity_AdPotato1>>
 -> （离开）
+    <<stop>>
 ===

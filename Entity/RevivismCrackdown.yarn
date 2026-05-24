@@ -1,4 +1,5 @@
-title: Sign_RevivismCrackdown
+title: encounter
+when: ch("RevivismCrackdown")//TODO:和实体互动
 ---
 广场布告栏上贴着一张崭新的告示，告示顶端盖着阿莱夫联合教国的朱红大印，下面用粗体大字写道：
 
@@ -16,6 +17,11 @@ title: Sign_RevivismCrackdown
 魅力: [等级10：失败]长官，教会的老爷们真是善良啊，连异教徒有改过自新的机会......
 魅力: (一阵*戏剧性的*哭声)
 <<endif>>
+
+<<jump Sign_RevivismCrackdown>>
+===
+
+title: Sign_RevivismCrackdown
 ---
 -> 细读告示中关于苏生教信仰的说明
     <<jump Revivism_Belief>>

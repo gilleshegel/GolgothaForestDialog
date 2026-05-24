@@ -1,12 +1,16 @@
-title: Sign_LibraryLost
+title: encounter
+when: ch("LibraryLost")//TODO:和实体互动
 ---
 墙上贴着一张告示：
-
 告示: 近期本图书馆数本书丢失，寻回必谢。详情咨询图书管理员
+<<jump Sign_LibraryLost>>
+===
 
+title: Sign_LibraryLost
 ---
 -> 看看落款
     告示末端盖着皮萨罗城图书馆的蜡印，下有一行小字，勉强辨认出，大约是：*不问来路*。
+    <<jump Sign_LibraryLost>>
 -> 仔细辨认丢失书目
     <<if check("int", "you", 20, 1, 12)>>
     智力: \[等级12：成功\] 告示字迹工整秀丽，但被涂涂画画，不是很清晰。除了详细信息略有模糊，但你勉强认出了两本书名，大约是《深度炼金》、《遗忘神谱考》……，
@@ -25,6 +29,8 @@ title: Sign_LibraryLost
     智力: \[等级12：失败\] 《奥雷良诺……深度……大战……塞壬》？
     额……是你的问题吗？你感觉这书似乎有点不正经……
     <<endif>>
--> （离开）"
 
+    <<jump Sign_LibraryLost>>
+-> （离开）"
+    <<stop>>
 ===
