@@ -19,31 +19,31 @@ title: NPC_TensiveThief_victory
 慌张的偷书贼: 哎噫......
 -> “交出你偷的东西。”
 偷书贼乖乖地拿出一本书，标题赫然写着《奥雷良诺：大战利维坦，由著名魔法师梅林123为您呈现，在尖啸大洋击败可怕的塞壬和海德拉，并直面最可怕的海怪》。
-检定: \[体质检定：成功\] 这本书的确是失窃书本之一。
+感知: 这本书的确是失窃书本之一。
 <<set $findbook = $findbook + 1>>
 -> “你知不知道你的同伙的情报？”
 慌张的偷书贼: 额...我，我不告诉你！我是不会出卖同伴的!
--> \[魅力检定\] “你为什么不说呢？难道我是一个很可怕的人吗？你放心，我不会虐待你的同伴的。”//表骰
-    <<set $roll = dice(20)>>
-    <<set $modifier = ($charisma - 10) / 2>>
-    <<if $roll == 20 || ($roll != 1 && $roll + $modifier >= 10)>>
-        检定: \[魅力检定：成功\] 
-        慌张的偷书贼: 他应该在酒馆卖书，生意好像不错...
-        -> “那个人我已经知道了，告诉我别的”<<if $pornseller_finish== true>>
-            <<jump NPC_TensiveThief_intel2>>
-        -> “很好。”
-            <<jump NPC_TensiveThief_solution>>
-        慌张的偷书贼泄了气，他顺从着你去了政府，不再言语。
+
+-> \[魅力检定\] “你为什么不说呢？难道我是一个很可怕的人吗？你放心，我不会虐待你的同伴的。”
+    <<uicheck cha you 7>>
+    <<if $dice_result>>
+    魅力: \[等级7：成功\] 就是这样，使用循循善诱的语气...
+    慌张的偷书贼: 他应该在酒馆卖书，生意好像不错...
+    -> “那个人我已经知道了，告诉我别的”<<if $pornseller_finish== true>>
+        <<jump NPC_TensiveThief_intel2>>
+    -> “很好。”
+        <<jump NPC_TensiveThief_solution>>
     <<else>>
-        检定: \[魅力检定：失败\] 偷书贼不为所动，甚至莫名其妙反而有了底气。
-        慌张的偷书贼: 我才不！我也是有骨气的，别小瞧我了！
-        -> “耍我啊混账？！给我老实交代啊？！你这种人在战俘营估计五秒都活不了啊混账！”
-            <<jump NPC_TensiveThief_zakennakora>>
+    魅力: \[等级7：失败\] 哦不，长官，你的逻辑重音错了！哎哟，这下坏了。
+    慌张的偷书贼: 我才不！我也是有骨气的，别小瞧我了！
+    魅力: 我还有一计，长官，这次需要你气沉丹田。
+    -> “耍我啊混账？！给我老实交代啊？！你这种人在战俘营估计五秒都活不了啊混账！”
+        <<jump NPC_TensiveThief_zakennakora>>
     <<endif>>
 -> “耍我啊混账？！给我老实交代啊？！你这种人在战俘营估计五秒都活不了啊混账！”
     <<jump NPC_TensiveThief_zakennakora>>
-===
 
+===
 
 title: NPC_TensiveThief_zakennakora
 ---

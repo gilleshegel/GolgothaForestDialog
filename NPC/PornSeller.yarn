@@ -48,8 +48,8 @@ title: NPC_PornSeller
 when: $pornseller_finish && $pornseller_stay
 ---
 那个卖黄书的龙裔依旧在酒吧一隅，瞧见你向自己走来，它便赶紧和邻座的继续聊天，不敢搭理你。
+-> (离开)
 ===
-
 
 title: NPC_PornSeller_3
 ---
@@ -72,7 +72,7 @@ title: NPC_PornSeller_5
 黄书贩子: *搓手*您瞧瞧，这可是真正的艺术呀！我们专门请了一位落魄的宫廷画师为我们供稿呢。
 黄书贩子: 只要1g，这份杰作就属于您啦！
 你悄悄展开纸张，里面是一幅古典主义的人类女性裸体绘画，身材的确*劲爆*，但你总感觉有些可疑...
--> \[智力检定\]：这份绘画有点可疑...//表骰
+-> \[智力检定\]：这份绘画有点可疑...
     <<uicheck int you 10>>
     <<if $dice_result>>
         智力: \[等级10：成功\] 这幅作品来自著名的古典复兴主义艺术家，巴勃罗，描绘了数千年前的爱神维纳斯。看来这个小贩的货源并不光明正大。
@@ -90,7 +90,6 @@ title: NPC_PornSeller_5
     <<set $gold = $gold - 1>>
     <<stop>>
 ===
-
 
 title: NPC_PornSeller_truth
 ---
@@ -115,7 +114,6 @@ title: NPC_PornSeller_truth
 ===
 
 title: NPC_PornSeller_solution
-
 ---
 <<set $tensivethief_intel = true>>
 <<set $pornseller_finish = true>>
