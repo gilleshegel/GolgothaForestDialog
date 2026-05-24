@@ -152,7 +152,7 @@ title: NPC_Confessor_different
             你最终没有开口。但你的告解已经完成了。
             不向别人，而向你自己。
 
-            告解者: 愿至大者与你同在。
+            告解者: 愿至上者与你同在。
             <<jump NPC_Confessor_menu>>
 
     <<else>>

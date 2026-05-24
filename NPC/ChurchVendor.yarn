@@ -37,7 +37,7 @@ when: once
     <<jump NPC_ChurchVendor_menu>>
     //TODO: 圣教商品页面
 -> （离开）
-    辅祭: 愿至大者护佑你。
+    辅祭: 愿至上者护佑你。
     <<set $churchvendor_talked = true>>
     <<stop>>
 ===
