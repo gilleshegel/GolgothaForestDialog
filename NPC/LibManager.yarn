@@ -2,6 +2,7 @@ title: encounter
 when: ch("LibManager")
 ---
 <<declare $ask_prohibit = false>>
+<<jump NPC_LibManager>>
 ===
 
 title: NPC_LibManager
@@ -19,10 +20,7 @@ title: NPC_LibManager
 when: always
 ---
 图书管理员闷闷不乐地自言自语，抱怨着日常。
-
-<<if $library_mission == true && $library_mission_complete == false>>
-图书管理员: 请问您有没有找齐三本书？
-<<endif>>
+图书管理员: 请问您有没有找齐三本书？<<if $library_mission == true && $library_mission_complete == false>>
 
 -> “有没有推荐借阅的书本？”
     <<jump NPC_LibManager_recommend>>

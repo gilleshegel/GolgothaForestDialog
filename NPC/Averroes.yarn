@@ -1,6 +1,11 @@
-
 title: encounter
 when: ch("Averroes")
+---
+<<jump NPC_Averroes>>
+===
+
+title: NPC_Averroes
+when: once
 ---
 这个衣着鲜艳托加的羚羊头生物蹲坐着观察堆积起来的死尸，口中念念有词。
 智力: 埃律克西人，来自远东的另一个大陆，并不是阿莱夫的本土居民。

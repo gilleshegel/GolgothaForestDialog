@@ -1,6 +1,7 @@
 title: encounter
 when: ch("Hag")
 ---
+<<jump NPC_Hag>>
 ===
 
 title: NPC_Hag
