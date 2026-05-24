@@ -33,7 +33,7 @@ when: always
 
 title: NPC_LibManager_RUAdventurer
 ---
-图书管理员: 先生，我只是一个普通的打工的（叹气）
+图书管理员: 先生，我只是一个普通的打工的（叹气）为什么我要和这些人打交道...
 <<jump NPC_LibManager>>
 ===
 

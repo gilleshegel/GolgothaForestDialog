@@ -11,7 +11,6 @@ when: ch("Monk")
 ===
 
 title: NPC_Monk_read
-
 ---
 <<declare $monk_charmed = false>>
 
@@ -31,7 +30,6 @@ title: NPC_Monk_read
 
 title: NPC_Monk_doubt
 tags: 
-
 ---
 僧侣看着你。
 僧侣: 是啊，守卫，难民，主教，还有冒险者，*每个人*的嘴都关得紧紧的。
@@ -40,7 +38,6 @@ tags:
 
 title: NPC_Monk_mission
 tags: 
-
 ---
 僧侣: 委托？这城里每一个自称"委托人"的家伙都觉得自己能找到一两个走投无路的老兵替自己卖命。
 他压低了声音。
@@ -53,7 +50,6 @@ tags:
 
 title: NPC_Monk_forest
 tags: 
-
 ---
 僧侣的表情沉了下来。
 僧侣: 那地方……被*诅咒*了。教会没对我们说太多，但有一点是清楚的：不信者盘踞在那里，他们犯下了不能被赦免的罪。
@@ -64,7 +60,6 @@ tags:
 
 title: NPC_Monk_charm
 tags: 
-
 ---
 <<uicheck cha you 10>>
 <<if $dice_result>>
@@ -93,7 +88,6 @@ tags:
 ===
 
 title: NPC_Monk_leave
-
 ---
 僧侣也不恼怒，只是微微颔首。
 僧侣: 愿你前路平安。
@@ -102,14 +96,10 @@ title: NPC_Monk_leave
 ===
 
 title: NPC_Monk_bless
-
 ---
 僧侣将手掌按在你的肩头，默诵了一段经文。你感到一阵轻微的暖意。
-
 //这里想给个buff
-
 他松开手，重新整理了一下长袍的褶皱。
 僧侣: 我该走了。愿至上者与你同在。
-
 <<stop>>
 ===
