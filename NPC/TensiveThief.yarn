@@ -59,6 +59,7 @@ title: NPC_TensiveThief_intel2
 慌张的偷书贼: 那...那你只能去找那个和我们搭伙的小伙子了，他在做什么我们其实都没搞懂。
 偷书贼咽了口口水。
 慌张的偷书贼: 应该在城池边缘吧。
+<<set $youngman_intel = true>>
 -> “很好。”
     <<jump NPC_TensiveThief_solution>>
 ===

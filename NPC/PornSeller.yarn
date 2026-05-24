@@ -107,6 +107,7 @@ title: NPC_PornSeller_truth
 黄书贩子: （急忙开口）额，是的！冒险者老爷！我有一个同伙，和我一样穿着袍子，他现在应该去广场了...
 -> “那个人我已经知道了，告诉我别的”<<if $tensivethief_finish == true>>
     那（被口水呛到）您可能得去城池边陲找找，我还有一个同伙，但是我不知道他是谁。
+    <<set $youngman_intel = true>>
     -> “很好。”
         <<jump NPC_PornSeller_solution>>
 -> “很好。”<<if $tensivethief_intel == false>>
