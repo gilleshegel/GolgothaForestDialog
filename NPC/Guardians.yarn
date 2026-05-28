@@ -34,7 +34,7 @@ when: once
     <<jump NPC_Guardians_Str>>
 -> \[敏捷检定\] 悄悄偷走这两人的钱
     <<jump NPC_Guardians_Dex>>
--> \[感知检定\] 给这两人一人一发圣光
+-> \[洞见检定\] 给这两人一人一发圣光
     <<jump NPC_Guardians_Wis>>
 -> \[智力检定\] 给这两人一人一发火花
     <<jump NPC_Guardians_Int>>
@@ -89,7 +89,7 @@ title: NPC_Guardians_Wis
 ---
 <<uicheck wis you 10>>
 <<if $dice_result>>
-感知: \[等级10：成功\] 就算你能忍，我也忍不了，上吧！
+洞见: \[等级10：成功\] 就算你能忍，我也忍不了，上吧！
 你闭上眼睛，轻轻念出他异神的一个神名，感受流动且温暖的圣光在指尖汇聚，随后毫无征兆地猛烈爆发出来。
 刺目的白光犹如烈日坠落，瞬间吞没了两个守卫的视线。
 笑话工匠: 我的眼睛！我的眼睛！我要瞎了！
@@ -99,7 +99,7 @@ title: NPC_Guardians_Wis
 <<set $guardians_hurt = 1>>
 <<jump NPC_Guardians_Wait>>
 <<else>>
-感知: \[等级10：失败\] 就算你能忍，我也忍不了，上吧！
+洞见: \[等级10：失败\] 就算你能忍，我也忍不了，上吧！
 但是你感觉不到神力，你只感到胸闷、萎缩和悲哀。也许这些守卫是对的...
 -> 忍受怒火。
     <<jump NPC_Guardians_Con>>
