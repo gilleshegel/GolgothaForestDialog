@@ -98,18 +98,6 @@ when: at("Square")
 <<endonce>>    
 ===
 
-
-title: NPC_BardPatrik
-when: always
----
-吟游诗人帕特里克: （清嗓子）尊敬的冒险者{$player_name}！请问您想来一首《马丁费耶罗颂》吗，我保证这一次我唱的比上一次好！并且这次只收您1g！
--> 「我在寻找一个偷书贼，它大概穿着黑色的袍子，你有没有见过？」<<if $tensivethief_intel == true>>
-    <<jump NPC_BardPatrik_tensivetalk>>
--> 「我在找偷书贼，你有没有看到过可疑的人经过这里？」<<if $library_mission == true>>
-    <<jump NPC_BardPatrik_tensivetalk>>
--> （离开）
-===
-
 title: NPC_BardPatrik_tensivetalk
 ---
 吟游诗人见你开口，登时来了精神，他已经握好鲁特琴。
