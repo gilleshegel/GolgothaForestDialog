@@ -71,7 +71,6 @@ title: NPC_Refugee_calm
 
 难民: 不管找什么吧，自己小心。这城里有些人专盯你们这样的冒险者。
 
-// 这里可以触发任务<<set $refugee_task = true>>
 -> （离开）
     <<stop>>
 ===

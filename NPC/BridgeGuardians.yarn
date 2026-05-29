@@ -1,50 +1,65 @@
 title: encounter
-when: ch("Guardians")
+when: ch("BridgeGuardians")
 ---
 <<declare $has_thuribulum = false>>//是否持有点燃的香炉
 <<declare $guardians_hurt = 0>>//标记守卫受伤
-<<jump NPC_Guardians>>
+<<jump NPC_BridgeGuardians>>
 ===
 
-title: NPC_Guardians
-when: once
+title: NPC_BridgeGuardians
 ---
-众多守卫看着桥梁，其中最轻佻的两个看着你，走上前。
-笑话工匠: 嘿，你，停下！教廷直属部队要求你停下！（晃动长枪）游民，你为什么衣衫褴褛还往各各他林去？你是不是*邪教徒*？
-讽刺园丁: 是啊，邪教徒！哥们，这些邪教徒最喜欢穿得破破烂烂，装得苦兮兮的。
--> （暴跳如雷）「什么邪教徒？！我不是邪教徒！」
-两个守卫像是预判到你的反应一样摆出一副吃惊的表情。
-敏捷: 戏谑的表情。
-魅力: 他们准备了笑话，你不愿意听的那种。
-笑话工匠: 这怎么可能呢？你穿成这样，一身伤残，满脸怨气，不是难民或者邪教徒，还可能是什么呢？
-讽刺园丁: 哥们，哥们。（一拍脑袋）我突然想到了，我去，咱们误会他了。
-笑话工匠: 啥啊，姐们？哦，完了，姐们，我懂你意思。能跟邪教徒一样挫，难民一样穷的，就只能是...
-两人一起说。
-笑话工匠&讽刺园丁: 冒险者！
--> 「你说什么呢？冒险者怎么可能比邪教徒还挫？！」
-笑话工匠兴奋地跺脚磨牙，他还有很多库存。
-力量: 咱好像被下套了，{$player_name}...
-笑话工匠: 哦是吗？冒险者大人，您可别这么下定论啊。我昨天在教堂门口看到过老哥特，著名冒险者，他拖着那破袍子去教会那里领救济金，出来的时候揣着那几枚金币使劲乐！你说吧，你们冒险者不都这样？是不，姐们？
-讽刺园丁: （咳嗽）你错了，哥们。哥特只不过是一个可怜的老头，他每周都能领救济金，教国的福利制度，*懂否*？更何况，就算不看老哥特的真实身份，只看他手里拿的那几个子儿都知道他不是冒险者。你问为什么？冒险者只会更穷！
-两个守卫爆发出粗鲁的狂笑。
-讽刺园丁: （抹眼泪）欸，冒险者你别急呀，冷静点，好吗？我们可没有恶意啊，我们很尊敬冒险者其实，我们只是替你们鸣不平，才开那些笑话的。*懂否*？
-笑话工匠: （悲苦的表情，欲哭无泪）唉，我知道的，我曾经去探望过那些参加沉默战争的老兵，大部分都是冒险者，他们都很可怜，精神错乱、身体残疾，我当时照顾他们，陪他们聊天。
-笑话工匠: 有个半精灵老兵问我：孩子，很高兴认识你，我和你第一次见，可以给你讲点故事给你解闷，你想听啥。我就说：冒险者奶奶，我已经五分钟没有听您讲您的冒险故事了！
--> \[力量检定\] 给这两人一人一拳
-    <<jump NPC_Guardians_Str>>
--> \[敏捷检定\] 悄悄偷走这两人的钱
-    <<jump NPC_Guardians_Dex>>
--> \[洞见检定\] 给这两人一人一发圣光
-    <<jump NPC_Guardians_Wis>>
--> \[智力检定\] 给这两人一人一发火花
-    <<jump NPC_Guardians_Int>>
--> \[魅力检定\] 讲几个极大破坏他们尊严的笑话
-    <<jump NPC_Guardians_Cha>>
--> 忍受怒火
-    <<jump NPC_Guardians_Con>>
+<<once>>
+    众多守卫看着桥梁，其中最轻佻的两个看着你，走上前。
+    笑话工匠: 嘿，你，停下！教廷直属部队要求你停下！（晃动长枪）游民，你为什么衣衫褴褛还往各各他林去？你是不是*邪教徒*？
+    讽刺园丁: 是啊，邪教徒！哥们，这些邪教徒最喜欢穿得破破烂烂，装得苦兮兮的。
+    -> （暴跳如雷）「什么邪教徒？！我不是邪教徒！」
+    两个守卫像是预判到你的反应一样摆出一副吃惊的表情。
+    敏捷: 戏谑的表情。
+    魅力: 他们准备了笑话，你不愿意听的那种。
+    笑话工匠: 这怎么可能呢？你穿成这样，一身伤残，满脸怨气，不是难民或者邪教徒，还可能是什么呢？
+    讽刺园丁: 哥们，哥们。（一拍脑袋）我突然想到了，我去，咱们误会他了。
+    笑话工匠: 啥啊，姐们？哦，完了，姐们，我懂你意思。能跟邪教徒一样挫，难民一样穷的，就只能是...
+    两人一起说。
+    笑话工匠&讽刺园丁: 冒险者！
+    -> 「你说什么呢？冒险者怎么可能比邪教徒还挫？！」
+    笑话工匠兴奋地跺脚磨牙，他还有很多库存。
+    力量: 咱好像被下套了，{$player_name}...
+    笑话工匠: 哦是吗？冒险者大人，您可别这么下定论啊。我昨天在教堂门口看到过老哥特，著名冒险者，他拖着那破袍子去教会那里领救济金，出来的时候揣着那几枚金币使劲乐！你说吧，你们冒险者不都这样？是不，姐们？
+    讽刺园丁: （咳嗽）你错了，哥们。哥特只不过是一个可怜的老头，他每周都能领救济金，教国的福利制度，*懂否*？更何况，就算不看老哥特的真实身份，只看他手里拿的那几个子儿都知道他不是冒险者。你问为什么？冒险者只会更穷！
+    两个守卫爆发出粗鲁的狂笑。
+    讽刺园丁: （抹眼泪）欸，冒险者你别急呀，冷静点，好吗？我们可没有恶意啊，我们很尊敬冒险者其实，我们只是替你们鸣不平，才开那些笑话的。*懂否*？
+    笑话工匠: （悲苦的表情，欲哭无泪）唉，我知道的，我曾经去探望过那些参加沉默战争的老兵，大部分都是冒险者，他们都很可怜，精神错乱、身体残疾，我当时照顾他们，陪他们聊天。
+    笑话工匠: 有个半精灵老兵问我：孩子，很高兴认识你，我和你第一次见，可以给你讲点故事给你解闷，你想听啥。我就说：冒险者奶奶，我已经五分钟没有听您讲您的冒险故事了！
+
+    -> \[力量检定\] 给这两人一人一拳
+        <<jump NPC_BridgeGuardians_Str>>
+    -> \[敏捷检定\] 悄悄偷走这两人的钱
+        <<jump NPC_BridgeGuardians_Dex>>
+    -> \[洞见检定\] 给这两人一人一发圣光
+        <<jump NPC_BridgeGuardians_Wis>>
+    -> \[智力检定\] 给这两人一人一发火花
+        <<jump NPC_BridgeGuardians_Int>>
+    -> \[魅力检定\] 讲几个极大破坏他们尊严的笑话
+        <<jump NPC_BridgeGuardians_Cha>>
+    -> 忍受怒火
+        <<jump NPC_BridgeGuardians_Con>>
+<<else>>
+    <<if $guardians_hurt == 1>>
+    笑话工匠: 啊，是你啊...额！
+    讽刺园丁: 如果你想前往各各他林，请出示证件。
+    <<elseif $guardians_hurt == 2>>
+    笑话工匠: ...
+    讽刺园丁: ...
+    <<else>>
+    讽刺园丁狠狠盯着你。
+    讽刺园丁: 我的钱没了...一个月！如果让我发现是你....
+    笑话工匠板着脸。
+    <<endif>>
+    <<jump NPC_BridgeGuardians_ask>>
+<<endonce>>
 ===
 
-title: NPC_Guardians_Str
+title: NPC_BridgeGuardians_Str
 ---
 <<uicheck str you 10>>
 <<if $dice_result>>
@@ -56,16 +71,16 @@ title: NPC_Guardians_Str
 这点力道其实连骨头都没断，他们只是平时太缺乏锻炼，对疼痛毫无耐受力罢了。
 当然，没有任何人敢靠近，他们害怕你。
 <<set $guardians_hurt = 1>>
-<<jump NPC_Guardians_Wait>>
+<<jump NPC_BridgeGuardians_Wait>>
 <<else>>
 力量: \[等级10：失败\] 我不允许他们如此侮辱我们，以及所有死在战场上的同袍。给他们点颜色看看，{$player_name}！
 但是你感觉不到力量，你只感到胸闷、萎缩和悲哀。也许这些守卫是对的...
 -> 忍受怒火。
-    <<jump NPC_Guardians_Con>>
+    <<jump NPC_BridgeGuardians_Con>>
 <<endif>>
 ===
 
-title: NPC_Guardians_Dex
+title: NPC_BridgeGuardians_Dex
 ---
 <<uicheck dex you 10>>
 <<if $dice_result>>
@@ -76,16 +91,16 @@ title: NPC_Guardians_Dex
 你顺势退后两步，感受着袖管里沉甸甸的重量。一共十五枚金币，外加半块发霉的饼干。虽然不多，但买个好心情绰绰有余。
 你意味深长地冷笑了一声，就让这两个白痴晚上回家发现自己一个月的工资不翼而飞吧。
 <<set $gold = $gold + 15>>
-<<jump NPC_Guardians_Wait>>
+<<jump NPC_BridgeGuardians_Wait>>
 <<else>>
 敏捷: \[等级10：失败\] 保持呼吸平稳。在他们狂笑、闭着眼睛擦眼泪的时候，防备是最松懈的。
 但是你感觉不到敏捷，你只感到胸闷、萎缩和悲哀。也许这些守卫是对的...
 -> 忍受怒火。
-    <<jump NPC_Guardians_Con>>
+    <<jump NPC_BridgeGuardians_Con>>
 <<endif>>
 ===
 
-title: NPC_Guardians_Wis
+title: NPC_BridgeGuardians_Wis
 ---
 <<uicheck wis you 10>>
 <<if $dice_result>>
@@ -97,16 +112,16 @@ title: NPC_Guardians_Wis
 -> 「现在你们懂否？」
 他们痛苦地弯腰，没人敢上前帮忙。
 <<set $guardians_hurt = 1>>
-<<jump NPC_Guardians_Wait>>
+<<jump NPC_BridgeGuardians_Wait>>
 <<else>>
 洞见: \[等级10：失败\] 就算你能忍，我也忍不了，上吧！
 但是你感觉不到神力，你只感到胸闷、萎缩和悲哀。也许这些守卫是对的...
 -> 忍受怒火。
-    <<jump NPC_Guardians_Con>>
+    <<jump NPC_BridgeGuardians_Con>>
 <<endif>>
 ===
 
-title: NPC_Guardians_Int
+title: NPC_BridgeGuardians_Int
 ---
 <<uicheck int you 10>>
 <<if $dice_result>>
@@ -118,16 +133,16 @@ title: NPC_Guardians_Int
 两人惊恐地拍打着身上的火苗，像两只滑稽的跳蚤一样在原地乱蹦，长枪被随意地扔在了一边。
 魅力: 看看他们现在的样子，这可比他们刚才讲的笑话好笑多了。
 <<set $guardians_hurt = 1>>
-<<jump NPC_Guardians_Wait>>
+<<jump NPC_BridgeGuardians_Wait>>
 <<else>>
 智力: \[等级10：失败\] 我其实并不鼓励用暴力来对付愚蠢，但这次...就当是为了我们所有人吧。
 但是你感觉不到世界灵魂的呼唤，你只感到胸闷、萎缩和悲哀。也许这些守卫是对的...
 -> 忍受怒火。
-    <<jump NPC_Guardians_Con>>
+    <<jump NPC_BridgeGuardians_Con>>
 <<endif>>
 ===
 
-title: NPC_Guardians_Cha
+title: NPC_BridgeGuardians_Cha
 ---
 <<uicheck cha you 10>>
 <<if $dice_result>>
@@ -140,16 +155,16 @@ title: NPC_Guardians_Cha
 笑话工匠: （眼眶湿润）再不这样下去我就还不起学费了......
 魅力: 干得漂亮，一针见血，他们的心理防线彻底崩溃了。
 <<set $guardians_hurt = 1>>
-<<jump NPC_Guardians_Wait>>
+<<jump NPC_BridgeGuardians_Wait>>
 <<else>>
 魅力: \[等级10：失败\] 他们根本不懂什么叫语言的艺术，长官。只消只言片语就能让他们气的不行。
 但是你话在口头却无从出口，你只感到胸闷、萎缩和悲哀。也许这些守卫是对的...
 -> 忍受怒火。
-    <<jump NPC_Guardians_Con>>
+    <<jump NPC_BridgeGuardians_Con>>
 <<endif>>
 ===
 
-title: NPC_Guardians_Con
+title: NPC_BridgeGuardians_Con
 ---
 你虽然很想报复他们，但你还是放弃了。
 放弃，其实也不是什么难事，这三年来遭受的白眼和唾骂还少吗？
@@ -182,40 +197,23 @@ title: NPC_Guardians_Con
 周围没有任何人前来相助，他们显然被刚才那些情形吓疯了。
 这两个无名小卒也没有任何可能回击你，他们太渺小了，圣教没可能为他们主持公道。
 <<set $guardians_hurt = 2>>
-<<jump NPC_Guardians_Wait>>
+<<jump NPC_BridgeGuardians_Wait>>
 ===
 
-title: NPC_Guardians_Wait
+title: NPC_BridgeGuardians_Wait
 ---
 你在一旁给了他们时间缓冲，然后返回。
-<<jump NPC_Guardians>>
+<<jump NPC_BridgeGuardians>>
 ===
 
-title: NPC_Guardians
-when: always
----
-<<if $guardians_hurt == 1>>
-笑话工匠: 啊，是你啊...额！
-讽刺园丁: 如果你想前往各各他林，请出示证件。
-<<elif $guardians_hurt == 2>>
-笑话工匠: ...
-讽刺园丁: ...
-<<else>>
-讽刺园丁狠狠盯着你。
-讽刺园丁: 我的钱没了...一个月！如果让我发现是你....
-笑话工匠板着脸。
-<<endif>>
-<<jump NPC_Guardians_ask>>
-===
-
-title: NPC_Guardians_ask
+title: NPC_BridgeGuardians_ask
 ---
 -> 「我要过各各他林，证件在这。」
     <<if $has_thuribulum == false>>
     讽刺园丁: 根据条例，如果你没有一个使用香油的香炉，我们不能放你过去。回去吧。
     -> 去哪里搞一个香炉？
     讽刺园丁: 教堂。香炉和香油都有。
-        <<jump NPC_Guardians_ask>>
+        <<jump NPC_BridgeGuardians_ask>>
     <<else>>
     讽刺园丁: 手续起了。哥们，放这家伙走吧。
     笑话工匠: 得，姐们。

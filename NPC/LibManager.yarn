@@ -6,37 +6,31 @@ when: ch("LibManager")
 ===
 
 title: NPC_LibManager
-when: once
 ---
-图书管理员: （叹气）您好，欢迎来到皮萨罗城图书馆，请问有什么能帮到您？
--> 「你为什么要叹气？你是不是也是个冒险者？」
-    <<jump NPC_LibManager_RUAdventurer>>
--> 「有没有推荐借阅的书本？」
-    <<jump NPC_LibManager_recommend>>
+<<once>>
+    图书管理员: （叹气）您好，欢迎来到皮萨罗城图书馆，请问有什么能帮到您？
+    -> 「你为什么要叹气？你是不是也是个冒险者？」
+        <<jump NPC_LibManager_RUAdventurer>>
+    -> 「有没有推荐借阅的书本？」
+        <<jump NPC_LibManager_recommend>>
+<<else>>
+    图书管理员闷闷不乐地自言自语，抱怨着日常。
+    图书管理员: 请问您有没有找齐三本书？<<if $library_mission == true && $library_mission_complete == false>>
+
+    -> 「有没有推荐借阅的书本？」
+        <<jump NPC_LibManager_recommend>>
+    -> 「我找到你想找的三本书了」 <<if $findbook == 3 && $library_mission_complete == false>>
+        <<jump NPC_LibManager_missonsolve>>
+    -> （离开）
+        <<if $library_mission == false>><<jump NPC_LibManager_mission>><<endif>>
+<<endonce>>
 ===
-
-
-title: NPC_LibManager
-when: always
----
-图书管理员闷闷不乐地自言自语，抱怨着日常。
-图书管理员: 请问您有没有找齐三本书？<<if $library_mission == true && $library_mission_complete == false>>
-
--> 「有没有推荐借阅的书本？」
-    <<jump NPC_LibManager_recommend>>
--> 「我找到你想找的三本书了」 <<if $findbook == 3 && $library_mission_complete == false>>
-    <<jump NPC_LibManager_missonsolve>>
--> （离开）
-    <<if $library_mission == false>><<jump NPC_LibManager_mission>><<endif>>
-===
-
 
 title: NPC_LibManager_RUAdventurer
 ---
 图书管理员: 先生，我只是一个普通的打工的（叹气）为什么我要和这些人打交道...
 <<jump NPC_LibManager>>
 ===
-
 
 title: NPC_LibManager_recommend
 ---
@@ -98,13 +92,11 @@ title: NPC_LibManager_recommend_prohibit
 <<endif>>
 ===
 
-
 title: NPC_LibManager_sorry
 ---
 图书管理员: （叹气）不好意思，先生，如果您想借书，您得先去皮萨罗城政府办借书卡，但是现在政府接济塞西亚斯城难民忙得不可开交，您一时半会是办不成的。
 <<jump NPC_LibManager>>
 ===
-
 
 title: NPC_LibManager_mission
 ---
@@ -126,7 +118,6 @@ title: NPC_LibManager_mission
 
 <<set $library_mission = true>>
 ===
-
 
 title: NPC_LibManager_missonsolve
 ---
