@@ -1,37 +1,38 @@
-title: ThreeMaidens_Azufrina
+title: NPC_ThreeMaidens_Azufrina
+when: once
 ---
-<<if $assoc_talked == false>>
+<<once>>
     你走到石块散落处。阿苏芙里娜背对着你，踱步。她的深红旧袍过分干净——在这样一个满是灰尘和腐烂的废墟里，那件袍子像是刚从箱底拿出来的。麻绳束腰，金发散乱。
     她手里紧握着一本笔记本，封面空白。她走得很快，有时候停下来翻一页，然后又合上，继续走。
 <<else>>
     阿苏芙里娜还在踱步。她看见你，停了一下，然后又开始走。
-<<endif>>
+<<endonce>>
 
 -> \[魅力检定\] 观察她踱步的模式
-    <<if check("cha","you",20,1,14)>>
+    <<if uicheck("cha","you",20,1,14)>>
         魅力: \[等级14：成功\] 长官，你看这姑娘走路——有板有眼的，从一块碎石到另一块碎石，绕着喷泉残骸转圈。每一步的距离几乎一样。这不是在思考，这是在走别人的路。这条路不是她自己选的，有人走过，她在跟着。
     <<else>>
         魅力: \[等级14：失败\] 她的步伐虽然重复，但节奏不同——有时候快，有时候慢，有时候突然停下来，然后又急急忙忙地走。像是在犹豫。你分不清她是在找什么还是在躲什么。
         //TODO: 失败代偿——可选：损失血量/给予金币/给予药水/杀敌/解答问题
     <<endif>>
-    <<jump ThreeMaidens_Azufri_menu>>
+    <<jump NPC_ThreeMaidens_Azufri_menu>>
 
 -> \[智力检定\] 看她的笔记本
-    <<if check("int","you",20,1,12)>>
+    <<if uicheck("int","you",20,1,12)>>
         智力: \[等级12：成功\] {$player_name}，笔记本是空白的，但封面上有字——同一个字，写了又擦，擦了又写。你辨认了一下，隐约能看出"实验记录"四个字。是同一个人的笔迹，反复刻在封面上。她不是在写，是在确认自己还记得这几个字怎么写。
     <<else>>
         智力: \[等级12：失败\] 笔记本是空白的。纸张边缘有烧焦的痕迹——不是意外烧的，是有人小心地用火燎过每一页的边角，像是某种仪式。
         //TODO: 失败代偿——可选：损失血量/给予金币/给予药水/杀敌/解答问题
     <<endif>>
-    <<jump ThreeMaidens_Azufri_menu>>
+    <<jump NPC_ThreeMaidens_Azufri_menu>>
 
 -> （叫住她）
-    <<jump ThreeMaidens_Azufri_menu>>
+    <<jump NPC_ThreeMaidens_Azufri_menu>>
 ===
 
-title: ThreeMaidens_Azufri_menu
+title: NPC_ThreeMaidens_Azufri_menu
 ---
-<<set $assoc_talked = true>>
+<<set $assoc_state = 1>>
 你叫住了她。她停下来，转过身。她的眼睛很亮，亮得焦灼——像一个人在黑暗里举着火把走了太久，火把快灭了，但她不肯放下。
 阿苏芙里娜: 你看见了吗？你看见什么了吗？
 她没等你回答，又开始走。
@@ -52,7 +53,7 @@ title: ThreeMaidens_Azufri_menu
     阿苏芙里娜: 但我必须找到。我必须。
     她没有看你。她从不等回答。她只是在烧。原地打转地烧。
 
-<<if $book_clue_2>>
+<<if $books_found>>
 -> 「你在找东西。可你找的东西，你手里就有。」
     阿苏芙里娜: ……什么？
     「你的笔记本。你从来没有打开看过。」
@@ -60,16 +61,15 @@ title: ThreeMaidens_Azufri_menu
     「你怎么知道？你看过吗？」
     她犹豫了。
     阿苏芙里娜: ……我害怕。
-    <<check wis you 14>>
     <<if check("wis","you",20,1,14)>>
         感知: \[等级14：成功\] {$player_name}，她害怕——如果里面是空的，那她找了这么久的意义就不存在。可她不知道，笔记本本身就是意义的容器。封面上反复刻写的"实验记录"四个字，是炼金术师的笔迹。内容被抹去了，但本子还在。
     <<else>>
         感知: \[等级14：失败\] 她在害怕。你感觉到那不只是对空白的恐惧，是更深的什么。
     <<endif>>
-    <<jump ThreeMaidens_Azufri_menu>>
+    <<jump NPC_ThreeMaidens_Azufri_menu>>
 <<endif>>
 
-<<if $note_clue_2 or $log_clue_2>>
+<<if $note_found or $log_found>>
 -> 「你一直在转圈。你有没有停下来过？」
     阿苏芙里娜: 我……不能停。
     「为什么不能？」
@@ -78,16 +78,15 @@ title: ThreeMaidens_Azufri_menu
     阿苏芙里娜: ……
     她停下了脚步。只停了一瞬。
     然后继续走。
-    <<check int you 14>>
     <<if check("int","you",20,1,14)>>
         智力: \[等级14：成功\] {$player_name}，她停了一瞬——她听见了。笔记上说"三者不可独存"，她是硫，是追寻的那一角。她一直在找的东西，就是被分出去的另外两份。但她还不敢相信。
     <<else>>
         智力: \[等级14：失败\] 她停了一下。你不确定她是否听懂了。
     <<endif>>
-    <<jump ThreeMaidens_Azufri_menu>>
+    <<jump NPC_ThreeMaidens_Azufri_menu>>
 <<endif>>
 
-<<if $note_clue_3 or $log_clue_3 or $diary_clue_2>>
+<<if $note_found or $log_found or $diary_found>>
 -> 「笔记上说，有东西在维系着第三个要素。你觉得那是什么？」
     阿苏芙里娜: ……第三个？
     她低头看着空白笔记本。
@@ -95,84 +94,88 @@ title: ThreeMaidens_Azufri_menu
     「你在找的东西，也许就是维系你的那个东西。它一直在你手里。」
     阿苏芙里娜: ……手里？
     她看着笔记本，但没有打开。
-    <<check wis you 14>>
     <<if check("wis","you",20,1,14)>>
         感知: \[等级14：成功\] {$player_name}，她握笔记本的方式——不是拿着，是攥着。像是怕它跑了。笔记上说"圣者之物维系第三"，有人用某样东西替她撑住了"追寻"这一角。笔记本就是那东西的替代品。她不知道，但她离不开它。
     <<else>>
         感知: \[等级14：失败\] 她一直攥着笔记本。你觉得那很重要，但说不清楚为什么。
     <<endif>>
-    <<jump ThreeMaidens_Azufri_menu>>
+    <<jump NPC_ThreeMaidens_Azufri_menu>>
 <<endif>>
 
 -> \[魅力检定\] 和她聊聊
-    <<if $assoc_shaken>>
+    <<if $assoc_state >= 3>>
         你已经说服她了。她安静地站在那里，笔记本翻开了。
-        <<jump ThreeMaidens_Menu>>
-    <<elseif $assoc_shake_1>>
-        <<jump ThreeMaidens_Azufri_guide_2>>
+        <<stop>>
+    <<elseif $assoc_state == 2>>
+        <<jump NPC_ThreeMaidens_Azufri_guide_2>>
     <<else>>
-        <<jump ThreeMaidens_Azufri_guide_1>>
+        <<jump NPC_ThreeMaidens_Azufri_guide_1>>
     <<endif>>
 
 -> \[感知检定\] 观察她的步伐
-    <<if $assoc_shaken>>
+    <<if $assoc_state >= 3>>
         你已经说服她了。她安静地站在那里，笔记本翻开了。
-        <<jump ThreeMaidens_Menu>>
-    <<elseif $assoc_shake_1>>
-        <<jump ThreeMaidens_Azufri_guide_2>>
+        <<stop>>
+    <<elseif $assoc_state == 2>>
+        <<jump NPC_ThreeMaidens_Azufri_guide_2>>
     <<else>>
-        <<jump ThreeMaidens_Azufri_observe_1>>
+        <<jump NPC_ThreeMaidens_Azufri_observe_1>>
     <<endif>>
 
+<<if $assoc_state < 4>>
+-> 攻击阿苏芙里娜
+    //TODO: 引擎处理战斗
+    <<set $assoc_state = 4>>
+    阿苏芙里娜倒下了。深红旧袍散在地上，空白笔记本从她手里滑落。她的身体慢慢变得透明，然后消失了。只剩一件空袍子和一本空白笔记本。
+    <<jump Entity_ThreeMaidens_DeathReaction>>
+<<endif>>
 -> （离开）
-    <<jump ThreeMaidens_Menu>>
+    <<stop>>
 ===
 
-title: ThreeMaidens_Azufri_guide_1
+title: NPC_ThreeMaidens_Azufri_guide_1
 ---
 -> 「你一直在走。可你有没有停下来过，看看你走过的路？」
     阿苏芙里娜: 我……
     她的脚步慢了一点。
 -> 「你在找东西。可你找的时候，有没有想过——你找的和你手里的，是不是同一个东西？火焰一直在烧，可你从来没有低头看过它烧的是什么。」
-    <<check cha you 13>>
-    <<if check("cha","you",20,1,13)>>
+    <<if uicheck("cha","you",20,1,13)>>
         魅力: \[等级13：成功\] 长官，对付这种小孩你得有耐心。你不能说"你停下来"，她会害怕。你得说"你看看"，让她自己发现。她不是不想停，是不知道停下来以后该怎么办。
         阿苏芙里娜停下了脚步。不是因为你叫住了她，是因为她自己想了一下。
         阿苏芙里娜: ……我找的时候，手里一直拿着这个。
         她低头看了看笔记本。
         阿苏芙里娜: 可我从来没有打开看过。
-        <<set $assoc_shake_1 = true>>
+        <<set $assoc_state = 2>>
     <<else>>
         魅力: \[等级13：失败\] 她瞪了你一眼，然后继续走。但你注意到，她的步伐乱了一拍。
         长官，她听见了。只是还不信任你。
         //TODO: 失败代偿——可选：损失血量/给予金币/给予药水/杀敌/解答问题
     <<endif>>
-    <<jump ThreeMaidens_Menu>>
+    <<stop>>
 ===
 
-title: ThreeMaidens_Azufri_observe_1
+title: NPC_ThreeMaidens_Azufri_observe_1
 ---
 -> 「你走了很多圈。我数了一下——每圈的距离几乎一样。」
     阿苏芙里娜: ……你在数？
     她停了一下，好像没想过会有人在数。
 -> 「你在走别人的路。这条路不是你选的，是有人走过的，你在跟着。可你有没有想过——你为什么要跟着？」
-    <<check wis you 13>>
-    <<if check("wis","you",20,1,13)>>
+    <<if uicheck("wis","you",20,1,13)>>
         感知: \[等级13：成功\] 你看得出来——她的步伐不是随机的，是有节奏的。每一步都踩在特定的位置上，像是在重复某种仪式。这不是她在走，是她的身体在替她走。某种残留的记忆在驱动她。
         阿苏芙里娜停下了脚步。
         阿苏芙里娜: ……我不知道。我只是……必须走。
         她低头看了看笔记本。
         阿苏芙里娜: 有时候我觉得……这条路通向什么。但我走不到头。
-        <<set $assoc_shake_1 = true>>
+        <<set $assoc_state = 2>>
     <<else>>
         感知: \[等级13：失败\] 她走得很规律，但你说不清楚那意味着什么。
         她没有停下来。但她的步伐乱了一拍。
         //TODO: 失败代偿
     <<endif>>
-    <<jump ThreeMaidens_Menu>>
+    <<stop>>
 ===
 
-title: ThreeMaidens_Azufri_guide_2
+title: NPC_ThreeMaidens_Azufri_guide_2
 ---
 -> 「你手里的笔记本。你不打开看看吗？」
     阿苏芙里娜: ……里面是空的。
@@ -182,8 +185,7 @@ title: ThreeMaidens_Azufri_guide_2
     阿苏芙里娜: 我……我害怕。
     阿苏芙里娜: 如果是空的，那我找了这么久……
 -> 「打开看看。不管里面是什么，你都得先知道，才能决定下一步。」
-    <<check cha you 15>>
-    <<if check("cha","you",20,1,15)>>
+    <<if uicheck("cha","you",20,1,15)>>
         魅力: \[等级15：成功\] 长官，你蹲下来，和她平视。你知道怎么跟害怕的小孩说话——不是催她，是陪着她。告诉她你在这里，不管里面是什么，你都不会走。
         阿苏芙里娜慢慢地翻开了笔记本。
         空白的页面。一个字都没有。
@@ -191,16 +193,16 @@ title: ThreeMaidens_Azufri_guide_2
         阿苏芙里娜: ……空的。
         她的声音很轻。但不是失望——是某种释然。
         阿苏芙里娜: 我找了这么久……原来我要找的东西，一直在我手里。
-        <<set $assoc_shaken = true>>
+        <<set $assoc_state = 3>>
     <<else>>
         魅力: \[等级15：失败\] 她摇了摇头，把笔记本握得更紧了。
         魅力: 长官，她还没准备好。再给她一点时间。
         //TODO: 失败代偿——可选：损失血量/给予金币/给予药水/杀敌/解答问题
     <<endif>>
-    <<jump ThreeMaidens_Menu>>
+    <<stop>>
 ===
 
-title: ThreeMaidens_RouteA_Sulfur
+title: Entity_ThreeMaidens_Route1_Sulfur
 ---
 你走向石块散落处。
 阿苏芙里娜停下了脚步。她的眼睛亮着——焦灼的、急切的。
@@ -209,7 +211,6 @@ title: ThreeMaidens_RouteA_Sulfur
     她低头看了看手里的空白笔记本。
     阿苏芙里娜: 我一直在找。我找到了吗？
     她没有等你回答。她张开了双臂。
-    <<check cha you 14>>
     <<if check("cha","you",20,1,14)>>
         魅力: \[等级14：成功\] 两个人的力量涌入她的身体。她吸收了萨利娜和奥索西娅。
         她站在废墟中央——正常的少女形态，金发，深红旧袍。她没有变成别的什么，她还是她。
@@ -218,9 +219,7 @@ title: ThreeMaidens_RouteA_Sulfur
         有时候她会突然冒出一句很短的话——"重"、"湿"、"硬"——然后自己愣一下。
         魅力: 长官，那是萨利娜的说话方式。她在模仿。自己都不知道。
         她还是阿苏芙里娜。但她身体里住着另外两个人的碎片。她的火焰还在烧，但现在有了可以烧的东西——有了重量，有了形状。不再是原地打转了。
-        <<set $route_chosen = "A_sulfur">>
-        <<set $quest_three_maidens_complete = true>>
-        //TODO: 去二留一效果
+        <<set $three_maidens = 6>>
     <<else>>
         魅力: \[等级14：失败\] 两个人的力量涌入她的身体。她吸收了萨利娜和奥索西娅。
         她站在废墟中央——正常的少女形态，金发，深红旧袍。她没有变成别的什么，她还是她。
@@ -229,14 +228,12 @@ title: ThreeMaidens_RouteA_Sulfur
         有时候她会突然冒出一长串数理词——"因此"、"已知"、"可推得"——然后自己困惑一下。
         魅力: 长官，那是奥索西娅的说话方式。她在模仿。自己都不知道。
         她还是阿苏芙里娜。但她身体里住着另外两个人的碎片。她的火焰被智慧分开了——不再烧成一团，而是照得清清楚楚。可她不再焦灼了，也不再追寻了。也许这是好事。也许不是。
-        <<set $route_chosen = "A_sulfur">>
-        <<set $quest_three_maidens_complete = true>>
-        //TODO: 去二留一效果
-        //TODO: 失败代偿——可选：损失血量/给予金币/给予药水/杀敌/解答问题
+        <<set $three_maidens = 7>>
     <<endif>>
+    <<stop>>
 ===
 
-title: ThreeMaidens_PostSulfur
+title: Entity_ThreeMaidens_PostSulfur
 when: always
 ---
 你再次走进废墟。
@@ -252,12 +249,12 @@ when: always
     她把笔记本抱在怀里，走出了废墟。肉树的根须在她面前退开了。
     她没有回头。
     废墟里只剩你一个人。
-    <<set $route_chosen = "A_sulfur_left">>
+    <<set $three_maidens = 15>>
     <<stop>>
 
 -> 「外面什么都没有。你留在这里。」
     阿苏芙里娜看着你，犹豫了一下。
     阿苏芙里娜: ……好。你说没有，那就没有。
     她坐回椅子上，翻开笔记本，继续看那些空白的页面。
-    <<jump ThreeMaidens_Menu>>
+    <<stop>>
 ===
