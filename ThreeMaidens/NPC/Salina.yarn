@@ -1,5 +1,5 @@
 title: encounter
-when: ch("Salina")
+when: ch("萨利娜")
 ---
 <<jump ThreeMaidens_Salina>>
 ===

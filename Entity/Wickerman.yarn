@@ -1,5 +1,5 @@
 title: encounter
-when: ch("Wickerman")
+when: ch("柳条人")
 ---
 <<declare $wickerman_insightcheck = false>>
 <<jump Entity_Wickerman>>

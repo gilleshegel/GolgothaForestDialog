@@ -1,5 +1,5 @@
 title: encounter
-when: ch("Crestfallen")
+when: ch("灰心的战士")
 ---
 <<declare $crestfallen_visits = 0>>
 <<declare $crestfallen_ask_forest = 0>>

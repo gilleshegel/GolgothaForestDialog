@@ -1,5 +1,5 @@
 title: encounter
-when: ch("ChurchVendor")
+when: ch("辅祭")
 ---
 <<declare $churchvendor_talked = false>>
 ===

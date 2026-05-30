@@ -1,5 +1,5 @@
 title: encounter
-when: ch("Monk")
+when: ch("僧侣")
 ---
 //TODO：这个NPC只有1次互动机会，互动完成后就会离开
 <<declare $monk_charmed = false>>

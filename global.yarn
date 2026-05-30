@@ -10,8 +10,14 @@ title: global_init
 <<declare $intelligence  = 10>>
 <<declare $wisdom = 10>>
 <<declare $charisma = 10>>
-<<declare $class = "wizard">>
+<<declare $ClassFighter=0>>//战士
+<<declare $ClassRogue=1>>//盗贼
+<<declare $ClassWizard=2>>//法师
+<<declare $ClassCleric=3>>//牧师
+<<declare $ClassSorcerer=4>>//术士
+<<declare $ClassBard=5>>//吟游诗人
 <<declare $site = "Pizzaro">>
+<<declare >>
 <<>>
 
 <<declare $dice_result = true>>

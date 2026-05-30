@@ -1,5 +1,5 @@
 title: encounter
-when: ch("BridgeGuardians")
+when: ch("讽刺园丁")
 ---
 <<declare $has_thuribulum = false>>//是否持有点燃的香炉
 <<declare $guardians_hurt = 0>>//标记守卫受伤

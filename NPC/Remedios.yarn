@@ -1,5 +1,5 @@
 title: encounter
-when: ch("Remedios")
+when: ch("半精灵")
 ---
 <<declare $invitation_Remedios = false>>
 <<jump NPC_Remedios>>

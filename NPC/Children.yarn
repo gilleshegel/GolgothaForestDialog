@@ -1,5 +1,5 @@
 title: encounter
-when: ch("Children")
+when: ch("高个子男孩") and ch("矮个子男孩")
 ---
 <<declare $children_talked = false>>
 <<declare $children_punch = false>>

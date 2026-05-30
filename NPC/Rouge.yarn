@@ -1,5 +1,5 @@
 title: encounter
-when: ch("Rogue")
+when: ch("左边的流氓") and ch("右边的流氓")
 ---
 <<declare $kind = true>>
 ===

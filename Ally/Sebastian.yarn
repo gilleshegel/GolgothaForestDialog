@@ -1,5 +1,5 @@
 title: encounter
-when: ch("Sebastian")
+when: ch("塞巴斯蒂安")
 ---
 <<declare $sebasitian_favor = 1>>
 塞巴斯蒂安: 朋友，有什么事？我就在这，你尽管说。

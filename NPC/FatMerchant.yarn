@@ -1,5 +1,5 @@
 title: encounter
-when: ch("FatMerchant")
+when: ch("商人")
 ---
 <<jump NPC_FatMerchant>>
 ===

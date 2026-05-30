@@ -1,5 +1,5 @@
 title: encounter
-when: ch("NoteThree")
+when: ch("三份文本")
 ---
 你看着面前的这三份文本，以及整个废墟。
 <<jump ThreeMaidens_Clues>>
