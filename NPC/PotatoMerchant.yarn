@@ -1,5 +1,5 @@
 title: encounter
-when: ch("potatomerchant")
+when: ch("土豆商人")
 ---
 土豆商人: 您一天吃多少个土豆？
 

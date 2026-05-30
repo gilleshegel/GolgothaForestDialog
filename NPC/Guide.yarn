@@ -1,5 +1,5 @@
 title: encounter
-when: ch("guide")
+when: ch("向导")
 ---
 <<jump NPC_Guide>>
 ===

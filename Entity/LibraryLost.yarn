@@ -1,8 +1,8 @@
 title: encounter
-when: ch("LibraryLost")//TODO:和实体互动
+when: ch("寻书告示")//TODO:和实体互动
 ---
 墙上贴着一张告示：
-告示: 近期本图书馆数本书丢失，寻回必谢。详情咨询图书管理员
+寻书告示: 近期本图书馆数本书丢失，寻回必谢。详情咨询图书管理员
 <<jump Sign_LibraryLost>>
 ===
 

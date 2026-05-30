@@ -1,5 +1,5 @@
 title: encounter
-when: ch("Sebastian")
+when: ch("戈耳工") or ch("塞巴斯蒂安")
 ---
 <<jump NPC_Sebastian>>
 ===
@@ -26,6 +26,7 @@ when: at("Pizzaro_Alley")
     -> 「我乃{$player_name}，你已经听到我的名！（大手一挥）」
 
     戈耳工: 啊哈，{$player_name}！我叫塞巴斯蒂安，是一个术士。
+    <<rename 戈耳工 塞巴斯蒂安>>2
     力量: 塞巴斯蒂安？战争中途你听过一个有名的术士，就叫塞巴斯蒂安，此人据说阻止了一场极端保礼派的巨大阴谋。
     塞巴斯蒂安: 你呢？你这样全副武装的人，来皮萨罗城做啥？
 

@@ -1,5 +1,5 @@
 title: encounter
-when: ch("youngman")
+when: ch("年轻蜥蜴人")
 ---
 <<declare $youngmansus = false>>//临时标记单次暗骰
 <<jump NPC_Youngman>>
@@ -104,7 +104,7 @@ title: NPC_Youngman_Combat
 年轻蜥蜴人: 再这样下去真的要来不及了...杰克，祝福我！
 蜥蜴人见状，猛地扬尘扑上你的眼睛，随即头也不回地转身，爆发出惊人的求生速度，像一只受惊的野狗般狂奔，竟试图直接强闯那道重兵把守的关卡。
 -> 「咕哇！以沙蒙眼！好狠毒！」
-塞巴斯蒂安: 别让他跑了！<<if ch("Sebastian")>>//TODO：判断塞巴斯蒂安在队伍中
+塞巴斯蒂安: 别让他跑了！<<if ch("塞巴斯蒂安")>>//TODO：判断塞巴斯蒂安在队伍中
 
 -> \[敏捷检定\] 拼尽全力冲刺
     <<uicheck dex you 12>>

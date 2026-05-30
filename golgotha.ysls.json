@@ -8,7 +8,7 @@
         },
         {
             "yarnName": "uicheck",
-            "documentation": "表骰.",
+            "documentation": "表骰.检定结果会被永久存储.",
             "parameters":
             [
                 {
@@ -52,6 +52,70 @@
         {
             "yarnName": "checkpoint",
             "documentation": "存档."
+        },
+        {
+            "yarnName": "rest",
+            "documentation": "触发休息."
+        },
+        {
+            "yarnName": "team",
+            "documentation": "队伍控制. join - 目标角色变为队友; leave - 目标角色变为NPC.",
+            "parameters":
+            [
+                {
+                    "type": "String",
+                    "name": "join/leave"
+                },
+                {
+                    "type": "String",
+                    "name": "目标角色"
+                }
+            ]
+        },
+        {
+            "yarnName": "delete",
+            "documentation": "删除角色.",
+            "parameters":
+            [
+                {
+                    "type": "String",
+                    "name": "角色名称"
+                }
+            ]
+        },
+        {
+            "yarnName": "spawn",
+            "documentation": "角色生成. 参数1:位置(team-队伍, here-场景当前格子);参数2:模板名称(角色名或杂兵类型名);参数3:显示名称(可选)",
+            "parameters":
+            [
+                {
+                    "type": "String",
+                    "name": "team/here"
+                },
+                {
+                    "type": "String",
+                    "name": "模板名称"
+                },
+                {
+                    "type": "String",
+                    "name": "显示名称*"
+                }
+            ]
+        },
+        {
+            "yarnName": "rename",
+            "documentation": "角色重命名.",
+            "parameters":
+            [
+                {
+                    "type": "String",
+                    "name": "旧名."
+                },
+                {
+                    "type": "String",
+                    "name": "新名."
+                }
+            ]
         }
     ],
     "functions":
@@ -59,7 +123,7 @@
         {
             "yarnName": "check",
             "type": "function",
-            "documentation": "暗骰.",
+            "documentation": "暗骰.检定结果会被永久存储.",
             "return": {"type":"Bool"},
             "parameters": 
             [

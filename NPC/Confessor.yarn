@@ -1,5 +1,5 @@
 title: encounter
-when: ch("Confessor")
+when: ch("告解者")
 ---
 <<declare $confessor_talked = false>>
 <<declare $confession_done = false>>

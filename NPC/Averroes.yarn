@@ -1,5 +1,5 @@
 title: encounter
-when: ch("Averroes")
+when: ch("埃律克西人")
 ---
 <<declare $mission_organ = false>> //器官任务标记
 <<declare $organ_found = 0>> //临时用来标记器官个数，实际根据背包里的器官个数判断

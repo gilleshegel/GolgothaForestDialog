@@ -1,5 +1,5 @@
 title: encounter
-when: ch("BardPatrik")
+when: ch("吟游诗人帕特里克")
 ---
 <<declare $bardroute = 0>> //暂存，表示支线分歧。1=，2=惊险分支，3=跟班分支
 <<jump NPC_BardPatrik>>

@@ -1,5 +1,5 @@
 title: encounter
-when: ch("LibManager")
+when: ch("图书管理员")
 ---
 <<declare $ask_prohibit = false>>
 <<jump NPC_LibManager>>
