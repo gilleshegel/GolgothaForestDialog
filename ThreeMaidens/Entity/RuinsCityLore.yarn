@@ -1,0 +1,52 @@
+title: encounter
+when: ch("RuinsCityLore")
+---
+<<jump Entity_RuinsCityLore>>
+===
+
+title: Entity_RuinsCityLore
+when: once
+---
+你在书架残骸中发现了一张泛黄的纸片。是一份城市介绍——或者说，曾经是。
+纸片的大部分已经模糊了，只能辨认出零散的词句：
+"……塞西莉亚城……听义派的圣地……"
+"……四圣徒……道德高尚……除暴安良……"
+"……城中可见大量四人雕像……"
+"……四圣器供奉于此……"
+后面被撕掉了。
+
+-> \[智力检定\] 仔细辨认残存的文字
+    <<check int you 14>>
+    <<if check("int","you",20,1,14)>>
+        智力: \[等级14：成功\] {$player_name}，你蹲下来，用手指描摹纸片上的字迹。
+        "……四圣徒的遗物……四圣器……据说威力非凡……"
+        "……如今遗失于各各他林中……"
+        "……多方势力都想寻找四圣器……"
+        这份介绍说的是塞西莉亚城和四圣徒。四圣器——断海剑、破土刀、录天书、恒心钉——曾经供奉在这座城市里。
+        但城市已经被肉树吞噬了。圣器也遗失了。
+        <<set $city_clue_2 = true>>
+    <<else>>
+        智力: \[等级14：失败\] 你看了半天。大概是关于某个城市的介绍，但具体内容你看不清。
+        //TODO: 失败代偿
+    <<endif>>
+    <<jump Entity_RuinsCityLore>>
+-> （离开）
+    <<stop>>
+===
+
+title: Entity_RuinsCityLore
+when: always
+---
+这份介绍你已经读过了。塞西莉亚城——四圣徒的安息之地。
+<<jump Entity_RuinsCityLore_menu>>
+===
+
+title: Entity_RuinsCityLore_menu
+---
+-> 再看一遍
+    "……四圣徒的遗物……四圣器……据说威力非凡……"
+    "……如今遗失于各各他林中……"
+    <<jump Entity_RuinsCityLore_menu>>
+-> （离开）
+    <<stop>>
+===

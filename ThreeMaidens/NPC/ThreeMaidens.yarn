@@ -1,0 +1,337 @@
+title: encounter
+when: ch("ThreeMaidens")
+---
+<<declare $quest_three_maidens = false>>
+<<declare $salina_talked = false>>
+<<declare $philo_talked = false>>
+<<declare $assoc_talked = false>>
+<<declare $handwriting_clue = false>>
+<<declare $fountain_clue_1 = false>>
+<<declare $fountain_clue_2 = false>>
+<<declare $fountain_clue_3 = false>>
+<<declare $roots_clue_1 = false>>
+<<declare $roots_clue_2 = false>>
+<<declare $ground_clue_1 = false>>
+<<declare $ground_clue_2 = false>>
+<<declare $salina_shake_1 = false>>
+<<declare $salina_shaken = false>>
+<<declare $philo_shake_1 = false>>
+<<declare $philo_shaken = false>>
+<<declare $assoc_shake_1 = false>>
+<<declare $assoc_shaken = false>>
+<<declare $salina_killed = false>>
+<<declare $philo_killed = false>>
+<<declare $assoc_killed = false>>
+<<declare $route_chosen = "none">>
+<<declare $quest_three_maidens_complete = false>>
+<<set $quest_three_maidens = true>>
+<<jump ThreeMaidens_Discovery>>
+===
+
+title: ThreeMaidens_Discovery
+when: once
+---
+<<once>>
+    你走进各各他林深处的一片废墟。
+    没有屋顶，没有完整的墙。只剩地基的碎石和断裂的墙根，被肉树的根须掀开了。腐烂的气味和一股甜腻的药香搅在一起，头顶是灰蒙蒙的天。
+    废墟中央是一座干涸的石喷泉。水盆裂成了几块，里面堆着枯叶和灰尘。三座无头女性雕像围绕喷泉排列成三角形，风化得很厉害，但姿态还看得清。
+    喷泉底部，根须最密的地方，坐着一个女孩。她下半身已经和肉树的根须分不清了——根须从腰际蔓延出去，扎进碎裂的石盆里。她脸上罩着一个陶土面具，没有表情。旁边蹲着一条瘦得肋骨清晰可见的小犬。
+    喷泉破碎的水盆内，透过裂缝可以看见一个银白色的人形。她不是泡在液体里——是石头本身，仿佛喷泉最后的水结晶裹住了她。她的嘴唇一直在动，念着什么。
+    散落的石块之间——雕像的碎片、喷泉的残件——一个穿着深红旧袍的女孩在踱步。她手里紧握着一本空白笔记本，步伐很快，像在追什么东西。
+
+    -> 走近喷泉底部的女孩
+        <<jump ThreeMaidens_Salina>>
+    -> 去喷泉裂缝那边
+        <<jump ThreeMaidens_Azogia>>
+    -> 去石块散落处
+        <<jump ThreeMaidens_Azufri>>
+    -> 检查干涸的喷泉
+        <<jump ThreeMaidens_Item_Fountain>>
+    -> 观察肉树根须
+        <<jump ThreeMaidens_Item_Roots>>
+    -> 检查地面痕迹
+        <<jump ThreeMaidens_Item_Ground>>
+    -> （离开废墟）
+        你退出了废墟。肉树的根须在你身后缓缓合拢了入口。
+        <<stop>>
+<<else>>
+    <<if $route_chosen == "B">>
+        <<jump ThreeMaidens_PostB>>
+    <<elseif $route_chosen == "A_salt">>
+        <<jump ThreeMaidens_PostSalt>>
+    <<elseif $route_chosen == "A_mercury">>
+        <<jump ThreeMaidens_PostMercury>>
+    <<elseif $route_chosen == "A_sulfur">>
+        <<jump ThreeMaidens_PostSulfur>>
+    <<elseif $route_chosen != "none">>
+        你再次走进废墟。一切已经结束了。
+        <<stop>>
+    <<else>>
+        你再次走进废墟。空气还是那么重。
+        <<if $salina_talked and $philo_talked and $assoc_talked and $handwriting_clue>>
+            你已经和三个女孩都谈过了，也发现了笔迹的线索。你觉得自己可以做出某种判断了。
+            <<jump ThreeMaidens_Confirmation>>
+        <<elseif $salina_shaken and $philo_shaken and $assoc_shaken and $handwriting_clue>>
+            三个女孩都被你动摇了，笔迹的证据也已经掌握。也许现在可以把一切摊开来说了。
+            <<jump ThreeMaidens_RouteB_Proof>>
+        <<else>>
+            <<jump ThreeMaidens_Menu>>
+        <<endif>>
+    <<endif>>
+<<endonce>>
+===
+
+title: ThreeMaidens_Menu
+---
+-> 走近萨利娜
+    <<jump ThreeMaidens_Salina>>
+-> 去找奥索西娅·菲罗索非卡
+    <<jump ThreeMaidens_Azogia>>
+-> 去找阿苏芙里娜
+    <<jump ThreeMaidens_Azufri>>
+-> 检查干涸的喷泉
+    <<jump ThreeMaidens_Item_Fountain>>
+-> 观察肉树根须
+    <<jump ThreeMaidens_Item_Roots>>
+-> 检查地面痕迹
+    <<jump ThreeMaidens_Item_Ground>>
+<<if $salina_talked and $philo_talked and $assoc_talked>>
+-> 调查废墟里的线索
+    <<jump ThreeMaidens_Clues>>
+<<endif>>
+<<if $salina_talked and $philo_talked and $assoc_talked and $handwriting_clue>>
+-> 做出判断
+    <<jump ThreeMaidens_Confirmation>>
+<<endif>>
+<<if $salina_shaken and $philo_shaken and $assoc_shaken and $handwriting_clue>>
+-> 把证据摆出来
+    <<jump ThreeMaidens_RouteB_Proof>>
+<<endif>>
+-> 攻击
+    <<jump ThreeMaidens_Attack>>
+-> （离开废墟）
+    <<jump ThreeMaidens_RouteC_Leave>>
+===
+
+
+title: ThreeMaidens_Confirmation
+---
+你站在废墟中央，三个女孩各自占据一个角落。你觉得自己知道了些什么。知道了，就必须做出选择。
+
+-> 「身体是基础。承载是萨利娜的天命。」
+    <<jump ThreeMaidens_RouteA_Salt>>
+
+-> 「逻辑是结构。照见是奥索西娅的天命。」
+    <<jump ThreeMaidens_RouteA_Mercury>>
+
+-> 「追寻是动力。燃烧是阿苏芙里娜的天命。」
+    <<jump ThreeMaidens_RouteA_Sulfur>>
+
+<<if $handwriting_clue>>
+-> 「她们是同一个人。」
+    你拿出了三份笔迹的证据。三个女孩第一次同时看向你。
+    <<jump ThreeMaidens_RouteB_Proof>>
+<<endif>>
+
+-> 等等，再想想
+    <<jump ThreeMaidens_Menu>>
+===
+
+title: ThreeMaidens_Attack
+---
+你要攻击谁？
+
+-> 攻击萨利娜
+    //TODO: 引擎处理战斗
+    //我不确定，或许可以不加入战斗直接用文本表现
+    //看情况吧
+    <<set $salina_killed = true>>
+    <<jump ThreeMaidens_KillOne>>
+-> 攻击奥索西娅·菲罗索非卡
+    //TODO: 引擎处理战斗
+    //同上
+    <<set $philo_killed = true>>
+    <<jump ThreeMaidens_KillOne>>
+-> 攻击阿苏芙里娜
+    //TODO: 引擎处理战斗
+    //同上
+    <<set $assoc_killed = true>>
+    <<jump ThreeMaidens_KillOne>>
+-> 算了
+    <<jump ThreeMaidens_Menu>>
+===
+
+title: ThreeMaidens_KillOne
+---
+<<if $salina_killed>>
+    萨利娜倒下了。陶土面具从她脸上滑落，露出扭曲的脸皮和空洞的眼窝。她的身体慢慢和肉树的根须融为一体，分不清哪里是人哪里是树。
+    那条瘦犬在她身边呜咽了一声，然后安静了。
+    <<if $philo_killed == false and $assoc_killed == false>>
+        奥索西娅的嘴唇停了一瞬，然后继续动——像是在记录一个变量的消失。
+        阿苏芙里娜停下了脚步。她看了萨利娜一眼，然后继续走。步伐乱了一拍。
+    <<endif>>
+<<elseif $philo_killed>>
+    奥索西娅的石壁碎了。银白色的躯体在空气中短暂燃烧，发出银色的火焰，然后熄灭。只剩碎石和一滩蒸发的液体。
+    <<if $salina_killed == false and $assoc_killed == false>>
+        萨利娜没有抬头。她还在撕肉喂犬。
+        阿苏芙里娜停下了脚步。她看着那滩蒸发的液体，嘴唇动了动，像是想说什么，但没有说出来。然后继续走。
+    <<endif>>
+<<elseif $assoc_killed>>
+    阿苏芙里娜倒下了。深红旧袍散在地上，空白笔记本从她手里滑落。她的身体慢慢变得透明，然后消失了。只剩一件空袍子和一本空白笔记本。
+    <<if $salina_killed == false and $philo_killed == false>>
+        萨利娜没有抬头。她还在撕肉喂犬。
+        奥索西娅的嘴唇停了一瞬。她念了一个新公式——像是在计算一个变量消失后的方程变化。
+    <<endif>>
+<<endif>>
+
+<<if ($salina_killed and $philo_killed) or ($salina_killed and $assoc_killed) or ($philo_killed and $assoc_killed)>>
+    <<jump ThreeMaidens_KillTwo>>
+<<else>>
+    废墟里的肉树还在生长。
+    <<jump ThreeMaidens_Menu>>
+<<endif>>
+===
+
+title: ThreeMaidens_KillTwo
+---
+<<if $salina_killed and $philo_killed>>
+    废墟里只剩阿苏芙里娜一个人了。
+    她站在散落的石块间，不再踱步。她低头看着手里的空白笔记本，很久没有动。
+    阿苏芙里娜: ……都走了。
+    阿苏芙里娜: 我还在找。可我不知道在找什么了。
+    她抬起头，看着你。眼睛里的焦灼灭了，只剩空洞。
+    <<set $route_chosen = "kill_sp">>
+<<elseif $salina_killed and $assoc_killed>>
+    废墟里只剩奥索西娅一个人了。
+    她的嘴唇还在动。但念的东西变了——不再是公式，是某种重复的句子，你听不清。
+    石壁上，公式越来越少。有些地方开始出现空白。
+    奥索西娅: 变量在减少。方程趋向于……
+    她停了一下。
+    奥索西娅: ……趋向于什么？
+    <<set $route_chosen = "kill_sa">>
+<<elseif $philo_killed and $assoc_killed>>
+    废墟里只剩萨利娜一个人了。
+    她还在撕肉喂犬。和之前一样。和什么都没发生过一样。
+    但犬不吃。犬在她脚边呜咽，不肯吃她手里的肉。
+    萨利娜低头看着犬。面具后面的眼睛，第一次有了一点什么——不是悲伤，是困惑。
+    萨利娜: ……你不吃？
+    她把手里的肉放在地上。犬闻了闻，走开了。
+    萨利娜看着自己空空的手。
+    <<set $route_chosen = "kill_pa">>
+<<endif>>
+<<set $quest_three_maidens_complete = true>>
+===
+
+title: ThreeMaidens_RouteB_Proof
+---
+你把三份笔迹的证据摆了出来。萨利娜手臂上的刻痕，奥索西娅石壁上的公式，阿苏芙里娜笔记本封面的字迹。
+三个女孩第一次同时看向那些证据。
+-> 「你们是同一个人。」
+    沉默。
+    三个女孩互相看着——这是她们第一次直接对视。
+    萨利娜: ……她们……是我？
+    奥索西娅: 笔迹分析的结论……无法反驳。我一直以为我是一个独立的变量，但原来我只是一个方程的局部解。
+    阿苏芙里娜: 我一直在找的……就是你们？
+    <<check int you 14>>
+    <<if check("int","you",20,1,14)>>
+        智力: \[等级14：成功\] {$player_name}，你把三份笔迹并排放好，一笔一划地比对给她们看。证据确凿。
+        <<check wis you 14>>
+        <<if check("wis","you",20,1,14)>>
+            感知: \[等级14：成功\] 萨利娜看着那些刻痕，第一次认出了自己的手。奥索西娅的公式停了——她不再计算，开始回忆。阿苏芙里娜合上了笔记本，不再踱步。
+            <<check cha you 14>>
+            <<if check("cha","you",20,1,14)>>
+                魅力: \[等级14：成功\] 三个女孩走向废墟中央。她们站在了一起。
+                <<jump ThreeMaidens_RouteB_Merge>>
+            <<else>>
+                魅力: \[等级14：失败\] 阿苏芙里娜在最后一步犹豫了。她后退了一步，重新开始踱步。
+                魅力: 长官，她还没有准备好。你还需要再次动摇她。
+                <<set $assoc_shaken = false>>
+                <<set $assoc_shake_1 = false>>
+                <<jump ThreeMaidens_Menu>>
+                //TODO: 失败代偿——可选：损失血量/给予金币/给予药水/杀敌/解答问题
+            <<endif>>
+        <<else>>
+            感知: \[等级14：失败\] 萨利娜看着那些刻痕，但她认不出来。她低下头，继续撕肉喂犬。
+            感知: 她还没有准备好。你还需要再次动摇她。
+            <<set $salina_shaken = false>>
+            <<set $salina_shake_1 = false>>
+            <<jump ThreeMaidens_Menu>>
+            //TODO: 失败代偿——可选：损失血量/给予金币/给予药水/杀敌/解答问题
+        <<endif>>
+    <<else>>
+        智力: \[等级14：失败\] 你把证据摆出来，但你的解释不够清楚。奥索西娅歪了歪头。
+        奥索西娅: 笔迹相似不等于身份同一。我需要更多的数据。
+        智力: 她重新开始念公式。你还需要再次动摇她。
+        <<set $philo_shaken = false>>
+        <<set $philo_shake_1 = false>>
+        <<jump ThreeMaidens_Menu>>
+        //TODO: 失败代偿——可选：损失血量/给予金币/给予药水/杀敌/解答问题
+    <<endif>>
+===
+
+title: ThreeMaidens_RouteB_Merge
+---
+三个女孩站在废墟中央。
+萨利娜摘下了陶土面具。她的脸很平静。那是她自己的表情——第一次。
+奥索西娅从石头里走了出来。石壁自行裂开，碎石落了一地。她站在其中，银白的身体开始有了颜色。
+阿苏芙里娜放下了笔记本。空白的页面掉在地上，她不再需要它了。
+三个人的轮廓开始模糊。像是液体汇流——边缘溶解，颜色混合，形体重叠。这个过程不快，也不轻松。每一次形体重叠都伴随着一声很轻的叹息——像是三个人同时在承受什么。萨利娜的重量，奥索西娅的分离，阿苏芙里娜的焦灼，全都搅在一起。不是消除，是融合。痛苦没有消失，只是不再分属三个人了。
+废墟里的肉树退开了。空气变轻了。
+最终，在干涸的喷泉池中央，出现了一个新的形体。
+羊水般的液体中浮现出粉红色肌肤的少女，眼睛还未完全睁开，四肢蜷缩。她不记得任何事。她不知道自己是谁，不知道这里是什么地方。
+但她是一个完整的灵魂。她身上有三倍分量的对世界的感知——重量、公式、过程，全都在她体内。也正因为如此，她身上有三倍分量的对世界的痛苦与爱。善本身就诞生自对恶的克服，光明必须从黑暗中升起。纯粹的无痛之爱是抽象的，只有经历过愤怒、分离和沉重后，所获得的温柔与完整，才是活的、有生命的。
+她在废墟中安静地呼吸。
+<<set $route_chosen = "B">>
+<<set $quest_three_maidens_complete = true>>
+===
+
+title: ThreeMaidens_RouteC
+---
+你没有做出任何有意义的干预。或者你的行为互相矛盾。三个女孩继续着各自的循环——萨利娜撕肉喂犬，奥索西娅念公式，阿苏芙里娜踱步。
+废墟里的肉树继续生长。
+什么也没有改变。
+<<set $route_chosen = "C">>
+<<set $quest_three_maidens_complete = true>>
+<<jump ThreeMaidens_RouteC_Leave>>
+===
+
+title: ThreeMaidens_RouteC_Leave
+---
+你退出了废墟。肉树的根须在你身后合拢了入口。
+你回头看了一眼。废墟的地基在缓慢地被根须撬起，也许再过几个月，这里就会被完全吞没。
+里面的三个女孩不会注意到这件事。
+<<stop>>
+===
+
+title: ThreeMaidens_PostB
+when: always
+---
+你再次走进废墟。
+废墟变了。肉树退开了一些，空气没那么重了。喷泉池边，那个新生的少女坐在那里，身上裹着一件不知从哪找来的旧布。
+她长大了。比上次见的时候大了一些。眼睛睁开了，能看清东西了。
+她手里拿着一本笔记本——阿苏芙里娜留下的那本。她在翻看。
+少女: 你来了。
+她抬起头看你。眼睛很清澈，什么都没有——不是空洞，是干净。
+少女: 我看了这些……字。很多我看不懂。但有一些……
+她翻到某一页，指了指上面空白的地方。
+少女: 这里写了很多次"出去"。还有"离开"。还有"各各他林的边缘"。
+她合上笔记本。
+少女: 我想出去看看。
+少女: 这个地方……不是我应该待的地方。那些字告诉我，外面有别的东西。
+
+-> 「去吧。你应该去看看外面的世界。」
+    少女点了点头。她站起来，把笔记本抱在怀里。
+    少女: 谢谢你。
+    她走向废墟的入口。肉树的根须在她面前自动退开了。
+    她没有回头。
+    废墟里只剩你一个人。空气比之前轻了很多。
+    <<set $route_chosen = "B_left">>
+    <<stop>>
+
+-> 「外面很危险。你还是留在这里比较好。」
+    少女看着你，眼睛里有信任。
+    少女: 好。你说的，我听。
+    她坐回石台上，继续翻看笔记本。
+    <<jump ThreeMaidens_Menu>>
+===
+

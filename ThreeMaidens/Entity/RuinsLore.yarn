@@ -1,0 +1,140 @@
+title: ThreeMaidens_Item_Fountain
+---
+<<if $fountain_clue_3>>
+    你已经仔细检查过喷泉了。水盆底部有凹槽，像是被什么东西长期压过。喷泉出水口被肉树根须堵死了。
+    <<jump ThreeMaidens_Menu>>
+<<elseif $fountain_clue_2>>
+    <<jump ThreeMaidens_Item_Fountain_3>>
+<<elseif $fountain_clue_1>>
+    <<jump ThreeMaidens_Item_Fountain_2>>
+<<else>>
+    <<jump ThreeMaidens_Item_Fountain_1>>
+<<endif>>
+===
+
+title: ThreeMaidens_Item_Fountain_1
+---
+你走到干涸的喷泉前。
+水盆裂成了几块，里面堆着枯叶和灰尘。裂缝很深，透过缝隙能看到下面的泥土——裂缝边缘有肉树根须挤过的痕迹，是根须把石头撑裂的。盆壁上有一层干涸的深色残留物——不是水垢，更像是某种液体蒸发后留下的痕迹。残留物已经干透了，和石头表面融为一体，你用指甲抠了一下，只刮下一点粉末。
+喷泉中央曾经有什么东西立着，现在只剩一个圆形的底座，上面有断裂的痕迹。
+<<set $fountain_clue_1 = true>>
+<<jump ThreeMaidens_Menu>>
+===
+
+title: ThreeMaidens_Item_Fountain_2
+---
+-> \[感知检定\] 检查水盆底部
+    <<check wis you 14>>
+    <<if check("wis","you",20,1,14)>>
+        感知: \[等级14：成功\] {$player_name}，你蹲下来，拨开枯叶。水盆底部有几个凹槽，排列成三角形。凹槽里有残留的黑色物质，凝固了，摸起来有点滑腻。
+        你注意到凹槽的深度不一致。一个很浅，一个中等，一个几乎贯穿了盆底。像是有三种不同的东西曾经放在这里，重量或压力不同。
+        <<set $fountain_clue_2 = true>>
+        <<jump ThreeMaidens_Menu>>
+    <<else>>
+        感知: \[等级14：失败\] 你蹲下来看了看。水盆底部都是灰尘和枯叶，没什么特别的。
+        //TODO: 失败代偿
+        <<jump ThreeMaidens_Menu>>
+    <<endif>>
+===
+
+title: ThreeMaidens_Item_Fountain_3
+---
+<<if $book_clue_2 or $note_clue_2 or $log_clue_2>>
+    -> \[智力检定\] 推断喷泉的用途
+        <<check int you 16>>
+        <<if check("int","you",20,1,16)>>
+            智力: \[等级16：成功\] {$player_name}，你把所有线索串在一起。
+            三个凹槽，三种炼金符号。这不是普通的喷泉——是某种炼金装置。三个凹槽分别对应盐、汞、硫的容器。
+            水盆中央的底座……是放置主容器的地方。炼金炉的核心。
+            但整个装置被废弃了。凹槽里的黑色物质……是炼金反应的残渣。
+            <<set $fountain_clue_3 = true>>
+            <<jump ThreeMaidens_Menu>>
+        <<else>>
+            智力: \[等级16：失败\] 你觉得喷泉和炼金术之间有联系，但具体是什么，你想不清楚。
+            //TODO: 失败代偿
+            <<jump ThreeMaidens_Menu>>
+        <<endif>>
+<<else>>
+    你还没有获得足够的线索，无法进一步推断。
+    <<jump ThreeMaidens_Menu>>
+<<endif>>
+===
+
+title: ThreeMaidens_Item_Roots
+---
+<<if $roots_clue_2>>
+    你已经检查过肉树根须了。根须上有切割痕迹，有人曾经试图切断它们。
+    <<jump ThreeMaidens_Menu>>
+<<elseif $roots_clue_1>>
+    <<jump ThreeMaidens_Item_Roots_2>>
+<<else>>
+    <<jump ThreeMaidens_Item_Roots_1>>
+<<endif>>
+===
+
+title: ThreeMaidens_Item_Roots_1
+---
+你走近肉树的根须。
+根须从废墟边缘蔓延进来，粗细不一，最粗的有手臂那么细。表面是深褐色的，有纹路，像是肌肉的纹理。有些地方渗出深色的汁液，顺着根须往下淌。
+你注意到根须的走向——它们是从外面长进来的，沿着墙根和石缝钻进来，有些地方把原本完整的石板挤裂了。根须在喷泉附近变得特别密集，尤其是萨利娜坐着的地方——根须从她腰际蔓延出去，扎进碎裂的石盆里。你分不清是根须长进了她，还是她长进了根须。
+废墟原本不是这个样子。根须是后来才长进来的，把这里变成了现在的模样。
+<<set $roots_clue_1 = true>>
+<<jump ThreeMaidens_Menu>>
+===
+
+title: ThreeMaidens_Item_Roots_2
+---
+-> \[感知检定\] 仔细观察根须的切口
+    <<check wis you 14>>
+    <<if check("wis","you",20,1,14)>>
+        感知: \[等级14：成功\] {$player_name}，你蹲下来，靠近萨利娜身边的根须。
+        根须上有几道切口——不是自然断裂，是被利器切过的。切口很整齐，刀法利落。但切口边缘已经愈合了，新的肉质组织覆盖了伤疤。
+        有人曾经试图切断这些根须。但根须长回来了。而且长得更密了。
+        你注意到切口的位置……都在萨利娜看不到的背面。有人在她不知道的时候做过这件事。
+        <<set $roots_clue_2 = true>>
+        <<jump ThreeMaidens_Menu>>
+    <<else>>
+        感知: \[等级14：失败\] 你看了看根须。切口？没注意到什么特别的。
+        //TODO: 失败代偿
+        <<jump ThreeMaidens_Menu>>
+    <<endif>>
+===
+
+title: ThreeMaidens_Item_Ground
+---
+<<if $ground_clue_2>>
+    你已经检查过地面了。泥土中有凹痕，像是有人反复跪在这里。
+    <<jump ThreeMaidens_Menu>>
+<<elseif $ground_clue_1>>
+    <<jump ThreeMaidens_Item_Ground_2>>
+<<else>>
+    <<jump ThreeMaidens_Item_Ground_1>>
+<<endif>>
+===
+
+title: ThreeMaidens_Item_Ground_1
+---
+你低头看了看脚下的泥土。
+废墟的地面大部分被碎石覆盖，但在碎石缝隙之间，你能看到泥土。泥土上有各种痕迹——根须蔓延的纹路，液体流淌的沟壑，还有……脚印。
+大部分脚印已经模糊得只剩浅浅的凹痕，被根须和碎屑覆盖了。只有几处还隐约能看出轮廓——小号的鞋印，绕着喷泉转圈。
+<<set $ground_clue_1 = true>>
+<<jump ThreeMaidens_Menu>>
+===
+
+title: ThreeMaidens_Item_Ground_2
+---
+-> \[感知检定\] 检查喷泉周围的地面
+    <<check wis you 14>>
+    <<if check("wis","you",20,1,14)>>
+        感知: \[等级14：成功\] {$player_name}，你蹲下来，拨开碎石。
+        泥土中有几个凹痕，位置很规律——在喷泉周围。凹痕的形状……像是膝盖。有人曾经反复跪在这些位置。
+        凹痕的深度不同。一个很浅，像是轻轻跪下又站起来了。一个中等，跪了一会儿。一个很深，跪了很久。
+        三个位置，三种深度。和喷泉底部的三个凹槽对应。
+        <<set $ground_clue_2 = true>>
+        <<jump ThreeMaidens_Menu>>
+    <<else>>
+        感知: \[等级14：失败\] 你看了看地面。都是碎石和泥土，没什么特别的。
+        //TODO: 失败代偿
+        <<jump ThreeMaidens_Menu>>
+    <<endif>>
+===

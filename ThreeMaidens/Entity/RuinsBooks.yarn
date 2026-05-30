@@ -1,0 +1,45 @@
+title: encounter
+when: ch("RuinsBooks")
+---
+<<jump Entity_RuinsBooks>>
+===
+
+title: Entity_RuinsBooks
+when: once
+---
+你蹲下来，翻看散落在碎石中的几本书。
+大部分已经烂得不成样子了——纸张被液体泡过，字迹模糊，页与页黏在一起。你小心翼翼地翻开一本，封面已经脱落了，但扉页上还能看到几个字："……炼金术……灵魂……"。
+是某种炼金术著作。但不是正规教材——措辞更像是私人注释，旁边画满了符号和箭头。
+
+-> \[智力检定\] 仔细辨认书中的符号
+    <<check int you 12>>
+    <<if check("int","you",20,1,12)>>
+        智力: \[等级12：成功\] {$player_name}，你蹲下来，用手指描摹书页上的符号。
+        这些符号你认得——炼金术的三要素标记。圆圈加十字是盐，半月加十字是硫，三角加十字是汞。
+        但书中的用法不对。正规炼金术教材不会把这三个符号放在一起，更不会用箭头把它们连起来。这是异端炼金术——以灵魂为原料的禁忌之术。
+        书页边缘有批注："三者不可独存。分离即死。"
+        <<set $book_clue_2 = true>>
+    <<else>>
+        智力: \[等级12：失败\] 你看了半天。符号确实像某种炼金术标记，但排列方式很奇怪。你认不出来。
+        //TODO: 失败代偿
+    <<endif>>
+    <<jump Entity_RuinsBooks>>
+-> （离开）
+    <<stop>>
+===
+
+title: Entity_RuinsBooks
+when: always
+---
+这些书你已经翻看过了。异端炼金术著作，描述以灵魂为原料的禁忌实验。
+<<jump Entity_RuinsBooks_menu>>
+===
+
+title: Entity_RuinsBooks_menu
+---
+-> 再看一遍
+    书页边缘有批注："三者不可独存。分离即死。"
+    <<jump Entity_RuinsBooks_menu>>
+-> （离开）
+    <<stop>>
+===

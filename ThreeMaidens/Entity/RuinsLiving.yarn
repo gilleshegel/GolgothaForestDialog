@@ -1,0 +1,45 @@
+title: encounter
+when: ch("RuinsLiving")
+---
+<<jump Entity_RuinsLiving>>
+===
+
+title: Entity_RuinsLiving
+when: once
+---
+你检查了一下废墟中的生活设施。
+草垫铺在角落里，已经烂得差不多了。旁边有一个书架，大部分已经塌了，只剩下几根木架子。
+草垫上有凹痕——有人在这里睡过。书架上还有几本书，但大部分已经被肉树根须挤碎了。
+
+-> \[感知检定\] 检查草垫和书架
+    <<check wis you 14>>
+    <<if check("wis","you",20,1,14)>>
+        感知: \[等级14：成功\] {$player_name}，你蹲下来，拨开草垫上的碎屑。
+        草垫的凹痕很深，是长期睡卧留下的。你又看了看书架——木架子上有刻痕，像是有人用指甲反复刮过。
+        书架的角落里有一个小布包。你打开看了看——里面是一些干枯的草药和几颗发黑的药丸。已经变质了。
+        有人在这里生活过。而且生活了很长时间。
+        <<set $living_clue_2 = true>>
+    <<else>>
+        感知: \[等级14：失败\] 你看了看这些生活设施。草垫就是草垫，书架就是书架。没什么特别的。
+        //TODO: 失败代偿
+    <<endif>>
+    <<jump Entity_RuinsLiving>>
+-> （离开）
+    <<stop>>
+===
+
+title: Entity_RuinsLiving
+when: always
+---
+这些生活设施你已经检查过了。草垫、书架——有人在这里生活过。
+<<jump Entity_RuinsLiving_menu>>
+===
+
+title: Entity_RuinsLiving_menu
+---
+-> 再看一遍
+    草垫上有凹痕，书架上有刻痕。有人在这里生活了很长时间。
+    <<jump Entity_RuinsLiving_menu>>
+-> （离开）
+    <<stop>>
+===
