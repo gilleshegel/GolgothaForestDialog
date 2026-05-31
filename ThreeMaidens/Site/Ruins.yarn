@@ -45,6 +45,7 @@ when: at("ThreeMaidensRuins")
         <<stop>>
     <<else>>
         空气还是那么重。
+        <<jump Entity_ThreeMaidens_Fountain>>
     <<endif>>
 <<endonce>>
 ===

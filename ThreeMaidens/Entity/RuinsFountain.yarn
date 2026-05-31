@@ -25,7 +25,6 @@ title: Entity_ThreeMaidens_Fountain
         <<set $invest_fountain = true>>
     <<else>>
         洞见: \[等级14：失败\] 你看了看残留物。就是普通的水垢，没什么特别的。
-        //TODO: 失败代偿
     <<endif>>
 
 -> \[智力检定\] 推断喷泉的用途
@@ -36,7 +35,6 @@ title: Entity_ThreeMaidens_Fountain
         但整个装置被废弃了。凹槽里的黑色物质……是炼金反应的残渣。
     <<else>>
         智力: \[等级16：失败\] 你觉得喷泉和炼金术之间有联系，但具体是什么，你想不清楚。
-        //TODO: 失败代偿
     <<endif>>
 <<endif>>
 <<stop>>
@@ -104,7 +102,7 @@ title: Entity_ThreeMaidens_Route2_Merge
     <<set $azogia_state = 0>>
     <<delete "奥索西娅·菲洛索菲卡">>
     <<delete "萨利娜">>
-    <<rename "阿苏芙丽娜". "少女".>>
+    <<rename "阿苏芙里娜". "少女".>>
     //TODO: 做一个立绘变化
     <<stop>>
 ===
