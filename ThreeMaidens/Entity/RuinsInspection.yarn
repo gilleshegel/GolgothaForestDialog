@@ -1,7 +1,11 @@
-// ========================================
-// 器具检查
-// ========================================
+title: encounter
+when: ch("器具")
+---
+<<jump Entity_RuinsEquipment>>
+===
+//没太搞懂encounter逻辑是啥，理论上后面不同的调查应该有多个encounter when ch，应该分文件吗？
 
+// 器具检查
 title: Entity_RuinsEquipment
 when: once
 ---
@@ -40,10 +44,7 @@ title: Entity_RuinsEquipment_review
 <<stop>>
 ===
 
-// ========================================
 // 生活设施检查
-// ========================================
-
 title: Entity_RuinsLiving
 when: once
 ---

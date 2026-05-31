@@ -1,7 +1,11 @@
-// ========================================
-// 喷泉调查
-// ========================================
+title: encounter
+when: ch("喷泉")
+---
+<<jump Entity_ThreeMaidens_Fountain>>
+===
+//没太搞懂encounter逻辑是啥，理论上后面不同的调查应该有多个encounter when ch，应该分文件吗？
 
+// 喷泉调查
 title: Entity_ThreeMaidens_Fountain
 ---
 你走到干涸的喷泉前。
@@ -36,10 +40,7 @@ title: Entity_ThreeMaidens_Fountain
 <<stop>>
 ===
 
-// ========================================
 // 根须调查
-// ========================================
-
 title: Entity_ThreeMaidens_Roots
 ---
 你走近肉树的根须。
@@ -66,10 +67,7 @@ title: Entity_ThreeMaidens_Roots
     <<stop>>
 ===
 
-// ========================================
 // 地面痕迹调查
-// ========================================
-
 title: Entity_ThreeMaidens_Ground
 ---
 你低头看了看脚下的泥土。
@@ -95,10 +93,7 @@ title: Entity_ThreeMaidens_Ground
     <<stop>>
 ===
 
-// ========================================
 // 废墟翻找
-// ========================================
-
 title: Entity_ThreeMaidens_Ruins
 ---
 你蹲下来，在碎石中翻找。

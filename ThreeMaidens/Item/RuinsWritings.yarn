@@ -65,10 +65,7 @@ title: Item_ThreeMaidens_RuinsNote_review
 <<jump Item_ThreeMaidens_RuinsWritings>>
 ===
 
-// ========================================
 // 实验日志
-// ========================================
-
 title: Item_ThreeMaidens_RuinsExperimentLog
 when: once
 ---
@@ -106,10 +103,7 @@ title: Item_ThreeMaidens_RuinsExperimentLog_review
 <<jump Item_ThreeMaidens_RuinsWritings>>
 ===
 
-// ========================================
 // 日记
-// ========================================
-
 title: Item_ThreeMaidens_RuinsDiary
 when: once
 ---
@@ -146,10 +140,7 @@ title: Item_ThreeMaidens_RuinsDiary_review
 <<jump Item_ThreeMaidens_RuinsWritings>>
 ===
 
-// ========================================
 // 炼金术著作
-// ========================================
-
 title: Item_ThreeMaidens_RuinsBooks
 when: once
 ---
@@ -180,10 +171,7 @@ title: Item_ThreeMaidens_RuinsBooks_review
 <<jump Item_ThreeMaidens_RuinsWritings>>
 ===
 
-// ========================================
 // 城市介绍
-// ========================================
-
 title: Item_ThreeMaidens_RuinsCityLore
 when: once
 ---
@@ -219,10 +207,7 @@ title: Item_ThreeMaidens_RuinsCityLore_review
 <<jump Item_ThreeMaidens_RuinsWritings>>
 ===
 
-// ========================================
 // 三份文本（笔迹调查）
-// ========================================
-
 title: Item_ThreeMaidens_NoteThree
 when: once
 ---
