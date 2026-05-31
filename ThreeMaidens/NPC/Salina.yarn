@@ -5,12 +5,27 @@ when: ch("萨利娜")
 ===
 
 title: NPC_ThreeMaidens_Salina
-when: once
 ---
 <<once>>
     你走到喷泉底部。戴着面具的少女没抬头。她正在撕自己手臂上的一小块肉，喂给旁边那条瘦犬。小狗吃得很安静，她喂得也很安静。
     她的手臂上有好几道旧疤，都是她自己撕的。伤口愈合了又撕，撕了又愈合。
     <<set $salina_state = 1>>
+
+    -> \[智力检定\] 仔细观察她和肉树的关系
+    <<if uicheck("int","you",20,1,14)>>
+        智力: \[等级14：成功\] {$player_name}，你看那个融合点——根须是被切开硬接上去的，刀口整齐得很。她脚下的泥土翻过不止一次，有人反复在她身上操作过。这不是自然现象，是人为干预。
+    <<else>>
+        智力: \[等级14：失败\] 肉树和她的身体已经分不清了。你不确定是树在长进她还是她在长进树。面具内侧有些刻痕，很浅，像是有人用指甲反复刮出来的。
+    <<endif>>
+    <<jump NPC_ThreeMaidens_Salina_menu>>
+
+    -> \[洞见检定\] 观察她撕肉的动作
+    <<if uicheck("wis","you",20,1,12)>>
+        洞见: \[等级12：成功\] {$player_name}，你看她撕肉的样子——脸上什么表情都没有。不是麻木，麻木的人是痛过然后习惯了。她好像根本不知道这个痛觉属于她自己。你以前在战场上见过失去痛觉的人，但那些人是因为伤得太重。她不一样，她好像从来没拥有过这个感觉。
+    <<else>>
+        洞见: \[等级12：失败\] 她撕的动作很熟练，像你每天系鞋带一样自然。重复了无数次的那种熟练。
+    <<endif>>
+    <<jump NPC_ThreeMaidens_Salina_menu>>
 <<else>>
     <<if $three_maidens == 2>>
         萨利娜还在那里。但她不一样了——上半身是人，下半身是树根，扎在碎石里。
@@ -23,36 +38,11 @@ when: once
             萨利娜: 还有那些纸。你给我的那些。我好像认识上面的字。
             萨利娜: 那些字是我的？
         <<endif>>
-    <<elseif $three_maidens == 3>>
-        你再次走进废墟。
-        喷泉边开着一朵沉默的花。花瓣是粉红色的，肉质的，在灰蒙蒙的天底下安静地展开。
-        那是萨利娜。
-        她不再具有意识。不会产生别的影响。只有一朵花，在废墟里，安静地开着。
-        你站了一会儿。空气很安静。
     <<else>>
         萨利娜还坐在那里。她抬头看了你一眼，又低下去了。
     <<endif>>
 <<endonce>>
-
--> \[智力检定\] 仔细观察她和肉树的关系
-    <<if uicheck("int","you",20,1,14)>>
-        智力: \[等级14：成功\] {$player_name}，你看那个融合点——根须是被切开硬接上去的，刀口整齐得很。她脚下的泥土翻过不止一次，有人反复在她身上操作过。这不是自然现象，是人为干预。
-    <<else>>
-        智力: \[等级14：失败\] 肉树和她的身体已经分不清了。你不确定是树在长进她还是她在长进树。面具内侧有些刻痕，很浅，像是有人用指甲反复刮出来的。
-    <<endif>>
-    <<jump NPC_ThreeMaidens_Salina_menu>>
-
--> \[洞见检定\] 观察她撕肉的动作
-    <<if uicheck("wis","you",20,1,12)>>
-        洞见: \[等级12：成功\] {$player_name}，你看她撕肉的样子——脸上什么表情都没有。不是麻木，麻木的人是痛过然后习惯了。她好像根本不知道这个痛觉属于她自己。你以前在战场上见过失去痛觉的人，但那些人是因为伤得太重。她不一样，她好像从来没拥有过这个感觉。
-    <<else>>
-        洞见: \[等级12：失败\] 她撕的动作很熟练，像你每天系鞋带一样自然。重复了无数次的那种熟练。
-    <<endif>>
-    <<jump NPC_ThreeMaidens_Salina_menu>>
-
--> （走近她）
-    <<jump NPC_ThreeMaidens_Salina_menu>>
-
+<<jump NPC_ThreeMaidens_Salina_menu>>
 ===
 
 title: NPC_ThreeMaidens_Salina_menu
@@ -117,13 +107,20 @@ title: NPC_ThreeMaidens_Salina_menu
         <<jump NPC_ThreeMaidens_Salina_comfort_1>>
     <<endif>>
 
+-> 「你是她们的基础。你的身体是承载一切的容器。你应该把她们收回来。」 <<if $salina_state >= 3 and $azogia_state >= 3 and $azyfrina_state >= 3>>
+    <<jump Entity_ThreeMaidens_Route1_Salt>>
+
 -> 攻击萨利娜 <<if $salina_state > 0>>
     //TODO: 引擎处理战斗
     <<set $salina_state = 0>>
     萨利娜倒下了。面具从她脸上滑落，露出扭曲的脸皮和空洞的眼窝。她的身体慢慢和根须融为一体，分不清哪里是人哪里是树。
     那条瘦犬在她身边呜咽了一声，跑走了。
     <<jump Entity_ThreeMaidens_DeathReaction>>
+    <<rename "萨利娜". "树桩".>>
+    //TODO: 做一个立绘变化
+    <<stop>>
 -> （离开）
+    萨利娜没有抬头。她还在撕肉。
     <<stop>>
 <<endonce>>
 ===
@@ -162,11 +159,10 @@ title: NPC_ThreeMaidens_Salina_comfort_2
 
 title: Entity_ThreeMaidens_Route1_Salt
 ---
-你走向萨利娜。
-萨利娜抬头看你。面具后面的眼睛没有表情。
 
 
--> 把收集到的读物交给萨利娜 <<if $item_note or $item_log or $item_diary or $item_books>>
+
+-> 把收集到的读物交给萨利娜 <<if $item_log or $item_diary or $item_books>>
     你从怀里掏出收集到的废墟读物——笔记本、实验日志、日记、炼金术著作。这些纸张承载着那个炼金术师的记忆、实验、痛苦和知识。
     你把它们递给萨利娜。
     萨利娜接过那些纸张，低头看了看。
@@ -176,7 +172,8 @@ title: Entity_ThreeMaidens_Route1_Salt
     她抬起头，眼睛里有了什么——不是理解，是某种熟悉。
     萨利娜: 这些是我的？
     <<set $note_disposition = true>>
-    //TODO: 销毁RuinsWritings.yarn
+    <<delete "在废墟中找到的线索">>
+    //TODO: 删除背包物品
 
 -> 「你是她们的基础。你的身体是承载一切的容器。没有你，意志和智慧都没有落脚的地方。你应该把她们收回来。」
     萨利娜: 我？
@@ -184,10 +181,10 @@ title: Entity_ThreeMaidens_Route1_Salt
     萨利娜: 我只是*剩下的部分*。
     但她伸出了手。
     根须开始松动。从她腿上退开，从碎裂的石盆里抽出，像是一场倒放的生长。喷泉的石壁开始震动，阿苏芙里娜停下了脚步。
-    <<set $azyfrina_state == 0>>
-    <<set $azogia_state == 0>>
-    <<delete "奥索西娅·菲洛索菲卡">>
-    <<delete "阿苏芙里娜">>
+    <<set $azyfrina_state = 0>>
+    <<set $azogia_state = 0>>
+    <<rename "阿苏芙丽娜". "空袍子".>>
+    <<rename "奥索西娅". "玻璃碎片".>>
     //TODO: 做一个立绘变化
     <<if check("wis","you",20,1,14)>>
         洞见: \[等级14：成功\] 萨利娜站了起来。那些肉质植物从她腿上退去，取而代之的是真正的树根，扎进地面，向上延伸。她的上半身保留着人形，但她的脸变了。她获得了与两个姐妹相同的容貌。
@@ -206,7 +203,34 @@ title: Entity_ThreeMaidens_Route1_Salt
         她不再具有意识。不会产生别的影响。
         只有一朵沉默的花，在废墟里，安静地开着。花瓣是粉红色的——红化的颜色。石板上说过，红化是意志和智慧结合后的生命之色。也许这不是失败。也许对盐来说，承载的终点不是成为容器，而是成为花。
         <<set $three_maidens = 3>>
+        <<rename "萨利娜". "花".>>
+        //TODO: 做一个立绘变化
+        <<set $azogia_state = 0>>
     <<endif>>
 <<stop>>
 ===
 
+title: encounter
+when: ch("花")
+---
+<<jump NPC_ThreeMaidens_Salina_flower>>
+===
+
+title: NPC_ThreeMaidens_Salina_flower
+---
+喷泉边开着一朵沉默的花。花瓣是粉红色的，肉质的，在灰蒙蒙的天底下安静地展开。
+那是萨利娜。她不再具有意识。只有一朵花，在废墟里，安静地开着。
+<<stop>>
+===
+
+title: encounter
+when: ch("树桩")
+---
+<<jump NPC_ThreeMaidens_Salina_stump>>
+===
+
+title: NPC_ThreeMaidens_Salina_stump
+---
+还剩下一个树桩，你依稀能认出这是萨利娜。面具不见了，也许是被狗叼走了。
+<<stop>>
+===

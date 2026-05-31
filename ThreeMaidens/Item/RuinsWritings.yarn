@@ -1,9 +1,5 @@
-// ========================================
-// 废墟读物 — 统一入口
-// ========================================
-
 title: encounter
-when: ch("RuinsWritings")
+when: //TODO: 和背包物品互动
 ---
 <<jump Item_ThreeMaidens_RuinsWritings>>
 ===
@@ -11,218 +7,72 @@ when: ch("RuinsWritings")
 title: Item_ThreeMaidens_RuinsWritings
 ---
 你翻看收集到的废墟读物。
--> 翻开笔记本 <<if $item_note>>
-    <<jump Item_ThreeMaidens_RuinsNote_review>>
 -> 翻看实验日志 <<if $item_log>>
-    <<jump Item_ThreeMaidens_RuinsExperimentLog_review>>
+    <<jump Item_ThreeMaidens_RuinsExperimentLog>>
 -> 翻开日记 <<if $item_diary>>
-    <<jump Item_ThreeMaidens_RuinsDiary_review>>
+    <<jump Item_ThreeMaidens_RuinsDiary>>
 -> 翻看炼金术著作 <<if $item_books>>
-    <<jump Item_ThreeMaidens_RuinsBooks_review>>
--> 调查三份文本 <<if $item_diary and $item_log and $item_note>>
+    <<jump Item_ThreeMaidens_RuinsBooks>>
+-> 调查三份文本 <<if $item_diary and $item_log and $item_books>>
     <<jump Item_ThreeMaidens_ThreeMaidens_Clues>>
 -> （离开）
     <<stop>>
 ===
 
-// ========================================
-// 笔记本
-// ========================================
-
-title: Item_ThreeMaidens_RuinsNote
-when: once
+title: Item_ThreeMaidens_RuinsExperimentLog
 ---
-你在草垫旁边发现了一本笔记本。
-封面是皮革的，边缘已经磨损了。你翻开第一页——字迹很潦草，像是在匆忙中写下的。
+你翻看从废墟中找到的实验日志和笔记本。两种字迹，一种工整，一种潦草，指向同一段经历。
+
+"实验编号：001。日期：不详。目标：以肉树为燃料，炼制灵魂。"
+"结果：失败。容器破裂。"
+"实验编号：012。日期：不详。目标：调整盐汞硫比例。"
+"结果：部分成功。灵魂注入容器，但容器不接受。灵魂溶解。"
+"备注：需要更多的灵魂。但去哪里找？"
+"实验编号：015。日期：不详。目标：以自身为薪。"
+"结果：未知。记录者未完成记录。"
 "第37天。肉树的生长速度超出预期。根须已经开始侵蚀地基。"
 "第42天。产物的产量增加了。不知道是好事还是坏事。"
 "第51天。实验需要更多的燃料。但肉树的数量已经不够了。"
-这是一本炼金笔记。记录者在研究肉树。
-
--> \[智力检定\] 继续阅读笔记
-    <<if uicheck("int","you",20,1,14)>>
-        智力: \[等级14：成功\] {$player_name}，你翻到后面几页。
-        "第68天。注入失败。容器不接受灵魂。"
-        "第73天。尝试了新的配方。盐、汞、硫的比例调整为3:2:1。"
-        "第79天。还是失败。灵魂在容器中溶解了。"
-        "第85天。我需要更多的灵魂。但去哪里找？"
-        笔记到第85天就断了。后面是空白的。
-        <<set $item_note = true>>
-        <<jump Item_ThreeMaidens_RuinsWritings>>
-    <<else>>
-        智力: \[等级14：失败\] 你翻了几页。都是实验记录，但字迹太潦草了，你看不太懂。
-        //TODO: 失败代偿
-    <<endif>>
-    <<jump Item_ThreeMaidens_RuinsNote>>
--> （离开）
-    <<stop>>
-===
-
-title: Item_ThreeMaidens_RuinsNote_review
----
+"第68天。注入失败。容器不接受灵魂。"
+"第73天。尝试了新的配方。盐、汞、硫的比例调整为3:2:1。"
+"第79天。还是失败。灵魂在容器中溶解了。"
 "第85天。我需要更多的灵魂。但去哪里找？"
-笔记到第85天就断了。后面是空白的。
-<<jump Item_ThreeMaidens_RuinsWritings>>
-===
-
-// 实验日志
-title: Item_ThreeMaidens_RuinsExperimentLog
-when: once
----
-你在坩埚旁边发现了一叠纸。是实验日志——但不是同一个人写的。
-字迹有两种。一种工整、严谨，像是学者的手笔。另一种潦草、急促，像是在匆忙中记录的。
-你翻开第一页：
-"实验编号：001。日期：不详。目标：以肉树为燃料，炼制灵魂。"
-"结果：失败。容器破裂。"
-
--> \[智力检定\] 继续阅读日志
-    <<if uicheck("int","you",20,1,14)>>
-        智力: \[等级14：成功\] {$player_name}，你翻到后面几页。
-        "实验编号：012。日期：不详。目标：调整盐汞硫比例。"
-        "结果：部分成功。灵魂注入容器，但容器不接受。灵魂溶解。"
-        "备注：需要更多的灵魂。但去哪里找？"
-        "实验编号：015。日期：不详。目标：以自身为薪。"
-        "结果：未知。记录者未完成记录。"
-        日志到015号实验就断了。后面是空白的。
-        <<set $item_log = true>>
-        <<jump Item_ThreeMaidens_RuinsWritings>>
-    <<else>>
-        智力: \[等级14：失败\] 你翻了几页。都是实验记录，但字迹太潦草了，你看不太懂。
-        //TODO: 失败代偿
-    <<endif>>
-    <<jump Item_ThreeMaidens_RuinsExperimentLog>>
+日志和笔记本的最后都断在同一个问题上。后面是空白的。
+-> （看看别的）
+    <<jump Item_ThreeMaidens_RuinsWritings>>
 -> （离开）
     <<stop>>
 ===
 
-title: Item_ThreeMaidens_RuinsExperimentLog_review
----
-"实验编号：015。日期：不详。目标：以自身为薪。"
-"结果：未知。记录者未完成记录。"
-日志到015号实验就断了。后面是空白的。
-<<jump Item_ThreeMaidens_RuinsWritings>>
-===
-
-// 日记
 title: Item_ThreeMaidens_RuinsDiary
-when: once
 ---
-你在草垫下面发现了一本小册子。是日记——不是实验记录，是私人的东西。
-字迹和实验日志中的那种工整字迹一样。
+你在草垫下面发现的小册子。日记——不是实验记录，是私人的东西。字迹和实验日志中那种工整的笔迹一样。
+
 "第1天。我来到了这片废墟。这里很安静，适合研究。"
 "第7天。肉树开始长进来了。我不知道该怎么办。"
 "第15天。我需要更多的灵魂。但去哪里找？"
-
--> \[智力检定\] 继续阅读日记
-    <<if uicheck("int","you",20,1,14)>>
-        智力: \[等级14：成功\] {$player_name}，你翻到后面几页。
-        "第30天。我找到了方法。以自身为薪。"
-        "第31天。我害怕。但我不知道还能做什么。"
-        "第32天。圣者之物维系第三。否则将……"
-        "第33天。来不及了。"
-        最后一页只有一句话："不要分开。"
-        日记到第33天就断了。后面是空白的。
-        <<set $item_diary = true>>
-        <<jump Item_ThreeMaidens_RuinsWritings>>
-    <<else>>
-        智力: \[等级14：失败\] 你翻了几页。都是私人日记，但字迹太潦草了，你看不太懂。
-        //TODO: 失败代偿
-    <<endif>>
-    <<jump Item_ThreeMaidens_RuinsDiary>>
+"第30天。我找到了方法。以自身为薪。"
+"第31天。我害怕。但我不知道还能做什么。"
+"第32天。圣者之物维系第三。否则将……"
+"第33天。来不及了。"
+最后一页只有一句话："不要分开。"
+-> （看看别的）
+    <<jump Item_ThreeMaidens_RuinsWritings>>
 -> （离开）
     <<stop>>
 ===
 
-title: Item_ThreeMaidens_RuinsDiary_review
----
-"第33天。来不及了。"
-最后一页只有一句话："不要分开。"
-<<jump Item_ThreeMaidens_RuinsWritings>>
-===
-
-// 炼金术著作
 title: Item_ThreeMaidens_RuinsBooks
-when: once
 ---
 你蹲下来，翻看散落在碎石中的几本书。
 大部分已经烂得不成样子了——纸张被液体泡过，字迹模糊，页与页黏在一起。你小心翼翼地翻开一本，封面已经脱落了，但扉页上还能看到几个字："……炼金术……灵魂……"。
 是某种炼金术著作。但不是正规教材——措辞更像是私人注释，旁边画满了符号和箭头。
 
--> \[智力检定\] 仔细辨认书中的符号
-    <<if uicheck("int","you",20,1,12)>>
-        智力: \[等级12：成功\] {$player_name}，你蹲下来，用手指描摹书页上的符号。
-        这些符号你认得——炼金术的三要素标记。圆圈加十字是盐，半月加十字是硫，三角加十字是汞。
-        但书中的用法不对。正规炼金术教材不会把这三个符号放在一起，更不会用箭头把它们连起来。这是异端炼金术——以灵魂为原料的禁忌之术。
-        书页边缘有批注："三者不可独存。分离即死。"
-        <<set $item_books = true>>
-        <<jump Item_ThreeMaidens_RuinsWritings>>
-    <<else>>
-        智力: \[等级12：失败\] 你看了半天。符号确实像某种炼金术标记，但排列方式很奇怪。你认不出来。
-        //TODO: 失败代偿
-    <<endif>>
-    <<jump Item_ThreeMaidens_RuinsBooks>>
--> （离开）
-    <<stop>>
-===
-
-title: Item_ThreeMaidens_RuinsBooks_review
----
+书页上的符号你认得——炼金术的三要素标记。圆圈加十字是盐，半月加十字是硫，三角加十字是汞。
+但书中的用法不对。正规炼金术教材不会把这三个符号放在一起，更不会用箭头把它们连起来。这是异端炼金术——以灵魂为原料的禁忌之术。
 书页边缘有批注："三者不可独存。分离即死。"
-<<jump Item_ThreeMaidens_RuinsWritings>>
-===
-
-// 城市介绍
-title: Item_ThreeMaidens_RuinsCityLore
-when: once
----
-你在书架残骸中发现了一张泛黄的纸片。是一份城市介绍——或者说，曾经是。
-纸片的大部分已经模糊了，只能辨认出零散的词句：
-"……塞西亚斯城……听义派的圣地……"
-"……四圣徒……道德高尚……除暴安良……"
-"……城中可见大量四人雕像……"
-"……四圣器供奉于此……"
-后面被撕掉了。
-
--> \[智力检定\] 仔细辨认残存的文字
-    <<if uicheck("int","you",20,1,14)>>
-        智力: \[等级14：成功\] {$player_name}，你蹲下来，用手指描摹纸片上的字迹。
-        "……四圣徒的遗物……四圣器……据说威力非凡……"
-        "……如今遗失于各各他林中……"
-        "……多方势力都想寻找四圣器……"
-        这份介绍说的是塞西亚斯城和四圣徒。四圣器，断海剑、破土刀、录天书、恒心钉，曾经供奉在这座城市里。
-        但城市已经被肉树吞噬了。圣器也遗失了。
-    <<else>>
-        智力: \[等级14：失败\] 你看了半天。大概是关于某个城市的介绍，但具体内容你看不清。
-        //TODO: 失败代偿
-    <<endif>>
-    <<jump Item_ThreeMaidens_RuinsCityLore>>
--> （离开）
-    <<stop>>
-===
-
-title: Item_ThreeMaidens_RuinsCityLore_review
----
-"……四圣徒的遗物……四圣器……据说威力非凡……"
-"……如今遗失于各各他林中……"
-<<jump Item_ThreeMaidens_RuinsWritings>>
-===
-
-// 三份文本（笔迹调查）
-title: Item_ThreeMaidens_NoteThree
-when: once
----
-你看着面前的这三份文本，以及整个废墟。
-
--> 检查三份文本的笔迹
-    <<if uicheck("int","you",20,1,16)>>
-        智力: \[等级16：成功\] {$player_name}，你找到了三份文本——萨利娜手臂上旧疤旁边的刻痕，瓶壁上的公式，阿苏芙里娜笔记本封面的字迹。你比对了一下。三种不同的书写方式，刻痕、墨迹、压痕，但笔画的结构、力度、习惯性的小动作，全都一致。
-        智力: 同一个人的手。
-        <<set $handwriting_clue = true>>
-    <<else>>
-        智力: \[等级16：失败\] 你比对了三份笔迹。确实很相似——笔画结构、力度都接近。但你无法确定。也许是同一学派的习惯，也许是巧合。
-        你没有把握。
-        //TODO: 失败代偿——可选：损失血量/给予金币/给予药水/杀敌/解答问题
-    <<endif>>
+批注的笔迹很潦草，和笔记本上的那种急促笔迹相似。但不完全一样——更像是同一个人在不同状态下写的。
+-> （看看别的）
     <<jump Item_ThreeMaidens_RuinsWritings>>
 -> （离开）
     <<stop>>
@@ -231,29 +81,19 @@ when: once
 title: Item_ThreeMaidens_ThreeMaidens_Clues
 ---
 -> 检查三份文本的笔迹
-    <<if uicheck("int","you",20,1,16)>>
-        智力: \[等级16：成功\] {$player_name}，你找到了三份文本——萨利娜手臂上旧疤旁边的刻痕，瓶壁上的公式，阿苏芙里娜笔记本封面的字迹。你比对了一下。三种不同的书写方式，刻痕、墨迹、压痕，但笔画的结构、力度、习惯性的小动作，全都一致。
-        智力: 同一个人的手。
-        <<set $handwriting_clue = true>>
-    <<else>>
-        智力: \[等级16：失败\] 你比对了三份笔迹。确实很相似——笔画结构、力度都接近。但你无法确定。也许是同一学派的习惯，也许是巧合。
-        你没有把握。
-        //TODO: 失败代偿——可选：损失血量/给予金币/给予药水/杀敌/解答问题
-    <<endif>>
-    <<jump Item_ThreeMaidens_RuinsWritings>>
--> 观察三人的存在方式
+    智力: {$player_name}，你找到了三份文本——萨利娜手臂上旧疤旁边的刻痕，瓶壁上的公式，阿苏芙里娜笔记本封面的字迹。你比对了一下。三种不同的书写方式，刻痕、墨迹、压痕，但笔画的结构、力度、习惯性的小动作，全都一致。
+    智力: 同一个人的手。
+    <<set $handwriting_clue = true>>
+    <<jump Item_ThreeMaidens_ThreeMaidens_Clues>>
+-> 观察三人的存在方式 <<if at("废墟")>>
     你退后一步，同时看着三个女孩。
     洞见: {$player_name}，你看着她们三个，有一种说不清的感觉——像是三块拼图，各自缺了大部分，但边缘的形状能对上。
-    <<jump Item_ThreeMaidens_RuinsWritings>>
--> \[智力检定\] 推测她们的起源
-    <<if uicheck("int","you",20,1,18)>>
-        智力: \[等级18：成功\] {$player_name}，你把所有线索拼在一起。你注意到两件事：第一，肉树的嫁接痕迹和废墟石块上的符号，指向人为干预。第二，各各他林的肉树、大瘟疫、灵魂侵蚀，也能把一个人打碎。两种线索，两种可能。也许是有人借助森林做了什么：三种力量在一个人里面冲突、和解、生成完整的人格。也许只是森林自己的产物被收集到了这里。你分不清。但如果是前者，那这个实验失败了——本应在一个人里面完成的过程，被撕裂成了三个独立的、畸形的存在。
-    //这里处理有问题待优化
-    <<else>>
-        智力: \[等级18：失败\] 你倾向于认为这是一场实验——这片废墟、肉树的嫁接、那些公式，都指向人为干预。但你无法排除另一种可能：也许她们只是各各他林的自然产物，废墟只是捡到了她们。
-        //TODO: 失败代偿——可选：损失血量/给予金币/给予药水/杀敌/解答问题
-    <<endif>>
-    <<jump Item_ThreeMaidens_RuinsWritings>>
+    <<jump Item_ThreeMaidens_ThreeMaidens_Clues>>
+-> 推测她们的起源
+    智力: {$player_name}，你把所有线索拼在一起。日志、日记、炼金术著作——同一个人的三种记录。学者。他用肉树做燃料，用灵魂做原料，试图炼制什么。实验失败了。灵魂溶解了。然后他用自己的灵魂做燃料，一去不回。
+    智力: 三份文本的笔迹一致。三个女孩身上都有他的痕迹。如果实验没有失败，这三种力量本应在一个人里面融合。但它们被撕裂了——变成了三个独立的、畸形的存在。
+    智力: 萨利娜承载重量。奥索西娅照见逻辑。阿苏芙里娜追寻意义。她们是同一个人的三个碎片。
+    <<jump Item_ThreeMaidens_ThreeMaidens_Clues>>
 -> 不再调查了
     <<jump Item_ThreeMaidens_RuinsWritings>>
 ===

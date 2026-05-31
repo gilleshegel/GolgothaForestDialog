@@ -1,6 +1,5 @@
 title: ThreeMaidensRuins
 when: at("ThreeMaidensRuins")
-//TODO: 待修改
 ---
 <<once>>
 
@@ -22,8 +21,7 @@ when: at("ThreeMaidensRuins")
 
 
 // 废墟读物（已收集）
-<<declare $item_note = false>>          // 笔记本
-<<declare $item_log = false>>           // 实验日志
+<<declare $item_log = false>>           // 实验日志（含笔记本）
 <<declare $item_diary = false>>         // 日记
 <<declare $item_books = false>>         // 炼金术著作
 
@@ -39,126 +37,18 @@ when: at("ThreeMaidensRuins")
 // 笔记给予少女或炼金：
 <<declare $note_disposition = false>>
 
-    你走进各各他林深处的一片废墟。
+    你走进各各他林深处的一片废墟。腐烂的气味和一股甜腻的药香搅在一起，和森林里其他地方格格不入。
 <<else>>
-    腐烂的气味和一股甜腻的药香搅在一起，头顶是灰蒙蒙的天。
-
-    <<if $three_maidens == 8>>
-        <<jump Entity_ThreeMaidens_PostB>>
-    <<elseif $three_maidens == 2 or $three_maidens == 3>>
-        你再次走进废墟。
-        <<jump NPC_ThreeMaidens_Salina>>
-    <<elseif $three_maidens == 4 or $three_maidens == 5>>
-        你再次走进废墟。
-        <<jump NPC_ThreeMaidens_Azogia>>
-    <<elseif $three_maidens == 6 or $three_maidens == 7>>
-        你再次走进废墟。
-        <<jump NPC_ThreeMaidens_Azufri>>
-    <<elseif $three_maidens > 1>>
+    你回到了废墟，天灰蒙蒙的。
+    <<if $three_maidens > 1>>
         一切已经结束了。
         <<stop>>
     <<else>>
         空气还是那么重。
-        <<if $salina_state >= 3 and $azogia_state >= 3 and $azyfrina_state >= 3 and $handwriting_clue>>
-            三个女孩都被你动摇了，笔迹的证据也已经掌握。也许现在可以把一切摊开来说了。
-            <<jump Entity_ThreeMaidens_Route2_Proof>>
-        <<elseif $salina_state >= 1 and $azogia_state >= 1 and $azyfrina_state >= 1 and $handwriting_clue>>
-            你已经和三个女孩都谈过了，也发现了笔迹的线索。你觉得自己可以做出某种判断了。
-            <<jump Entity_ThreeMaidens_Confirmation>>
-        <<else>>
-            <<jump Entity_ThreeMaidens_Fountain>>
-        <<endif>>
     <<endif>>
 <<endonce>>
 ===
 
-title: Entity_ThreeMaidens_Confirmation
----
-你站在废墟中央，三个女孩各自占据一个角落。你觉得自己知道了些什么。知道了，就必须做出选择。
-
--> 「身体是基础。承载是萨利娜的天命。」
-    <<jump Entity_ThreeMaidens_Route1_Salt>>
-
--> 「逻辑是结构。照见是奥索西娅的天命。」
-    <<jump Entity_ThreeMaidens_Route1_Mercury>>
-
--> 「追寻是动力。燃烧是阿苏芙里娜的天命。」
-    <<jump Entity_ThreeMaidens_Route1_Sulfur>>
-
--> 「她们是同一个人。」 <<if $handwriting_clue>>
-    你拿出了三份笔迹的证据。三个女孩第一次同时看向你。
-    <<jump Entity_ThreeMaidens_Route2_Proof>>
-
--> 等等，再想想
-    <<stop>>
-===
-
-title: Entity_ThreeMaidens_Route2_Proof
----
-你把三份笔迹的证据摆了出来。萨利娜手臂上的刻痕，奥索西娅瓶壁上的公式，阿苏芙里娜笔记本封面的字迹。
-三个女孩第一次同时看向那些证据。
--> 「你们是同一个人。」
-    沉默。
-    三个女孩互相看着——这是她们第一次直接对视。
-    萨利娜: ...她们...是我？
-    奥索西娅: 笔迹分析的结论...无法反驳。我一直以为我是一个独立的变量，但原来我只是一个方程的局部解。
-    阿苏芙里娜: 我一直在找的...就是你们？
-    <<if check("int","you",20,1,14)>>
-        智力: \[等级14：成功\] {$player_name}，你把三份笔迹并排放好，一笔一划地比对给她们看。证据确凿。
-        <<if check("wis","you",20,1,14)>>
-            洞见: \[等级14：成功\] 萨利娜看着那些刻痕，第一次认出了自己的手。奥索西娅的公式停了——她不再计算，开始回忆。阿苏芙里娜合上了笔记本，不再踱步。
-            <<if check("cha","you",20,1,14)>>
-                魅力: \[等级14：成功\] 三个女孩走向废墟中央。她们站在了一起。
-                <<jump Entity_ThreeMaidens_Route2_Merge>>
-            <<else>>
-                魅力: \[等级14：失败\] 阿苏芙里娜在最后一步犹豫了。她后退了一步，重新开始踱步。
-                魅力: 长官，她还没有准备好。你还需要再次动摇她。
-                <<stop>>
-            <<endif>>
-        <<else>>
-            洞见: \[等级14：失败\] 萨利娜看着那些刻痕，但她认不出来。她低下头，继续撕肉喂犬。
-            洞见: 她还没有准备好。你还需要再次动摇她。
-            <<stop>>
-        <<endif>>
-    <<else>>
-        智力: \[等级14：失败\] 你把证据摆出来，但你的解释不够清楚。奥索西娅歪了歪头。
-        奥索西娅: 笔迹相似不等于身份同一。我需要更多的数据。
-        智力: 她重新开始念公式。你还需要再次动摇她。
-        <<stop>>
-    <<endif>>
-===
-
-title: Entity_ThreeMaidens_Route2_Merge
----
-//能做到这个演出吗？
-三个女孩围绕着喷泉站着。
-萨利娜还是带着面具。但你能感觉到她很平静。
-奥索西娅的烧瓶微微颤抖着。
-阿苏芙里娜放下了笔记本。空白的页面掉在地上，她不再需要它了。
-
--> 把收集到的读物投入 <<if $item_note or $item_log or $item_diary or $item_books>>
-    你从怀里掏出收集到的废墟读物——笔记本、实验日志、日记、炼金术著作。这些纸张承载着那个炼金术师的记忆、实验、痛苦和知识。
-    你把它们扔进了干涸的喷泉池。
-    <<set $note_disposition = true>>
-    //TODO: 销毁所有读物
-
-
--> 让她们融合
-    三个人的轮廓开始模糊。像是液体汇流，边缘溶解，颜色混合，形体重叠。这个过程不快，也不轻松。每一次形体重叠都伴随着一声很轻的叹息，像是三个人同时在承受什么。萨利娜的重量，奥索西娅的分离，阿苏芙里娜的焦灼，全都搅在一起。不是消除，是融合。痛苦没有消失，只是不再分属三个人了。
-    废墟里的肉树退开了。空气变轻了。
-    最终，在干涸的喷泉池中央，出现了一个新的形体。
-    微微泛着金光的液体中浮现出粉红色肌肤的少女，眼睛还未完全睁开，四肢蜷缩。她不记得任何事。她不知道自己是谁，不知道这里是什么地方。
-    但她是一个完整的灵魂。她身上有三倍分量的对世界的感知——重量、公式、过程，全都在她体内。也正因为如此，她身上有三倍分量的对世界的痛苦与爱。
-    她在废墟中安静地呼吸。
-    <<set $three_maidens = 8>>
-    <<set $salina_state == 0>>
-    <<set $azogia_state == 0>>
-    <<delete "奥索西娅·菲洛索菲卡">>
-    <<delete "萨利娜">>
-    //TODO: 做一个立绘变化
-    //TODO: 做一个ID变化
-    <<stop>>
-===
 
 title: Entity_ThreeMaidens_Route3
 ---
@@ -167,48 +57,5 @@ title: Entity_ThreeMaidens_Route3
 什么也没有改变。
 <<set $three_maidens = 10>>
 <<stop>>
-//这个结局demo剧情内似乎没法触发，先放着
-===
-
-title: Entity_ThreeMaidens_PostB
-title: encounter
-when: ch("阿苏芙里娜")
-//也许要改成对应ID
----
-你再次走进废墟。
-废墟变了。肉树退开了一些，空气没那么重了。喷泉池边，那个新生的少女坐在那里，身上裹着一件不知从哪找来的旧布。
-她长大了。比上次见的时候大了一些。眼睛睁开了，能看清东西了。
-她手里拿着一本笔记本——阿苏芙里娜留下的那本。她在翻看。
-像是阿苏芙丽娜的少女: 你来了。
-她抬起头看你。眼睛很清澈，什么都没有——不是空洞，是干净。
--> 「你叫什么？」
-    少女: 我...不记得了。但是我在这本本子上看到了很多...
-    她翻到某一页，指了指上面空白的地方。
-    少女: 这里写了很多次"出去"。还有"离开"。
-    她合上笔记本。
-    少女: 我想出去看看。这里...不是我应该待的地方。那些字告诉我，外面有别的东西。
-    <<if $note_disposition>>
-        少女: 还有那些纸，你给我的那些。
-        她望了望笔记本。
-        少女: 上面写着很多东西。实验，还有"不要分开"。
-    <<endif>>
-
-    -> 「去吧。你应该去看看外面的世界。」
-        少女点了点头。她站起来，把笔记本抱在怀里。
-        少女: 谢谢你。
-        她走向废墟的入口。根须在她面前自动退开了。
-        她没有回头。
-        废墟里只剩你一个人。空气比之前轻了很多。
-        <<set $three_maidens = 9>>
-        <<delete "阿苏芙里娜">>
-        <<stop>>
-
-    -> 「外面很危险。你还是留在这里比较好。」
-        少女看着你，眼睛里有信任。
-        少女: 好。你说的，我听。
-        她坐回石台上，继续翻看笔记本。
-        <<stop>>
-===
-
-<<stop>>
+//这个结局demo为止的剧情没法触发，先放着不用管
 ===

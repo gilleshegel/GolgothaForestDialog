@@ -5,12 +5,27 @@ when: ch("阿苏芙里娜")
 ===
 
 title: NPC_ThreeMaidens_Azufrina
-when: once
 ---
 <<once>>
     你走到石块散落处。穿着不合身长袍的少女背对着你，踱步。她的深红旧袍过分干净——在这样一个满是灰尘和腐烂的废墟里，那件袍子像是刚从箱底拿出来的。麻绳束腰，金发散乱。
     她手里紧握着一本笔记本，封面空白。她走得很快，有时候停下来翻一页，然后又合上，继续走。
     <<set $azyfrina_state = 1>>
+
+    -> \[魅力检定\] 观察她踱步的模式
+    <<if uicheck("cha","you",20,1,14)>>
+        魅力: \[等级14：成功\] 长官，你看这姑娘走路——有板有眼的，从一块碎石到另一块碎石，绕着喷泉残骸转圈。每一步的距离几乎一样。这不是在思考，这是在走别人的路。这条路不是她自己选的，有人走过，她在跟着。
+    <<else>>
+        魅力: \[等级14：失败\] 她的步伐虽然重复，但节奏不同——有时候快，有时候慢，有时候突然停下来，然后又急急忙忙地走。像是在犹豫。你分不清她是在找什么还是在躲什么。
+    <<endif>>
+    <<jump NPC_ThreeMaidens_Azufri_menu>>
+
+    -> \[智力检定\] 看她的笔记本
+    <<if uicheck("int","you",20,1,12)>>
+        智力: \[等级12：成功\] {$player_name}，笔记本是空白的，但封面上有字——同一个字，写了又擦，擦了又写。你辨认了一下，隐约能看出"实验记录"四个字。是同一个人的笔迹，反复刻在封面上。她不是在写，是在确认自己还记得这几个字怎么写。
+    <<else>>
+        智力: \[等级12：失败\] 笔记本是空白的。纸张边缘有烧焦的痕迹——不是意外烧的，是有人小心地用火燎过每一页的边角，像是某种仪式。
+    <<endif>>
+    <<jump NPC_ThreeMaidens_Azufri_menu>>
 <<else>>
     <<if $three_maidens == 6>>
         阿苏芙里娜坐在一块倒塌的石柱上——她不再踱步了。笔记本合着，放在膝盖上。她看见你来了，站起来。
@@ -25,39 +40,15 @@ when: once
             阿苏芙里娜: 我好像明白了什么。
         <<endif>>
         <<jump NPC_ThreeMaidens_Azufri_leave>>
-    <<elseif $three_maidens == 7>>
-        你再次走进废墟。
-        阿苏芙里娜不在了。只剩一件空袍子和一本笔记本。
-        你站了一会儿。空气很安静。
     <<else>>
         阿苏芙里娜还在踱步。她看见你，停了一下，然后又开始走。
     <<endif>>
 <<endonce>>
-
--> \[魅力检定\] 观察她踱步的模式
-    <<if uicheck("cha","you",20,1,14)>>
-        魅力: \[等级14：成功\] 长官，你看这姑娘走路——有板有眼的，从一块碎石到另一块碎石，绕着喷泉残骸转圈。每一步的距离几乎一样。这不是在思考，这是在走别人的路。这条路不是她自己选的，有人走过，她在跟着。
-    <<else>>
-        魅力: \[等级14：失败\] 她的步伐虽然重复，但节奏不同——有时候快，有时候慢，有时候突然停下来，然后又急急忙忙地走。像是在犹豫。你分不清她是在找什么还是在躲什么。
-    <<endif>>
-    <<jump NPC_ThreeMaidens_Azufri_menu>>
-
--> \[智力检定\] 看她的笔记本
-    <<if uicheck("int","you",20,1,12)>>
-        智力: \[等级12：成功\] {$player_name}，笔记本是空白的，但封面上有字——同一个字，写了又擦，擦了又写。你辨认了一下，隐约能看出"实验记录"四个字。是同一个人的笔迹，反复刻在封面上。她不是在写，是在确认自己还记得这几个字怎么写。
-    <<else>>
-        智力: \[等级12：失败\] 笔记本是空白的。纸张边缘有烧焦的痕迹——不是意外烧的，是有人小心地用火燎过每一页的边角，像是某种仪式。
-    <<endif>>
-    <<jump NPC_ThreeMaidens_Azufri_menu>>
-
--> （叫住她）
-    <<jump NPC_ThreeMaidens_Azufri_menu>>
+<<jump NPC_ThreeMaidens_Azufri_menu>>
 ===
 
 title: NPC_ThreeMaidens_Azufri_menu
 ---
-你叫住了她。她停下来，转过身。她的眼睛很亮。
-
 <<once>>
 -> 「你是谁？」
     穿着袍子的少女: 我是——
@@ -88,7 +79,7 @@ title: NPC_ThreeMaidens_Azufri_menu
     <<endif>>
     <<jump NPC_ThreeMaidens_Azufri_menu>>
 
--> 「你一直在转圈。你有没有停下来过？」 <<if $item_note or $item_log>>
+-> 「你一直在转圈。你有没有停下来过？」 <<if $item_log>>
     阿苏芙里娜: 我不能停。
     「为什么不能？」
     阿苏芙里娜: 如果我停了就什么都找不到了。
@@ -151,12 +142,19 @@ title: NPC_ThreeMaidens_Azufri_menu
         <<jump NPC_ThreeMaidens_Azufri_observe_1>>
     <<endif>>
 
+-> 「你是她们的目的。追寻本身就是意义。你应该把她们找回来。」 <<if $salina_state >= 3 and $azogia_state >= 3 and $azyfrina_state >= 3>>
+    <<jump Entity_ThreeMaidens_Route1_Sulfur>>
+
 -> 攻击阿苏芙里娜 <<if $azyfrina_state > 0>>
     //TODO: 引擎处理战斗
     <<set $azyfrina_state = 0>>
     阿苏芙里娜倒下了。袍子散在地上，笔记本从她手里滑落。她的身体慢慢变得透明，然后消失了。只剩一件空袍子和一本笔记本。
     <<jump Entity_ThreeMaidens_DeathReaction>>
+    <<rename "阿苏芙里娜". "空袍子".>>
+    //改一下立绘
+    <<stop>>
 -> （离开）
+    阿苏芙里娜没有停步。她还在踱。
     <<stop>>
     <<endonce>>
 ===
@@ -226,7 +224,7 @@ title: Entity_ThreeMaidens_Route1_Sulfur
 阿苏芙里娜停下了脚步。她的眼睛亮着——焦灼的、急切的。
 
 
--> 把收集到的读物交给阿苏芙里娜 <<if $item_note or $item_log or $item_diary or $item_books>>
+-> 把收集到的读物交给阿苏芙里娜 <<if $item_log or $item_diary or $item_books>>
     你从怀里掏出收集到的废墟读物——笔记本、实验日志、日记、炼金术著作。这些纸张承载着那个炼金术师的记忆、实验、痛苦和知识。
     你把它们递给阿苏芙里娜。
     阿苏芙里娜接过那些纸张，低头看了看。
@@ -236,17 +234,18 @@ title: Entity_ThreeMaidens_Route1_Sulfur
     她抬起头，眼睛里的焦灼灭了，取而代之的是某种安静的决心。
     阿苏芙里娜: 这些是我在找的东西？
     <<set $note_disposition = true>>
-    //TODO: 销毁RuinsWritings.yarn
-    
+    <<delete "在废墟中找到的线索">>
+    //TODO: 删除背包物品
+
 -> 「你是她们的目的。追寻本身就是意义——但追寻需要重量，需要形状，否则就只是原地打转的火。你应该把她们找回来。有了承载和照见，你的火焰才有东西可以烧。」
     阿苏芙里娜: 找回来...
     她看了一眼手里的笔记本。
     阿苏芙里娜: 我一直在找。我找到了吗？
     她没有等你回答。她张开了双臂。
-    <<set $salina_state == 0>>
-    <<set $azogia_state == 0>>
-    <<delete "奥索西娅·菲洛索菲卡">>
-    <<delete "萨利娜">>
+    <<set $salina_state = 0>>
+    <<set $azogia_state = 0>>
+    <<rename "萨利娜". "树桩".>>
+    <<rename "奥索西娅". "玻璃碎片".>>
     //TODO: 做一个立绘变化
     <<if check("cha","you",20,1,14)>>
         魅力: \[等级14：成功\] 两个人的力量涌入她的身体。她吸收了萨利娜和奥索西娅。
@@ -286,4 +285,50 @@ title: NPC_ThreeMaidens_Azufri_leave
     阿苏芙里娜: 好。你说没有，那就没有。
     她坐回椅子上，翻开笔记本，继续看那些空白的页面。
     <<stop>>
+===
+
+// 融合后少女对话（少女=阿苏芙里娜改名）
+title: NPC_ThreeMaidens_PostB_Dialogue
+---
+少女: 你来了。
+她抬起头看你。眼睛很清澈，什么都没有——不是空洞，是干净。
+-> 「你叫什么？」
+    少女: 我...不记得了。但是我在这本本子上看到了很多...
+    她翻到某一页，指了指上面空白的地方。
+    少女: 这里写了很多次"出去"。还有"离开"。
+    她合上笔记本。
+    少女: 我想出去看看。这里...不是我应该待的地方。那些字告诉我，外面有别的东西。
+    <<if $note_disposition>>
+        少女: 还有那些纸，你给我的那些。
+        她望了望笔记本。
+        少女: 上面写着很多东西。实验，还有"不要分开"。
+    <<endif>>
+
+    -> 「去吧。你应该去看看外面的世界。」
+        少女点了点头。她站起来，把笔记本抱在怀里。
+        少女: 谢谢你。
+        她走向废墟的入口。根须在她面前自动退开了。
+        她没有回头。
+        废墟里只剩你一个人。空气比之前轻了很多。
+        <<set $three_maidens = 9>>
+        <<delete "少女">>
+        <<stop>>
+
+    -> 「外面很危险。你还是留在这里比较好。」
+        少女看着你，眼睛里有信任。
+        少女: 好。你说的，我听。
+        她坐回石台上，继续翻看笔记本。
+        <<stop>>
+===
+
+title: encounter
+when: ch("空袍子")
+---
+<<jump NPC_ThreeMaidens_Azyfrina_dead>>
+===
+
+title: NPC_ThreeMaidens_Azyfrina_dead
+---
+只剩一件空袍子和一本笔记本。阿苏芙里娜不在了。你站了一会儿。空气很安静。
+<<stop>>
 ===
