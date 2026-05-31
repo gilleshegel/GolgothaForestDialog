@@ -11,26 +11,16 @@ when: ch("RuinsWritings")
 title: Item_ThreeMaidens_RuinsWritings
 ---
 你翻看收集到的废墟读物。
-<<if $note_found>>
--> 翻开笔记本
+-> 翻开笔记本 <<if $item_note>>
     <<jump Item_ThreeMaidens_RuinsNote_review>>
-<<endif>>
-<<if $log_found>>
--> 翻看实验日志
+-> 翻看实验日志 <<if $item_log>>
     <<jump Item_ThreeMaidens_RuinsExperimentLog_review>>
-<<endif>>
-<<if $diary_found>>
--> 翻开日记
+-> 翻开日记 <<if $item_diary>>
     <<jump Item_ThreeMaidens_RuinsDiary_review>>
-<<endif>>
-<<if $books_found>>
--> 翻看炼金术著作
+-> 翻看炼金术著作 <<if $item_books>>
     <<jump Item_ThreeMaidens_RuinsBooks_review>>
-<<endif>>
-<<if $diary_found and $log_found and $note_found>>
--> 调查三份文本
+-> 调查三份文本 <<if $item_diary and $item_log and $item_note>>
     <<jump Item_ThreeMaidens_ThreeMaidens_Clues>>
-<<endif>>
 -> （离开）
     <<stop>>
 ===
@@ -57,7 +47,8 @@ when: once
         "第79天。还是失败。灵魂在容器中溶解了。"
         "第85天。我需要更多的灵魂。但去哪里找？"
         笔记到第85天就断了。后面是空白的。
-        <<set $note_found = true>>
+        <<set $item_note = true>>
+        <<jump Item_ThreeMaidens_RuinsWritings>>
     <<else>>
         智力: \[等级14：失败\] 你翻了几页。都是实验记录，但字迹太潦草了，你看不太懂。
         //TODO: 失败代偿
@@ -96,7 +87,8 @@ when: once
         "实验编号：015。日期：不详。目标：以自身为薪。"
         "结果：未知。记录者未完成记录。"
         日志到015号实验就断了。后面是空白的。
-        <<set $log_found = true>>
+        <<set $item_log = true>>
+        <<jump Item_ThreeMaidens_RuinsWritings>>
     <<else>>
         智力: \[等级14：失败\] 你翻了几页。都是实验记录，但字迹太潦草了，你看不太懂。
         //TODO: 失败代偿
@@ -136,7 +128,8 @@ when: once
         "第33天。来不及了。"
         最后一页只有一句话："不要分开。"
         日记到第33天就断了。后面是空白的。
-        <<set $diary_found = true>>
+        <<set $item_diary = true>>
+        <<jump Item_ThreeMaidens_RuinsWritings>>
     <<else>>
         智力: \[等级14：失败\] 你翻了几页。都是私人日记，但字迹太潦草了，你看不太懂。
         //TODO: 失败代偿
@@ -170,7 +163,8 @@ when: once
         这些符号你认得——炼金术的三要素标记。圆圈加十字是盐，半月加十字是硫，三角加十字是汞。
         但书中的用法不对。正规炼金术教材不会把这三个符号放在一起，更不会用箭头把它们连起来。这是异端炼金术——以灵魂为原料的禁忌之术。
         书页边缘有批注："三者不可独存。分离即死。"
-        <<set $books_found = true>>
+        <<set $item_books = true>>
+        <<jump Item_ThreeMaidens_RuinsWritings>>
     <<else>>
         智力: \[等级12：失败\] 你看了半天。符号确实像某种炼金术标记，但排列方式很奇怪。你认不出来。
         //TODO: 失败代偿
@@ -207,7 +201,7 @@ when: once
         "……四圣徒的遗物……四圣器……据说威力非凡……"
         "……如今遗失于各各他林中……"
         "……多方势力都想寻找四圣器……"
-        这份介绍说的是塞西亚斯城和四圣徒。四圣器——断海剑、破土刀、录天书、恒心钉——曾经供奉在这座城市里。
+        这份介绍说的是塞西亚斯城和四圣徒。四圣器，断海剑、破土刀、录天书、恒心钉，曾经供奉在这座城市里。
         但城市已经被肉树吞噬了。圣器也遗失了。
     <<else>>
         智力: \[等级14：失败\] 你看了半天。大概是关于某个城市的介绍，但具体内容你看不清。
@@ -244,7 +238,7 @@ when: once
         你没有把握。
         //TODO: 失败代偿——可选：损失血量/给予金币/给予药水/杀敌/解答问题
     <<endif>>
-    <<jump Item_ThreeMaidens_ThreeMaidens_Clues>>
+    <<jump Item_ThreeMaidens_RuinsWritings>>
 -> （离开）
     <<stop>>
 ===
@@ -261,11 +255,11 @@ title: Item_ThreeMaidens_ThreeMaidens_Clues
         你没有把握。
         //TODO: 失败代偿——可选：损失血量/给予金币/给予药水/杀敌/解答问题
     <<endif>>
-    <<jump Item_ThreeMaidens_ThreeMaidens_Clues>>
+    <<jump Item_ThreeMaidens_RuinsWritings>>
 -> 观察三人的存在方式
     你退后一步，同时看着三个女孩。
-    感知: {$player_name}，你看着她们三个，有一种说不清的感觉——像是三块拼图，各自缺了大部分，但边缘的形状能对上。
-    <<jump Item_ThreeMaidens_ThreeMaidens_Clues>>
+    洞见: {$player_name}，你看着她们三个，有一种说不清的感觉——像是三块拼图，各自缺了大部分，但边缘的形状能对上。
+    <<jump Item_ThreeMaidens_RuinsWritings>>
 -> \[智力检定\] 推测她们的起源
     <<if uicheck("int","you",20,1,18)>>
         智力: \[等级18：成功\] {$player_name}，你把所有线索拼在一起。你注意到两件事：第一，肉树的嫁接痕迹和废墟石块上的符号，指向人为干预。第二，各各他林的肉树、大瘟疫、灵魂侵蚀，也能把一个人打碎。两种线索，两种可能。也许是有人借助森林做了什么：三种力量在一个人里面冲突、和解、生成完整的人格。也许只是森林自己的产物被收集到了这里。你分不清。但如果是前者，那这个实验失败了——本应在一个人里面完成的过程，被撕裂成了三个独立的、畸形的存在。
@@ -274,7 +268,7 @@ title: Item_ThreeMaidens_ThreeMaidens_Clues
         智力: \[等级18：失败\] 你倾向于认为这是一场实验——这片废墟、肉树的嫁接、那些公式，都指向人为干预。但你无法排除另一种可能：也许她们只是各各他林的自然产物，废墟只是捡到了她们。
         //TODO: 失败代偿——可选：损失血量/给予金币/给予药水/杀敌/解答问题
     <<endif>>
-    <<jump Item_ThreeMaidens_ThreeMaidens_Clues>>
+    <<jump Item_ThreeMaidens_RuinsWritings>>
 -> 不再调查了
     <<jump Item_ThreeMaidens_RuinsWritings>>
 ===
