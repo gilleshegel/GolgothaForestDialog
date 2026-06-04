@@ -74,7 +74,8 @@ title: NPC_Remedios_strangerask
     半精灵: 既然我们已经是同路人，那么给予信任就是有必要的。
     她向你行礼，深红如石榴籽的双瞳紧锁你的脸。
     半精灵: 我是蕾梅黛丝。
-    //TODO：雷梅黛丝入队
+    <<rename 半精灵 蕾梅黛丝>>
+    <<team join 蕾梅黛丝>>
 -> （离开）<<if $invitation_Remedios == true>>
     <<stop>>
 ===
@@ -87,5 +88,6 @@ title: NPC_Remedios_invitation
     半精灵: 甚好。既然我们已经是同路人，那么给予信任就是有必要的。
     她向你行礼，深红如石榴籽的双瞳紧锁你的脸。
     半精灵: 我是蕾梅黛丝。
-    //TODO：雷梅黛丝入队
+    <<rename 半精灵 蕾梅黛丝>>
+    <<team join 蕾梅黛丝>>
 ===

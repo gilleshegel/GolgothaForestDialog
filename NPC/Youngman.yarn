@@ -96,7 +96,7 @@ title: NPC_Youngman_identify
 
 title: NPC_Youngman_Combat
 ---
-//TODO：对战1个恼羞成怒的【年轻蜥蜴人】。
+<<combat>>//TODO：对战1个恼羞成怒的【年轻蜥蜴人】。
 
 蜥蜴人引以为傲的街头斗殴技巧在你压倒性的实战经验前土崩瓦解。
 他的肺部像破损的风箱一样剧烈喘息，竖瞳中终于浮现出真实的、对死亡的恐惧。
@@ -133,5 +133,6 @@ title: NPC_Youngman_Combat
     <<endif>>
     <<set $findbook = $findbook + 1>>
     //TODO：获得一张纸条
+    <<delete 年轻蜥蜴人>>
     <<stop>>
 ===

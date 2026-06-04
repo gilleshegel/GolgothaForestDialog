@@ -111,6 +111,7 @@ title: NPC_Valentina_newenc
     颓废牧师瓦伦缇娜: 这就是你过来的目的？好的，我是一个好人，你可以走了。
     <<jump NPC_Valentina_newenc>>
 -> （离开）
+    <<stop>>
 ===
 
 
