@@ -19,7 +19,7 @@ title: Mission_Library_init
 -> 黄书贩子
     <<jump NPC_PornSeller>>
 -> 吟游诗人
-    <<jump NPC_BardPatrik>>
+    <<jump NPC_Patrik>>
 -> 直接看慌张的偷书贼
     <<jump NPC_TensiveThief>>
 ===
